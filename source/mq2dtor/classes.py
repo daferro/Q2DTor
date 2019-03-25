@@ -1,31 +1,42 @@
 '''
-*----------------------------------*
- Q2DTor and TheRa Programs
+---------------------------
+ Licensing and Distribution
+---------------------------
 
- Copyright (c) 2018 Universidade de Santiago de Compostela
+Program name: Q2DTor
+Version     : 1.1
+License     : MIT/x11
 
- This file is part of both Q2DTor and TheRa softwares.
+Copyright (c) 2019, David Ferro Costas (david.ferro@usc.es) and
+Antonio Fernandez Ramos (qf.ramos@usc.es)
 
- Q2DTor and TheRa are free softwares: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following conditions:
 
- Q2DTor and TheRa are distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
- You should have received a copy of the GNU General Public License
- inside both Q2DTor and TheRa manuals.  If not, see <http://www.gnu.org/licenses/>.
-*----------------------------------*
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+---------------------------
 
- This module constains different Classes
 
 *----------------------------------*
 | Main Author:  David Ferro-Costas |
 | Last Update:  Mar-02st-2018      |
 *----------------------------------*
+
+ This module constains different Classes
+
 '''
 
 #------------------------------------------------#
@@ -81,14 +92,24 @@ class Logger(object):
     Use:
       sys.stdout = Logger(f_out,tprint)
     '''
-    def __init__(self,output,tprint,mode="a"):
-        self.terminal = sys.stdout
-        self.log = open(output, mode)
-        self.tprint = tprint
+
+    def __init__(self,output=None,mode="w",bool_print=True):
+        # terminal
+        self.terminal   = sys.__stdout__
+        self.bool_print = bool_print
+
+        # file
+        self.bool_write = False
+        self.file       = output
+        if output is not None:
+           self.log = open(self.file, mode)
+           self.bool_write = True
+        else:
+           self.bool_write = False
 
     def write(self, message):
-        if self.tprint: self.terminal.write(message)
-        self.log.write(message)  
+        if self.bool_print: self.terminal.write(message)
+        if self.bool_write: self.log.write(message)  
 
     def flush(self):
         #this flush method is needed for python 3 compatibility.
@@ -371,7 +392,7 @@ class SplineVaG:
 
                 s_current = s_current+ds
 
-          if E == V2: rtn_points.append( (self.s_omega,rpoint_type) )
+          if abs(E - V2) < 1e-6: rtn_points.append( (self.s_omega,rpoint_type) )
 
           return rtn_points
 
@@ -906,6 +927,8 @@ class Struct(object):
                  # mass may be a string, like "2H"
                  if mass in cons.dict_isomasses:
                     mass = cons.dict_isomasses[mass]
+                 else:
+                    mass = float(mass)
                  self._masslist[idx] = float(mass)
           # masslist is a list of masses
           except:
@@ -1053,7 +1076,7 @@ class Struct(object):
              if self._v1 is None     : return None
              else                    : return np.array(self._v1,copy=True)
         # Derivated variables that cannot be defined using set function
-        elif variable == "imoments"  : return list(self._imoments)
+        elif variable == "imoments"  : return self._imoments
         elif variable == "xms"       :
              if self._xms is None    : return None
              else                    : return np.array(self._xms,copy=True)
@@ -1227,7 +1250,7 @@ class Struct(object):
         Get the D matrix for two torsions
         Last two torsions are the selected torsions
         '''
-        B_wilson, C_wilson = hf.get_B_and_C(self._xcc, self._natoms, nricoords)
+        B_wilson, C_wilson, sortedICs = hf.get_B_and_C(self._xcc, self._natoms, nricoords)
 
         mass_array = []
         for m in self._masslist: mass_array += [m,m,m]
@@ -1245,6 +1268,169 @@ class Struct(object):
 
         return Dmatrix
 
+    def icproj_hessian(self,icoords):
+        #---------------------------#
+        # Get B matrix and C tensor #
+        #---------------------------#
+        B_wilson, C_wilson, sortedICs = hf.get_B_and_C(self._xcc, self._natoms, icoords)
+        num_ric, num_3N = B_wilson.shape
+        num_nric = self._nvib
+    
+        #--------------------------#
+        # Calculate h*, h^-1 and A #
+        #--------------------------#
+        mass_array = []
+        for m in self._masslist: mass_array += [m,m,m]
+        u = [ 1.0/mass for mass in mass_array]
+        u = np.diag(u)
+        # Calculate h matrix (h* in [3], cursive G in [4])
+        h = B_wilson * u * B_wilson.transpose()
+        # Calculate inverse of h*
+        if num_ric <= num_nric:
+           h_inv = np.linalg.inv(h)
+        else:
+           h_evals, h_evecs = np.linalg.eigh(h)
+           K , Kprime = [], []
+           Gamma = []
+           Gamma_zeros = []
+           for idx in range(len(h_evals)):
+               h_eval = h_evals[idx]
+               h_evec = [float(i) for i in h_evecs[:,idx]]
+               # Non-zero eigenvalue
+               if abs(h_eval) > 1e-15:
+                  K.append( h_evec )
+                  Gamma.append( h_eval )
+               # Zero eigenvalue - save as zero
+               else:
+                  Kprime.append( h_evec )
+                  Gamma_zeros.append( 0.0 )
+           h_evecs_sorted = np.matrix(K + Kprime)
+           h_evecs_sorted = h_evecs_sorted.transpose()
+           h_evals_inv    = [1.0/evalue for evalue in Gamma] + Gamma_zeros
+           h_evals_inv    = np.diag(h_evals_inv)
+           h_inv = h_evecs_sorted * h_evals_inv * h_evecs_sorted.transpose()
+        # Get A matrix
+        A = u * B_wilson.transpose() * h_inv
+    
+        #--------------------------------------------------------#
+        # Gradiend and hessian in redundant internal coordinates #
+        #--------------------------------------------------------#
+        F_ric = A.transpose() * self._Fcc * A
+        # A MEP point is being analyzed
+        if self._type == -1:
+           g_cc  = np.array(self._gcc,copy=True)
+           g_cc  = np.matrix(g_cc).transpose() # save as column matrix
+           g_ric = A.transpose() * g_cc
+           for idx in range(g_ric.shape[0]):
+               F_ric -= float(g_ric[idx]) * A.transpose() * C_wilson[idx] * A
+          #proj_rc = True
+        # A critical point of the PES is being analyzed
+        else:
+           g_cc  = np.zeros((3*self._natoms,3*self._natoms))
+           g_ric = A.transpose() * g_cc
+          #proj_rc = False
+    
+        return sortedICs, g_ric, F_ric, B_wilson, C_wilson, mass_array, u, h, h_inv, A
+
+    def caca(self,icoords):
+        '''
+        At some point, this will subtitute calc_icfreqs function
+        '''
+
+        if self._type == -1: proj_rc = True
+        else               : proj_rc = False
+
+        sortedICs, g_ric, F_ric, B_wilson, C_wilson, mass_array, u, h, h_inv, A = self.icproj_hessian(icoords)
+        num_ric, num_3N = B_wilson.shape
+        num_nric = self._nvib
+
+        #------------------------------------------------------------#
+        # Gradiend and hessian in non-redundant internal coordinates #
+        # and with the reaction coordinate projected out             #
+        #------------------------------------------------------------#
+        # Project from ric to non-redundant internal coordinates (nric)
+        P = h * h_inv
+        f_nric = P * F_ric * P
+        # Project out the reaction coordinate
+        if proj_rc:
+           g_nric = P * g_ric
+           p      = g_nric * g_nric.transpose() / (g_nric.transpose() * h * g_nric)
+           proj_F = (np.identity(num_ric) - p*h) * f_nric * (np.identity(num_ric)-h*p)
+        else:
+           proj_F = f_nric
+
+        # Get eigenvalues and eigenvectors
+        # PS: as h*proj_F isn't symmetric, pF_evals and pF_evecs have imaginary components
+        pF_evals, pF_evecs = np.linalg.eig(h*proj_F)
+
+        #---------------------------------#
+        # Get indices of zero eigenvalues #
+        #---------------------------------#
+        indices_zero = []
+        for idx in range(len(pF_evals)):
+            F_evalue = pF_evals[idx]
+            F_evalue = F_evalue*self._mu
+            freq = Freq(scaling=self._freqscal,mu=self._mu,rmode= self._rmode)
+            freq.set_evalue(F_evalue)
+            if abs(freq.get("wavenum")) < cons.ZERO_wavenum: indices_zero.append(idx)
+    
+        #--------------------------------------------------------------#
+        # Get eigenvectors in mass-scaled cartesian coordinates        #
+        # PS: single value decomposition (svd) used to get pF_evecs^-1 #
+        #--------------------------------------------------------------#
+        u_svd, s_svd, v_svd = np.linalg.svd(pF_evecs,full_matrices=True,compute_uv=True)
+        # Pseudoinverse of s_svd
+        s_svd_inv = []
+        for idx in range(len(s_svd)):
+            if abs(s_svd[idx]) < cons.ZERO2: s_svd_inv.append( s_svd[idx] )
+            else:                       s_svd_inv.append( s_svd[idx]**-1.0 )
+        pF_evecs_inv = np.dot(v_svd.transpose(), np.dot(np.diag(s_svd_inv),u_svd.transpose()))
+        # Get normalized vectors (but only those of non-zero eigenvalue)
+        pF_norm_evecs = []
+        nrows, ncols = pF_evecs.shape
+        zero_evec    = [0.0] *  nrows
+        C = pF_evecs_inv * h * pF_evecs_inv.transpose()
+        for idx in range(len(pF_evals)):
+          # Only normalize those of non-zero evalue
+          if abs(pF_evals[idx].real) > cons.ZERO2:
+             # remove imag part of C element
+             if abs( C[idx,idx].imag ) < cons.ZERO: Cii = float(C[idx,idx].real)
+             else:                                  Cii = C[idx,idx]
+             # Get normalized L vector
+             norm_L = pF_evecs[:,idx] * np.sqrt(Cii)
+             pF_norm_evecs.append( norm_L.transpose().tolist()[0] )
+          else:
+             pF_norm_evecs.append( zero_evec )
+        pF_norm_evecs = np.matrix(pF_norm_evecs).transpose()
+    
+        # Get chi matrix
+        chi_matrix = A * pF_norm_evecs
+    
+        # Get normal-mode eigenvectors in mass-scaled cartesian
+        self._icfreqs = []
+        for j in range(num_ric):
+            if j in indices_zero: continue
+            F_evalue  = pF_evals[j]
+            F_evector = chi_matrix[:,j]
+            # mass-scalde eigenvalue
+            F_evalue = F_evalue*self._mu
+            # mass-scaled eigenvector
+            for i in range(3*self._natoms):
+                m_i = mass_array[i]
+                F_evector[i] = np.sqrt(m_i) * F_evector[i]
+            if np.linalg.norm(F_evector) != 0.0: F_evector = F_evector / np.linalg.norm(F_evector)
+            # Evector (remove zero imaginary component)
+            F_evector = np.array([float(Fi.real) for Fi in F_evector.transpose().tolist()[0]])
+            # Generate frequency
+            freq = Freq(scaling=self._freqscal,mu=self._mu,rmode= self._rmode)
+            freq.set_evalue(F_evalue)
+            freq.set_evector(F_evector)
+            freq.calc_derivated_magnitudes()
+            self._icfreqs.append( (F_evalue,freq) )
+        # Sort freqs
+        self._icfreqs.sort()
+        self._icfreqs = [j for (i,j) in self._icfreqs]
+
     def calc_icfreqs(self,icoords):
         '''
         '''
@@ -1254,7 +1440,7 @@ class Struct(object):
         #---------------------------#
         # Get B matrix and C tensor #
         #---------------------------#
-        B_wilson, C_wilson = hf.get_B_and_C(self._xcc, self._natoms, icoords)
+        B_wilson, C_wilson, sortedICs = hf.get_B_and_C(self._xcc, self._natoms, icoords)
         num_ric, num_3N = B_wilson.shape
         num_nric = self._nvib
     
@@ -1311,7 +1497,6 @@ class Struct(object):
            g_cc  = np.zeros((3*self._natoms,3*self._natoms))
            g_ric = A.transpose() * g_cc
            proj_rc = False
-    
         #------------------------------------------------------------#
         # Gradiend and hessian in non-redundant internal coordinates #
         # and with the reaction coordinate projected out             #
@@ -2231,53 +2416,94 @@ class Struct(object):
         if ccfreqs is None or ccfreqs == []:
            print "ERROR: cc-freqs are not calculated!"
            sys.exit()
-        ncc       = len(self._ccfreqs)
-        if rbonds:
-           nricoords = []
-           toremove  = [(kind,tuple(ic)) for kind,ic in ricoords]
-        else:
-          nricoords = [(kind,tuple(ic)) for kind,ic in ricoords if kind=="1"]
-          toremove  = [(kind,tuple(ic)) for kind,ic in ricoords if kind!="1"]
 
-        # Anyone to keep?
-        keep = []
+        # Coordinates that can't be removed
+        fixed = []
+        if not rbonds:
+           fixed += [(kind,tuple(ic)) for kind,ic in ricoords if kind=="1"]
         for torsion in torsions:
-            ttuple = ("4",tuple(torsion))
-            if ttuple in toremove:
-               idx = toremove.index(ttuple)
-               keep.append( toremove.pop(idx) )
+           fixed += [("4",tuple(torsion))]
 
-        # Purify icoords
-        while get_nics(nricoords) < ncc-len(keep):
-              idx      = random.choice(range(len(toremove)))
-              kind, ic = toremove.pop(idx)
-        
-              try:
-                 nricoords2 = nricoords + toremove + keep
-                 # Calc ic freqs
-                 self.calc_icfreqs(nricoords2)
-                 icfreqs = self.get("icfreqs")
-                 remove = True
-                 if len(icfreqs) != len(ccfreqs):
-                    remove = False
-                 else:
-                    for idx in range(len(ccfreqs)):
-                        ccfreq = ccfreqs[idx].get("wavenum")/cons.cm
-                        icfreq = icfreqs[idx].get("wavenum")/cons.cm
-                        diff = abs(ccfreq-icfreq)
-                        if diff > 0.5:
-                           remove = False
-                           break
-              except:
-                 remove = False
 
-              if not remove: nricoords = nricoords + [(kind,ic)]
-              elif show:
-                   if kind != "3": print "             removing IC %s..."%("-".join( [str(atom+1) for atom in ic]))
-                   else          : print "             removing IC %s..."%("=".join( [str(atom+1) for atom in ic]))
+        # Save initial set
+        ics = list(ricoords)
 
-        nricoords = nricoords + keep
-        return nricoords, get_nics(nricoords)
+        # Remove redundancies
+        targets =  [(k,i) for k,i in ics if (k,i) not in fixed ]
+        random.shuffle(targets)
+        for target in targets:
+            kind,ic = target
+            # remove target
+            ics2 = list(ics)
+            ics2.remove(target)
+            # calculate ic-freqs
+            try   : self.calc_icfreqs(ics2)
+            except: continue
+            icfreqs = self.get("icfreqs")
+            # compare cc and ic freqs
+            if len(icfreqs) != len(ccfreqs): continue
+            for ccfreq,icfreq in zip(ccfreqs,icfreqs):
+                diff = abs((ccfreq.get("wavenum")-icfreq.get("wavenum"))/cons.cm)
+                if diff > 0.5: break
+            if diff > 0.5: continue
+            # Accept removal
+            ics = list(ics2)
+            if show and kind != "3": print "             removing IC %s..."%("-".join( [str(atom+1) for atom in ic]))
+            if show and kind == "3": print "             removing IC %s..."%("=".join( [str(atom+1) for atom in ic]))
+            # Finished?
+            if get_nics(ics) == self._nvib: break
+
+        return ics, get_nics(ics)
+
+
+#        ncc = len(self._ccfreqs)
+#        # Can bonds be removed?
+#        if rbonds:
+#           nricoords = []
+#           toremove  = [(kind,tuple(ic)) for kind,ic in ricoords]
+#        else:
+#           nricoords = [(kind,tuple(ic)) for kind,ic in ricoords if kind=="1"]
+#           toremove  = [(kind,tuple(ic)) for kind,ic in ricoords if kind!="1"]
+#
+#        # Any IC that can't be removed?
+#        keep = []
+#        for torsion in torsions:
+#            ttuple = ("4",tuple(torsion))
+#            if ttuple in toremove:
+#               idx = toremove.index(ttuple)
+#               keep.append( toremove.pop(idx) )
+#
+#        # Purify icoords
+#        while get_nics(nricoords) < ncc-len(keep):
+#              idx      = random.choice(range(len(toremove)))
+#              kind, ic = toremove.pop(idx)
+#        
+#              try:
+#                 nricoords2 = nricoords + toremove + keep
+#                 # Calc ic freqs
+#                 self.calc_icfreqs(nricoords2)
+#                 icfreqs = self.get("icfreqs")
+#                 remove = True
+#                 if len(icfreqs) != len(ccfreqs):
+#                    remove = False
+#                 else:
+#                    for idx in range(len(ccfreqs)):
+#                        ccfreq = ccfreqs[idx].get("wavenum")/cons.cm
+#                        icfreq = icfreqs[idx].get("wavenum")/cons.cm
+#                        diff = abs(ccfreq-icfreq)
+#                        if diff > 0.5:
+#                           remove = False
+#                           break
+#              except:
+#                 remove = False
+#
+#              if not remove: nricoords = nricoords + [(kind,ic)]
+#              elif show:
+#                   if kind != "3": print "             removing IC %s..."%("-".join( [str(atom+1) for atom in ic]))
+#                   else          : print "             removing IC %s..."%("=".join( [str(atom+1) for atom in ic]))
+#
+#        nricoords = nricoords + keep
+#        return nricoords, get_nics(nricoords)
 
     #-----------------------------------#
     # Functions related to the MEP      #
@@ -2410,6 +2636,520 @@ class Struct(object):
             nv += 1
 
         molden.close()
+
+
+class MEP():
+
+    def __init__(self):
+
+        # Basic about TS
+        self._gts     = None
+        self._tsname  = None
+        self._ts      = None
+
+        # Basic information
+        self._masses  = None
+        self._totmass = None
+        self._atonums = None
+        self._symbols = None
+
+        # MEP variables
+        self._path    = None
+        self._mu      = None
+        self._ds      = None
+        self._hsteps  = None
+        self._cubic   = None
+        self._sbw     = None
+        self._sfw     = None
+        self._bsst    = None
+        self._idir    = None
+        self._epse    = None
+        self._epsg    = None
+
+        # More for MEP
+        self._rstbw   = None
+        self._rstfw   = None
+        self._mep     = {}
+        self._mepl1   = None
+        self._mepl2   = None
+        self._tvals   = {}
+        self._dirtmp  = None
+        self._dirbw   = None
+        self._dirfw   = None
+
+        # For Vadi
+        self._internal= None
+        self._ics     = None
+
+        # Energies
+        self._eref    = None
+        self._e0      = None
+
+        # for calculations
+        self.__spc      = None
+        self.__template = None
+
+        # Correction factors
+        self._Tlist     = None
+        self._sct       = None
+        self._cvt       = None
+        self._cvt_s     = None
+        self._cagtst    = None
+        self._cagcvt    = None
+
+    def get(self,which):
+        if which == "gts"     : return self._gts     
+        if which == "masslist": return self._masses  
+        if which == "totmass" : return self._totmass 
+        if which == "atonums" : return self._atonums 
+        if which == "symbols" : return self._symbols 
+        if which == "ts"      : return self._ts      
+        if which == "rstbw"   : return self._rstbw   
+        if which == "rstfw"   : return self._rstfw   
+        if which == "mep"     : return self._mep
+        if which == "tvals"   : return self._tvals
+
+    def set(self,which,value):
+        if which == "Tlist"    : self._Tlist    = value
+        if which == "ics"      : self._ics      = value
+        if which == "rstbw"    : self._rstbw    = value
+        if which == "rstfw"    : self._rstfw    = value
+        if which == "dirtmp"   : self._dirtmp   = value
+        if which == "dirbw"    : self._dirbw    = value
+        if which == "dirfw"    : self._dirfw    = value
+        if which == "path"     : self._path     = value
+        if which == "mu"       : self._mu       = value
+        if which == "ds"       : self._ds       = value
+        if which == "cubic"    : self._cubic    = value
+        if which == "hsteps"   : self._hsteps   = value
+        if which == "sbw"      : self._sbw      = value
+        if which == "sfw"      : self._sfw      = value
+        if which == "idir"     : self._idir     = value
+        if which == "bsst"     : self._bsst     = value
+        if which == "epse"     : self._epse     = value
+        if which == "epsg"     : self._epsg     = value
+        if which == "internal" : self._internal = value
+
+        if which == "eref"     : self._eref     = value
+        if which == "e0"       : self._e0       = value
+        
+        if which == "spc"     : self.__spc      = value
+        if which == "template": self.__template = value
+
+    def set_TS(self,gtsfile,name,masslist=None,freqscal=1.0):
+        self._gts    = gtsfile
+        self._tsname = name
+
+        xyz_list , atonum_list , ch, mtp, Etot, pgroup, rotsigma, gcc , Fcc, freqs = read_gtsfile(self._gts)
+        variables = ["ch","mtp","Etot","freqscal"]
+        values    = [ ch , mtp , Etot , freqscal ]
+        if masslist is     None: variables += ["pgroup","rotsigma"]; values += [pgroup , rotsigma ]
+        if gcc      is not None: variables += ["gcc"]              ; values += [gcc]
+        if Fcc      is not None: variables += ["Fcc"]              ; values += [Fcc]
+        structure = Struct(name,xyz_list,atonum_list,masslist=masslist,stype=1)
+        structure.set(variables,values)
+
+        self._ts = structure
+        self._masses  = self._ts.get("masslist")
+        self._atonums = self._ts.get("atonums")
+        self._symbols = self._ts.get("symbols")
+        self._totmass = self._ts.get("totmass")
+
+    def mod_masslist(self,masslist):
+        self._ts.set("masslist",masslist)
+        self._masses  = masslist
+        self._totmass = self._ts.get("totmass")
+
+    def prepare_ts(self):
+        self._ts.basic_setups([2,3])
+
+    def calculate_mep(self,pprint=False):
+        from mep import get_mep
+        tuple_path = self._path, self._mu, self._ds, self._cubic, self._hsteps, self._sbw, self._sfw, self._idir, self._bsst, self._epse, self._epsg
+        tuple_spc  = (self.__spc,self.__template)
+        dirbw = self._dirtmp+'bw_%s/'%self._tsname
+        dirfw = self._dirtmp+'fw_%s/'%self._tsname
+        tuple_ffs  = (self._rstbw, self._rstfw, dirbw, dirfw)
+
+        input_mep  = (self._ts, tuple_path, tuple_spc, tuple_ffs, self._mep, self._tvals, pprint)
+        self._mep, self._tvals, infobw, infofw = get_mep(*input_mep)
+
+        self._mepl1 = sorted([mep_struct.get("meppoint") for mep_struct in self._mep.values()])
+        self._mepl2 = [mp for mp in self._mepl1 if self._mep[mp[1]].get("Fcc") is not None]
+
+        if self._eref is None:
+           self._eref = self._mep[self._mepl2[0][1]].get("Etot")
+
+        # Define how imaginary frequencies are treated
+        for value in self._mep.values(): value._rmode = 2
+
+
+        
+
+
+    def string_mep(self,points="hessian"):
+        if points == "hessian": lpoints = self._mepl2
+        if points == "all"    : lpoints = self._mepl1
+
+        string  = " s (bohr) | E (kcal/mol) \n"
+        string += "-------------------------\n"
+        for s,l in lpoints:
+            Etot = (self._mep[l].get("Etot") - self._eref)*cons.kcalmol
+            string += " %+8.4f | %12.3f \n"%(s,Etot)
+        string += "-------------------------\n"
+        return string
+
+    def calculate_vadi(self):
+
+        warning = "  Warning: ZPE in ic is smaller than in cc for s = %+.4f bohr (%.3f kcal/mol of difference)"
+        error1  = "  ERROR:   ZPE in ic differs by %.3f kcal/mol from that of cc for saddle point"
+        error2  = "  ERROR:   the set of internal coordinates is not appropiate..."
+
+        string_warnings = ""
+        numerr  = 0.1 # in kcal/mol
+        # Independent variable
+        data_x = [mep_s for mep_s, mep_label in self._mepl2]
+
+        # Dependent variable
+        data_y  = []
+        list1_cc = []
+        list1_ic = []
+        list2_cc = []
+        list2_ic = []
+        for mep_s, mep_label in self._mepl2:
+              structure = self._mep[mep_label]
+              # Prepare structure
+              structure.basic_setups([0,2,3,4])
+              # For MEP points, set v0
+              if mep_s != 0.0: structure.v0dir_grad()
+              # Calculate ZPE at each point (cc-hessian)
+              structure.calc_ccfreqs()
+              ccfreqs = [freq for freq in structure._ccfreqs]
+              if mep_s == 0.0: ccfreqs = ccfreqs[1:]
+              cc_zpe   = sum([freq.get("zpe") for freq in ccfreqs])
+              list1_cc.append(cc_zpe)
+              list2_cc.append( [str(freq) for freq in ccfreqs] )
+              # Get Vadi
+              Vadi = structure.get("Etot") + cc_zpe - self._eref
+              # Calculate ZPE at each point (ci-hessian)
+              if self._internal == "yes":
+                 structure.calc_icfreqs(self._ics)
+                 icfreqs = [freq for freq in structure._icfreqs]
+                 if mep_s == 0.0:
+                    icfreqs = icfreqs[1:]
+                 if len(icfreqs) != len(ccfreqs): print error2; sys.exit()
+                 ic_zpe  = sum([freq.get("zpe") for freq in icfreqs])
+                 list1_ic.append(ic_zpe)
+                 list2_ic.append( [str(freq) for freq in icfreqs] )
+                 # Check them
+                 diff = (ic_zpe-cc_zpe)*cons.kcalmol
+                 if diff < -numerr:
+                    string_warnings += warning%(mep_s,diff)+"\n"
+                 if abs(diff) > numerr and mep_s == 0.0:
+                    string_warnings += error1%diff+"\n"
+                    sys.exit(string_warnings)
+                 Vadi = structure.get("Etot") + ic_zpe - self._eref
+              # Append data
+              data_y.append(Vadi)
+
+        # Get spline and find maximum
+        self._Vadi = SplineVaG(data_x,data_y)
+        self._sAG, self._VAG = self._Vadi.get_max()
+
+        # value of E0
+        if self._e0 is None:
+           E0_bw   = self._Vadi(self._mepl2[ 0][0])
+           E0_fw   = self._Vadi(self._mepl2[-1][0])
+           self._e0 = max(E0_bw,E0_fw) + self._eref
+
+        # Get string
+        STRING1 = self.string_vadi_table(list1_cc,list1_ic)
+        STRING2 = self.string_vadi_freqs(list2_cc,list2_ic)
+        return STRING1+string_warnings+"\n"+STRING2
+
+    def string_vadi_table(self,list1_cc,list1_ic):
+        STRING = ""
+        if self._internal:
+           STRING += "Internal coordinates (ic):\n"
+           nepl = 4
+           for idx in range(0,len(self._ics),nepl):
+               line = ""
+               for xx in range(nepl):
+                   pos = idx + xx
+                   if pos > len(self._ics)-1: continue
+                   tt, ic = self._ics[pos]
+                   if tt=="3": ic = "=".join("%i"%(a+1) for a in ic)
+                   else      : ic = "-".join("%i"%(a+1) for a in ic)
+                   line = line + "  %11s  "%ic
+               STRING += "            %s\n"%line
+           STRING += "\n"
+
+        STRING +=  "ZPE and adiabatic potential:\n"
+        STRING +=  "   Reference energy: %.6f hartree\n"%(self._eref)
+        STRING +=  "   --------------------------------------------------\n"
+        STRING +=  "    s (bohr) |  V_MEP  | ZPE(cc) | ZPE(ic) |  V_adi  \n"
+        STRING +=  "   --------------------------------------------------\n"
+        for idx in range(len(self._mepl2)):
+            mep_s     = self._mepl2[idx][0]
+            mep_label = self._mepl2[idx][1]
+            mep_E     = (self._mep[mep_label].get("Etot")-self._eref)*cons.kcalmol
+            zpecc     = "%7.3f"%(list1_cc[idx]*cons.kcalmol)
+            Vadi      = self._Vadi(mep_s) * cons.kcalmol
+            if len(list1_ic) != 0: zpeic = "%7.3f"%(list1_ic[idx]*cons.kcalmol)
+            else                 : zpeic = "   -   "
+            STRING +=  "    %+7.3f  | %+7.3f | %s | %s | %+7.3f \n"%(mep_s,mep_E,zpecc,zpeic,Vadi)
+        STRING +=  "   --------------------------------------------------\n"
+        # Maximum
+        STRING +=  "    %+7.3f  |      (maximum in Vadi)      | %+7.3f \n"%(self._sAG, self._VAG*cons.kcalmol)
+        STRING +=  "   --------------------------------------------------\n"
+        STRING += "\n"
+        return STRING
+    
+    def string_vadi_freqs(self,list2_cc,list2_ic):
+        STRING = ""
+        # Print frequencies
+        nepl = 7
+        for freqs_list,ftype in [(list2_cc,"cc"),(list2_ic,"ic")]:
+            if len(freqs_list) == 0: continue
+            STRING +=  "Summary of vibrational frequencies (%2s):\n"%ftype
+            list_s = [s for s,l in self._mepl2]
+            for idxi in range(0,len(list_s),nepl):
+                s_range = "|".join([" %+8.4f "%ss for ss in list_s[idxi:idxi+nepl]])
+                STRING +=  " "*5+"-"*len(s_range)+"\n"
+                STRING +=  " "*5+s_range+"\n"
+                STRING +=  " "*5+"-"*len(s_range)+"\n"
+                for nf in range(len(freqs_list[0])):
+                    freq_range = "|".join( [ "  "+ff[nf]+" " for ff in freqs_list[idxi:idxi+nepl]])
+                    STRING +=  " "*5+freq_range+"\n"
+            STRING += "\n"
+        return STRING
+
+    def calculate_sct(self,sctbmf,sbw=None,sfw=None):
+        '''
+        bmf = "hess"
+        bmf = "grad1"
+        bmf = "grad2"
+        '''
+        from sct import get_SCTkappa
+
+        if sbw is None: sbw = self._mepl1[ 0][0]
+        if sfw is None: sfw = self._mepl1[-1][0]
+          
+        mepl1 = [(s,l) for (s,l) in list(self._mepl1) if sbw<=s<=sfw]
+        mepl2 = [(s,l) for (s,l) in list(self._mepl2) if sbw<=s<=sfw]
+
+        # Get gradients
+        grads = []
+        for mep_s, mep_label in mepl1:
+            structure = self._mep[mep_label]
+            grad      = structure.get("gms")
+            grads.append(grad)
+
+        # Get analytic v1 vectors
+        dict_hpts = {}
+        for mep_s, mep_label in mepl2:
+            structure = self._mep[mep_label]
+            if not self._internal: freqs = structure.get("ccfreqs")
+            if     self._internal: freqs = structure.get("icfreqs")
+            if mep_s!= 0.0: structure.v1dir_hess()
+            anv1  = structure.get("v1")
+            dict_hpts[mep_label] = [mep_s,freqs,anv1]
+
+        # Get kappaSCT
+        lists = (list(mepl1),list(mepl2))
+        E0=self._e0-self._eref
+        self._SCTkappa, STRING = get_SCTkappa(self._Vadi,dict_hpts,lists,self._Tlist,\
+                                grads=grads,E0=E0,mu=self._mu,bmfcalc=sctbmf)
+        return self._SCTkappa, STRING
+
+    def calculate_sct_CONV(self,sctbmf,sctsteps,sctvar):
+        if sctsteps == 1: sctsteps = 0
+
+        self._sbw = self._mepl1[ 0][0]
+        self._sfw = self._mepl1[-1][0]
+
+        # Calculation with reduced MEP
+        if sctsteps  > 1:
+           copy_Tlist  = list(self._Tlist)
+           print "           Convergence at %7.2f K:"%self._Tlist[0]
+           print "               -----------------------------------"
+           print "                  s_bw   |   s_fw   |  kappa_SCT  "
+           print "               -----------------------------------"
+           self._Tlist = self._Tlist[0:1]
+           kappas = []
+           self._sbw += self._ds*self._hsteps
+           self._sfw -= self._ds*self._hsteps
+           # Increase MEP until convergence
+           for step in range(sctsteps):
+
+              SCT_T0, STRING = self.calculate_sct(sctbmf,self._sbw,self._sfw)
+              kappas.append( (SCT_T0[0], self._sbw , self._sfw ) )
+              print "                %+8.4f | %+8.4f | %11.4E "%(self._sbw,self._sfw,SCT_T0[0])
+              # Converged?
+              if len(kappas) > 1 :
+                  diff = 100.0 * abs( (kappas[-1][0] - kappas[-2][0]) / kappas[-1][0] )
+                  if diff < sctvar: break
+              # Set increase of MEP
+              lbw = self._mepl2[ 0][1]
+              lfw = self._mepl2[-1][1]
+              mep_diffE = self._mep[lfw].get("Etot") - self._mep[lbw].get("Etot")
+              if   mep_diffE*cons.kcalmol > +1.0:
+                  self._sfw += self._ds*self._hsteps
+              elif mep_diffE*cons.kcalmol < -1.0:
+                  self._sbw -= self._ds*self._hsteps
+              else:
+                  self._sbw -= self._ds*self._hsteps
+                  self._sfw += self._ds*self._hsteps
+              # Calculate MEP
+              self.calculate_mep(False)
+              self.calculate_vadi()
+           print "               -----------------------------------"
+           print 
+           self._Tlist = copy_Tlist
+
+        # Calculate kappa for all T
+        SCT_kappas, STRING = self.calculate_sct(sctbmf,self._sbw,self._sfw)
+        return SCT_kappas, STRING
+
+
+    def calculate_cagtst(self):
+        from cag import get_CAGTSTkappa
+        self._cagtst = get_CAGTSTkappa(self._Vadi, self._Tlist)
+        STRING = self.string_cag(which="tst")
+        return self._cagtst, STRING
+
+    def calculate_cagcvt(self):
+        from cag import get_CAGCVTkappa
+        self._cagcvt = get_CAGCVTkappa(self._Vadi, self._Tlist, self._cvt_s)
+        STRING = self.string_cag(which="cvt")
+        return self._cagcvt, STRING
+
+    def string_cag(self,which="tst"):
+        STRING  = ""
+        STRING += " -----------------------\n"
+        STRING += "   T (K)  |   CAG_%3s   \n"%(which.upper())
+        STRING += " -----------------------\n"
+        for idx in range(len(self._Tlist)):
+            T   = self._Tlist[idx]
+            if which == "tst": cag = "%11.4E"%(self._cagtst[idx])
+            if which == "cvt": cag = "%11.4E"%(self._cagcvt[idx])
+            STRING += "  %7.2f | %s \n"%(T, cag)
+        STRING += " -----------------------\n"
+        return STRING
+
+    def calculate_cvt(self,smin=-1.00,smax=+1.00):
+        '''
+        Only between [smin,smax]
+        '''
+
+        if self._internal: k = "ic"
+        else             : k = "cc"
+
+        Tlist = np.array(self._Tlist)
+        # Select data
+        mepl2 = []
+        for s,l in self._mepl2:
+            if s < smin : continue
+            if s > smax : continue
+            mepl2.append( (s,l) )
+
+        # Locate s = 0.0 (if not, just half)
+        idx_ts = len(mepl2) / 2
+        for idx in range(len(mepl2)):
+            s,l = mepl2[idx]
+            if s == 0.0: idx_ts = idx
+
+        # Initialize matrix with values
+        nrows = len(mepl2)
+        ncols = len(Tlist)
+        gibbs_matrix = np.zeros( (nrows,ncols) )
+
+        # Set values in matrix
+        data = []
+        for row in range(nrows):
+              mep_s, mep_l = mepl2[row]
+              structure    = self._mep[mep_l]
+              # Calculate Qtot
+              phi_tr, pf_rot, pf_vib, pf_ele, Vadi = structure.get_pfns(Tlist,k=k)
+              qtot = phi_tr * pf_rot * pf_vib * pf_ele
+              data.append( (Vadi,qtot) )
+              if mep_s == 0.0:
+                  ts_qtot = qtot
+                  ts_Vadi = Vadi
+        for row in range(nrows):
+              Vadi, qtot = data[row]
+              # Save data as log to avoid big numbers!
+              exp      = np.exp(-(Vadi-ts_Vadi)/cons.kB/Tlist)
+              Kc       = qtot/ts_qtot * exp
+              gibbs    = -cons.kB * Tlist * np.log(Kc)
+              # Save data in kcal/mol
+              gibbs_matrix[row,:] = gibbs * cons.kcalmol
+
+        # For each temperature, find maximum gibbs
+        x_values    = [s for s,l in mepl2]
+        self._cvt   = []
+        self._cvt_s = []
+        for col in range(ncols):
+              y_values = gibbs_matrix[:,col]
+              CVT_s, CVT_gibbs = hf.obtain_extremum(x_values,y_values,xtr="max")
+              CVT_gibbs = CVT_gibbs / cons.kcalmol
+              # CVT values
+              CVT_s     = float(CVT_s)
+              CVT_gamma = np.exp( -(CVT_gibbs/cons.kB/Tlist[col]))
+              # Correct value, just in case
+              if CVT_gamma > 1.0: CVT_gamma = 1.0
+              # Save data
+              self._cvt.append(  float(CVT_gamma) )
+              self._cvt_s.append( float(CVT_s) )
+
+        STRING = self.string_cvt(mepl2,gibbs_matrix)
+        # Get string
+        return self._cvt, STRING
+
+    def string_cvt(self,sl_list,mgibbs):
+
+        list_CVT = self._cvt
+        STRING  = ""
+        STRING += "* Matrix of gibbs free energy (MEP point - TS) [kcal/mol]\n"
+        STRING += "  rows: s coordinate (%i)\n"%(len(sl_list))
+        STRING += "  cols: temperatures (%i)\n"%(len(self._Tlist))
+        STRING += "  shape: %i x %i\n"%(mgibbs.shape)
+        STRING += "\n"
+        nrows, ncols = mgibbs.shape
+        head_line     = "   s value | " 
+        matrix_string = ""
+        for row in range(nrows):
+            line = ""
+            for col in range(ncols):
+                if (ncols < 9) or (col < 4 or col > ncols-4):
+                   if row == 0: head_line = head_line + " %7.2f K |"%(self._Tlist[col])
+                   line = line + "  %7.2f  |"%(mgibbs[row][col])
+                elif (col == ncols-4):
+                   if row == 0: head_line = head_line + "...|"
+                   line = line + "...|"
+                else:
+                   continue
+            matrix_string = matrix_string + "  %+8.4f | "%sl_list[row][0] + line + "\n"
+        STRING += head_line + "\n"
+        STRING += matrix_string + "\n"
+
+        # Print correction factor
+        STRING += "* CVT correction factor and associated change in \n"
+        STRING += "  Gibbs free energy of activation (DDeltaG_CVT, kcal/mol)\n"
+        STRING += "\n"
+        STRING += "-----------------------------------------------\n"
+        STRING += "  T (K)  |  s_CVT  |  Gamma_CVT  | DDeltaG_CVT \n"
+        STRING += "-----------------------------------------------\n"
+        for idx in range(len(self._Tlist)):
+            T = self._Tlist[idx]
+            s_CVT     = self._cvt_s[idx]
+            gamma_CVT = self._cvt[idx]
+            gibbs     = - cons.R * T * np.log(gamma_CVT) * cons.kcal
+            STRING += " %7.2f | %+7.4f | %11.4E | %9.4f \n"%(T, s_CVT,gamma_CVT,gibbs)
+        STRING += "-----------------------------------------------\n"
+
+        return STRING
+
 
 
 #--------------------------------------#

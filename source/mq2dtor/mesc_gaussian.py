@@ -1,38 +1,51 @@
 '''
-*----------------------------------*
- Q2DTor and TheRa Program Suites
+---------------------------
+ Licensing and Distribution
+---------------------------
 
- Copyright (c) 2018 Universidade de Santiago de Compostela
+Program name: Q2DTor
+Version     : 1.1
+License     : MIT/x11
 
- This file is part of both Q2DTor and TheRa softwares.
+Copyright (c) 2019, David Ferro Costas (david.ferro@usc.es) and
+Antonio Fernandez Ramos (qf.ramos@usc.es)
 
- Q2DTor and TheRa arefree software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following conditions:
 
- Q2DTor and TheRa are distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
- You should have received a copy of the GNU General Public License
- inside both Q2DTor and TheRa manuals.  If not, see <http://www.gnu.org/licenses/>.
-*----------------------------------*
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+---------------------------
 
-This is a Module for Electronic Structure Calculations (mesc) using GAUSSIAN
-
-The functions here are used to perform different
-actions with the GAUSSIAN software
 
 *----------------------------------*
 | Main Author:  David Ferro-Costas |
 | Last Update:  Mar-02st-2018      |
 *----------------------------------*
+
+ This is a Module for Electronic Structure Calculations (mesc)
+ using GAUSSIAN
+
+ The functions here are used to perform different
+ actions with the GAUSSIAN software
+
 '''
 import os
 import sys
 import shutil
+import time
 
 angstrom = 1.0 / 1.8897261339e+00
 
@@ -40,7 +53,7 @@ angstrom = 1.0 / 1.8897261339e+00
 # READING PATHS DEFINED BY THE USER               #
 #-------------------------------------------------#
 GFCHK,GEXEC = None, None
-DIR_CODES = os.path.dirname(os.path.realpath(__file__))+"/"
+DIR_CODES = os.path.dirname(os.path.realpath(__file__))+"/../"
 txtfile   = DIR_CODES+"mesc.txt"
 if os.path.isfile(txtfile):
    thefile = open(txtfile,'r')
@@ -207,6 +220,8 @@ def sendcalc(ifile,ofile,err,folder=None):
 
     command = "%s <%s 1>%s 2>%s"%(GEXEC,ifile,ofile,err)
     status = os.system(command)
+    # wait a while to be sure Gaussian writes everything
+    time.sleep(0.5)
     return status
 
 def genfchk(chk,fchk,err,folder=None):
@@ -287,7 +302,7 @@ def q2dtor_defaults(level,ch,mtp,torsion1,torsion2,ttype="min"):
     if ttype=="min":
        the_string = the_string + "   opt=(tight,modredundant)\n"
     if ttype=="ts":
-       the_string = the_string + "   opt=(modredundant,ts,calcfc,noeigentest)\n"
+       the_string = the_string + "   opt=(tight,modredundant,ts,calcfc,noeigentest)\n"
     the_string = the_string + "\n"
     the_string = the_string + "Geometry optimization at the 2D-PES\n"
     the_string = the_string + "\n"
@@ -517,7 +532,7 @@ def thera_default(ch=0,mtp=1,nproc=1,mem=1):
     string = string + "\n"
     return string
 
-def thera_userfolder(folder):
+def thera_datainfolder(folder):
 
     if not folder.endswith("/"): folder = folder + "/"
     # List of fchk files
@@ -535,7 +550,7 @@ def thera_userfolder(folder):
     # Return data
     return data
 
-def thera_spc(pointname,xvec,symbols,ref_lines,folder=None,hessian=False):
+def thera_spc(ref_lines, xvec, symbols, pointname, hessian=False, folder=None):
 
     ifile, ofile, chk, fchk, err = iofiles(pointname,folder)
 

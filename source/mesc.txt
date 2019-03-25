@@ -1,17 +1,23 @@
-#--------------#                                                                    
-# For Gaussian #                                                                    
-#--------------#                                                                    
-mesc_gaussian  gauexe  "Path for Gaussian main executable"                          
-mesc_gaussian  fchk    "Path for formchk"                                           
-                                                                                    
-#--------------#                                                                    
-# For Orca     #                                                                    
-#--------------#                                                                    
-mesc_orca      orca  "Path for Orca main executable"                                
-                                                                                    
-                                                                                    
-# Examples:                                                                         
-# mesc_gaussian  gauexe   "/home/programs/G09_64D/g09/g09"                          
-# mesc_gaussian  fchk     "/home/programs/G09_64D/g09/formchk"                      
-# mesc_orca      orca     "/home/programs/orca_4_0_1_2/orca"                        
-                                                                                    
+
+#--------------#
+# For Gaussian #
+#--------------#
+#mesc_gaussian  gauexe      "/home/programs/G09_64/g09/g09"
+#mesc_gaussian  fchk        "/home/programs/G09_64/g09/formchk"
+mesc_gaussian  gauexe      "/home/programs/G09_64david/g09/g09"
+mesc_gaussian  fchk        "/home/programs/G09_64david/g09/formchk"
+
+#--------------#
+# For Orca     #
+#--------------#
+mesc_orca      orca        "/home/ramos/orca_4_0_1_2/orca"
+#mesc_orca      orca        "/home/dadevid/Software/orca_4_0_1_2/orca"
+
+#-------------------#
+# Analitic surfaces #
+#-------------------#
+mesc_anasurf   ch5j1       "/home/david/MyPyCodes/1-AnaSurf/ch5j1/ch5j1.x"
+mesc_anasurf   clhbrpot    "/home/david/MyPyCodes/1-AnaSurf/clhbrpot/clhbrpot.x"
+mesc_anasurf   odclpot     "/home/david/MyPyCodes/1-AnaSurf/odclpot/odclpot.x"
+mesc_anasurf   ohclpot     "/home/david/MyPyCodes/1-AnaSurf/ohclpot/ohclpot.x"
+

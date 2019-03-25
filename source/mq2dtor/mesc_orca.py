@@ -1,44 +1,58 @@
 '''
-*----------------------------------*
- Q2DTor and TheRa Program Suites
+---------------------------
+ Licensing and Distribution
+---------------------------
 
- Copyright (c) 2018 Universidade de Santiago de Compostela
+Program name: Q2DTor
+Version     : 1.1
+License     : MIT/x11
 
- This file is part of both Q2DTor and TheRa softwares.
+Copyright (c) 2019, David Ferro Costas (david.ferro@usc.es) and
+Antonio Fernandez Ramos (qf.ramos@usc.es)
 
- Q2DTor and TheRa arefree software: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following conditions:
 
- Q2DTor and TheRa are distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
 
- You should have received a copy of the GNU General Public License
- inside both Q2DTor and TheRa manuals.  If not, see <http://www.gnu.org/licenses/>.
-*----------------------------------*
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+---------------------------
 
-This is a Module for Electronic Structure Calculations (mesc) using ORCA
-
-The functions here are used to perform different
-actions with the ORCA software
 
 *----------------------------------*
 | Main Author:  David Ferro-Costas |
 | Last Update:  Mar-02st-2018      |
 *----------------------------------*
+
+ This is a Module for Electronic Structure Calculations (mesc)
+ using ORCA
+
+ The functions here are used to perform different
+ actions with the ORCA software
+
 '''
 
 import os, sys
+import time
+
 angstrom = 1.0 / 1.8897261339e+00
 
 #-------------------------------------------------#
 # READING PATHS DEFINED BY THE USER               #
 #-------------------------------------------------#
 OEXEC = None
-DIR_CODES = os.path.dirname(os.path.realpath(__file__))+"/"
+DIR_CODES = os.path.dirname(os.path.realpath(__file__))+"/../"
 txtfile   = DIR_CODES+"mesc.txt"
 if os.path.isfile(txtfile):
    thefile = open(txtfile,'r')
@@ -109,6 +123,7 @@ def read_engrad(engradfile):
     '''
     '''
 
+    if not os.path.exists(engradfile): return None, (None,None,None)
     # Read lines
     engrad = open(engradfile,'r')
     lines  = [line.split('#')[0].strip() for line in engrad.readlines()]
@@ -139,6 +154,7 @@ def read_hess(hessfile):
        * F_cc    : a list containing the lower-triangular part of the hessian matrix (None if not found)
     '''
 
+    if not os.path.exists(hessfile): return None
     # Read lines
     hess = open(hessfile,'r')
     lines  = [line.split('#')[0].strip() for line in hess.readlines()]
@@ -212,6 +228,8 @@ def sendcalc(ifile,ofile,err,folder=None):
     # Execute command
     command = "%s %s 1>%s 2>%s"%(OEXEC,ifile,ofile,err)
     status  = os.system(command)
+    # wait a while to be sure Orca writes everything
+    time.sleep(0.5)
     return status
 
 
@@ -663,7 +681,7 @@ thera_key2 = "[TheRa_name]"
 thera_key3 = "[TheRa_gradhess]"
 #----------------------------------------#
 
-def thera_default(ch=0,mtp=1,nproc=4,mem=4):
+def thera_default(ch=0,mtp=1,nproc=1,mem=1):
 
     string = ""
     string = string + "%%pal nprocs %i end\n"%nproc
@@ -675,25 +693,88 @@ def thera_default(ch=0,mtp=1,nproc=4,mem=4):
     string = string + "\n"
     return string
 
-def thera_userfolder(folder):
-    return []
-#
-#   # List of fchk files
-#   file_list = [filename[:-5] for filename in os.listdir(folder) if filename.lower().endswith("fchk")]
-#   # Get data from fchk files
-#   data = []
-#   for mainname in file_list:
-#       # read file
-#       x_cc, atonums, ch, mtp,  E, g_cc, F_cc = readfchk(mainname,folder=folder)
-#       # append data
-#       data.append( [mainname, x_cc, atonums, ch, mtp, E, g_cc, F_cc] )
-#   # Sort by energy
-#   data.sort(key=lambda xx: xx[5])
-#   # Return data
-#   return data
+def thera_datainfolder(folder):
 
-def thera_spc(pointname,xvec,symbols,ref_lines,folder=None,hessian=False):
-    pass
+    if not folder.endswith("/"): folder = folder + "/"
+    # List of out files
+    file_list = [folder+filename for filename in os.listdir(folder) if filename.lower().endswith("out")]
+    # Get data from files
+    data = []
+    for ofile in file_list:
+        mainname = ofile[:-4]
+        engrad   = mainname+".engrad"
+        hessfile = mainname+".hess"
+        if not os.path.exists(hessfile): continue
+        # read data
+        x_cc, symbols, atonums, ch, mtp, E = read_output(ofile)
+        if os.path.exists(engrad):
+           g_cc, dummy = read_engrad(engrad)
+        else:
+           g_cc = [0.0 for xi in x_cc]
+        F_cc = read_hess(hessfile)
+        # append data
+        data.append( [mainname, x_cc, atonums, ch, mtp, E, g_cc, F_cc, []] )
+    # Sort by energy
+    data.sort(key=lambda xx: xx[5])
+    # Return data
+    return data
+
+def thera_spc(ref_lines, xvec, symbols, pointname, hessian=False, folder=None):
+
+    if folder is not None:
+       if not folder.endswith("/"): folder += "/"
+    ifile, ofile, engrad, hess, gbw, err = iofiles(pointname,folder)
+
+    #--------------#
+    # Input string #
+    #--------------#
+    string_ifile = ""
+    for line in ref_lines:
+        if thera_key1 in line:
+           line = ""
+           for idx in range(len(symbols)):
+               symbol = symbols[idx]
+               x,y,z  = [value*angstrom for value in xvec[3*idx:3*idx+3]]
+               line   = line + "%2s   %+11.6f  %+11.6f  %+11.6f\n"%(symbol,x,y,z)
+        if thera_key2 in line:
+           pos = line.find(thera_key2)
+           line = line[0:pos] + folder+pointname + line[pos+len(thera_key2):]
+        if thera_key3 in line:
+           pos = line.find(thera_key3)
+           if hessian: line = line[0:pos] + "! EnGrad Freq   " + line[pos+len(thera_key3):]
+           else      : line = line[0:pos] + "! EnGrad " + line[pos+len(thera_key3):]
+        string_ifile = string_ifile + line
+
+    #---------------------------#
+    # Send Orca     calculation #
+    #---------------------------#
+    ff = open(ifile,"w")
+    ff.write(string_ifile)
+    ff.close()
+    status = sendcalc(ifile,ofile,err)
+
+    # Check output
+    ff = open(ofile, 'r')
+    olines = ff.readlines()
+    ff.close()
+    if "ORCA TERMINATED NORMALLY" not in olines[-2]: return None
+
+    #-----------#
+    # Read data #
+    #-----------#
+    xcc, symbols, atonums, ch, mtp, Etot = read_output(ofile)
+    gcc, dummy = read_engrad(engrad)
+    Fcc = read_hess(hess)
+
+    # Clean
+   #print "        * Remove calculation files (inp, out, engrad, hess)..."
+    files = os.listdir(folder)
+    files = [fff for fff in files if fff.startswith(pointname)]
+    files = [fff for fff in files if not fff.endswith(".inp")]
+    files = [fff for fff in files if not fff.endswith(".out")]
+   #for fff in files: os.remove(folder+fff)
+
+    return xcc, atonums, ch, mtp,  Etot, gcc, Fcc
 
 
 

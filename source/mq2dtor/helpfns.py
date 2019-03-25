@@ -1,31 +1,42 @@
 '''
+---------------------------
+ Licensing and Distribution
+---------------------------
+
+Program name: Q2DTor
+Version     : 1.1
+License     : MIT/x11
+
+Copyright (c) 2019, David Ferro Costas (david.ferro@usc.es) and
+Antonio Fernandez Ramos (qf.ramos@usc.es)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+---------------------------
+
+
 *----------------------------------*
- Q2DTor and TheRa Programs
-
- Copyright (c) 2018 Universidade de Santiago de Compostela
-
- This file is part of both Q2DTor and TheRa softwares.
-
- Q2DTor and TheRa are free softwares: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
-
- Q2DTor and TheRa are distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- inside both Q2DTor and TheRa manuals.  If not, see <http://www.gnu.org/licenses/>.
+| Main Author:  David Ferro-Costas |
+| Last Update:  May-22nd-2018      |
 *----------------------------------*
 
  Module with diverse helper functions
 
-*----------------------------------*
-| Main Author:  David Ferro-Costas |
-| Last Update:  Mar-02st-2018      |
-*----------------------------------*
 ''' 
 
 #------------------------------------------------#
@@ -42,6 +53,184 @@ import constants         as cons
 #------------------------------------------------#
 # >>>>>>>>>>>>>>>>>>>>> ## <<<<<<<<<<<<<<<<<<<<< #
 
+
+
+#----------------------#
+# Read and write files #
+#----------------------#
+def clean_line(line):
+    line = line.split("#")[0]
+    line = line.strip()
+    return line
+
+def file_readlines(filename,clean=False):
+
+    lines = []
+    thefile = open(filename,'r')
+    for line in thefile:
+        if clean:
+           line = clean_line(line)
+           if line == "": continue
+        else:
+           line = line.rstrip()
+        lines.append(line)
+    thefile.close()
+    return lines
+
+def file_linesbetween(filename,key1,key2):
+    lines = []
+    thefile = open(filename,'r')
+    save = False
+    for line in thefile:
+        if key1 in line:
+           lines = []
+           save  = True
+        if save:
+           lines.append(line)
+        if key2 in line:
+           save = False
+    thefile.close()
+    return lines
+
+def read_gauout(out):
+    #lines  = file_linesbetween(out,"\GINC-","Normal termination of G")
+    lines  = file_linesbetween(out,"\GINC-","\@")
+    string = "".join([line.strip() for line in lines])
+    lines  = string.split("\\\\")
+
+    # Geometry
+    str_geom = lines[3].split("\\")
+    ch , mtp = str_geom[0].split(",")
+    xcc      = []
+    symbols  = []
+    ch  = int(ch)
+    mtp = int(mtp)
+    for line in str_geom[1:]:
+        symbol, x, y, z = line.split(",")
+        xcc += [float(x),float(y),float(z)]
+        symbols.append(symbol)
+
+    # Gradient
+    gcc = [0.0 for x in xcc]
+
+    # Hessian
+    Fcc = []
+    for idx in range(len(lines)):
+        line = lines[idx]
+        if "NImag" not in line: continue
+        Fcc = [float(fij) for fij in lines[idx+1].split(",")]
+
+    return symbols, ch, mtp, xcc, gcc, Fcc
+
+def file_writestring(filename,string,mode="w"):
+    thefile = open(filename,mode)
+    thefile.write(string)
+    thefile.close()
+
+def readfile(filename,hashtag=True,strip=True,skipblank=True):
+    '''
+    read a file, excluding comments! (#)
+    '''
+    # Read file and exclude comments
+    the_file = open(filename,'r')
+    lines    = []
+    for line in the_file:
+        if line.endswith("\n"):
+           line = line[:-1]
+        if hashtag:
+           line = line.split("#")[0]
+        if strip:
+           line = line.strip()
+        if skipblank and line == "":
+           continue
+        lines.append(line)
+    the_file.close()
+
+    return lines
+
+def select_lines(lines,start,end,ignorecase=False):
+    '''
+    to use after readfile function
+    '''
+    selected_lines = []
+
+    if ignorecase:
+       start = start.lower()
+       end   = end.lower()
+
+    record = False
+    for line in lines:
+        if ignorecase: LINE = line.lower()
+        else         : LINE = line
+        # Check line and save
+        if LINE.startswith(end): break
+        if record: selected_lines.append(line)
+        if LINE.startswith(start): record = True
+    return selected_lines
+
+def read_xyz(xyzfile):
+    '''
+    Read standard .xyz file
+    Coordinates in angstroms
+    '''
+    xvector  = []
+    symbols  = []
+    masslist = []
+    isotopic = False
+
+    # read file
+    lines    = file_readlines(xyzfile)
+
+    # Get data
+    natoms   = int(lines[0])
+    comment  = lines[1]
+    for line in lines[2:]:
+        data = line.split()
+        if len(data) == 4:
+           symbol, x, y, z = data
+           atonum = cons.dict_symbol2z[symbol]
+           mass   = cons.dict_atomasses[atonum]
+        elif len(data) == 5:
+           symbol, x, y, z, mass = data
+           mass = float(mass) / cons.amu
+           # Is an isotopic modification?
+           atonum = cons.dict_symbol2z[symbol]
+           mass2  = cons.dict_atomasses[atonum]
+           diff = abs(mass-mass2)*cons.amu
+           if diff > 0.01: isotopic = True
+        else: continue
+        masslist.append(mass)
+        symbols.append(symbol)
+        xvector += [float(x),float(y),float(z)]
+    xvector = np.array(xvector)
+    if "[BOHR]" in comment: xvector = xvector * cons.angstrom
+    if not isotopic: masslist = None
+    return xvector, symbols, masslist
+
+def write_xyz(symbols,xvec,filename,comment="info line",mode="w"):
+    '''
+    Write standard .xyz file
+    Coordinates in angstroms
+    * mode = "a" or "w"
+    '''
+
+    if not filename.endswith(".xyz"): filename += ".xyz"
+    natoms = len(symbols)
+
+    # Prepare coordinate vector
+    xvec = xvecformat(xvec,natoms,out="3Nx1")
+
+    # Generate string
+    string  = ""
+    string += "%i\n"%natoms
+    string += "%s\n"%comment
+    for idx in range(natoms):
+        symbol = symbols[idx]
+        x,y,z  = xvec[3*idx:3*idx+3]
+        string += " %2s   %+10.5f   %+10.5f   %+10.5f\n"%(symbol,x,y,z)
+
+    # Write file
+    file_writestring(filename,string,mode)
 
 #-----------------------#
 # Cartesian Coordinates #
@@ -214,7 +403,6 @@ def delta_ij(i,j):
    else:    return 0.0
 
 def isitlinear(x_cc,eps=1e-8):
-    linear = True
     natoms = len(x_cc) / 3
     if natoms > 2:
        # 2nd atom from reference atom (1st one)
@@ -226,8 +414,26 @@ def isitlinear(x_cc,eps=1e-8):
            nvec = x_cc[idx:idx+3] - x_cc[0:3]
            nvec = nvec / np.linalg.norm(nvec)
            absdot = abs(np.dot(nvec,ref_vec))
-           if absdot < (1.0 - eps): linear = False; break
-    return linear
+           if absdot < (1.0 - eps): return False
+    return True
+
+
+#-------------------------#
+# Some mathematical stuff #
+#-------------------------#
+def shoelace_triangle(pA,pB,pC):
+    '''
+    calculates area of triangle
+    by shoelace algorithm
+    pA represents the vertex coordinates (xA,yA)
+    pB represents the vertex coordinates (xB,yB)
+    pC represents the vertex coordinates (xC,yC)
+    '''
+    Area = + (pB[0]*pC[1] - pC[0]*pB[1]) \
+           - (pA[0]*pC[1] - pC[0]*pA[1]) \
+           + (pA[0]*pB[1] - pB[0]*pA[1])
+    Area = 0.5 * abs(Area)
+    return Area
 
 
 #--------------------------------------#
@@ -353,7 +559,6 @@ def calc_dihedral(x1,x2,x3,x4):
     if abs(theta) < zero_rads: theta = 0.0
 
     return theta
-
 
 def gen_rotmatrix(axis,theta):
     '''
@@ -528,18 +733,20 @@ def interpolate(xvalues,yvalues,x,nps=(3,2),spl=3,d=0):
     dy = derivative(x)
     return y, dy
 
-def interpolation_recalc(xvalues,yvalues,idx,nps=2,spl=3):
-    '''
-    Recalculates the value of a given point ignoring it
-    from a list of points and interpolating it with a spline
-    '''
-    x_idx = xvalues[idx]
-    xx = xvalues[idx-nps:idx] + xvalues[idx+1:idx+nps+1]
-    yy = yvalues[idx-nps:idx] + yvalues[idx+1:idx+nps+1]
-    the_spline = localspline(xx,yy,idx,nps="all",spl=3)
-    new_y = the_spline(x_idx)
-    return new_y
-
+def correct_list_by_interpolation(xlist,ylist):
+    copy_x, copy_y = [], []
+    for x,y in zip(xlist,ylist):
+        if y is None: continue
+        copy_x.append(x)
+        copy_y.append(y)
+    # Now correct
+    for idx in range(len(ylist)):
+        x,y = xlist[idx], ylist[idx]
+        if y is None:
+           the_spline = localspline(copy_x,copy_y,None,nps="all",spl=3)
+           ylist[idx] = the_spline(x)
+    return ylist
+           
 def obtain_extremum(xvalues , yvalues , xtr="min", full=False):
     '''
     * xtr: 'min" for minima, "max" for maxima
@@ -650,109 +857,6 @@ def time2human(t, units):
     return (t, units)
 
 
-def readfile(filename,hashtag=True,strip=True,ommitblank=True):
-    '''
-    read a file, excluding comments! (#)
-    '''
-    # Read file and exclude comments
-    the_file = open(filename,'r')
-    lines    = []
-    for line in the_file:
-        if line.endswith("\n"):
-           line = line[:-1]
-        if hashtag:
-           line = line.split("#")[0]
-        if strip:
-           line = line.strip()
-        if ommitblank and line == "":
-           continue
-        lines.append(line)
-    the_file.close()
-
-    return lines
-
-def select_lines(lines,start,end,ignorecase=False):
-    '''
-    to use after readfile function
-    '''
-    selected_lines = []
-
-    if ignorecase:
-       start = start.lower()
-       end   = end.lower()
-
-    record = False
-    for line in lines:
-        if ignorecase: LINE = line.lower()
-        else         : LINE = line
-        # Check line and save
-        if LINE.startswith(end): break
-        if record: selected_lines.append(line)
-        if LINE.startswith(start): record = True
-    return selected_lines
-
-
-def read_xyz(xyzfile):
-    '''
-    Read standard .xyz file
-    Coordinates in angstroms
-    '''
-    xyz = open(xyzfile,'r')
-    natoms   = int(xyz.readline())
-    comment  = xyz.readline()
-    xvector  = []
-    symbols  = []
-    masslist = []
-    isotopic = False
-    for line in range(natoms):
-        data = xyz.readline().split()
-        if len(data) == 4:
-           symbol, x, y, z = data
-           atonum = cons.dict_symbol2z[symbol]
-           mass   = cons.dict_atomasses[atonum]
-        if len(data) == 5:
-           symbol, x, y, z, mass = data
-           mass = float(mass) / cons.amu
-           # Is an isotopic modification?
-           atonum = cons.dict_symbol2z[symbol]
-           mass2  = cons.dict_atomasses[atonum]
-           diff = abs(mass-mass2)*cons.amu
-           if diff > 0.01: isotopic = True
-        masslist.append(mass)
-        symbols.append(symbol)
-        xvector += [float(x),float(y),float(z)]
-    xyz.close()
-    xvector = np.array(xvector)
-    if "[BOHR]" in comment: xvector = xvector * cons.angstrom
-    if not isotopic: masslist = None
-    return xvector, symbols, masslist
-
-def write_xyz(symbols,xvector,xyzfile,infoline="info line",mode="w"):
-    '''
-    Write standard .xyz file
-    Coordinates in angstroms
-    * mode = "a" or "w"
-    '''
-    natoms = len(symbols)
-
-    # Prepare coordinate vector
-    xyz_list = []
-    if len(xvector) != natoms:
-       for idx in range(0,len(xvector),3):
-           x,y,z = xvector[idx:idx+3]
-           xyz_list.append( np.array( (x,y,z) ) )
-    else:
-       xyz_list = xvector
-
-    # Write file
-    xyz = open(xyzfile,mode)
-    xyz.write(" %i\n"%natoms)
-    xyz.write("%s\n"%infoline)
-    for idx in range(natoms):
-        symbol = symbols[idx]
-        x,y,z  = xyz_list[idx]
-        xyz.write(" %2s   %+10.5f   %+10.5f   %+10.5f\n"%(symbol,x,y,z))
-    xyz.close()
 
 #-----------------#
 # Wilson Matrices #
@@ -1223,8 +1327,9 @@ def get_B_and_C(xvector, natoms, icoords):
         B += rowB; C += matrC
  
     B = np.matrix(B)
+    sortedICs = stretch_list + abend_list + lbend_list + torsion_list
 
-    return B, C
+    return B, C, sortedICs
 
 
 
@@ -1851,4 +1956,4 @@ def get_pgs(atom_num,atom_mass,geom_xyz,toldist=0.05,tolsym=3e-2,epsilon=3e-2):
       else:
         return 'C1',1
 
-#for line in readfile("cag.py",hashtag=False,strip=False,ommitblank=False): print line
+#for line in readfile("cag.py",hashtag=False,strip=False,skipblank=False): print line

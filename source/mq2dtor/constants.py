@@ -1,23 +1,38 @@
 '''
+---------------------------
+ Licensing and Distribution
+---------------------------
+
+Program name: Q2DTor
+Version     : 1.1
+License     : MIT/x11
+
+Copyright (c) 2019, David Ferro Costas (david.ferro@usc.es) and
+Antonio Fernandez Ramos (qf.ramos@usc.es)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"),
+to deal in the Software without restriction, including without limitation
+the rights to use, copy, modify, merge, publish, distribute, sublicense,
+and/or sell copies of the Software, and to permit persons to whom the Software
+is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included
+in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
+THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR
+OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE,
+ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+OTHER DEALINGS IN THE SOFTWARE.
+---------------------------
+
+
 *----------------------------------*
- Q2DTor and TheRa Programs
-
- Copyright (c) 2018 Universidade de Santiago de Compostela
-
- This file is part of both Q2DTor and TheRa softwares.
-
- Q2DTor and TheRa are free softwares: you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation, either version 3 of the License, or
- (at your option) any later version.
-
- Q2DTor and TheRa are distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- GNU General Public License for more details.
-
- You should have received a copy of the GNU General Public License
- inside both Q2DTor and TheRa manuals.  If not, see <http://www.gnu.org/licenses/>.
+| Main Author:  David Ferro-Costas |
+| Last Update:  Mar-02st-2018      |
 *----------------------------------*
 
  This module contains different constants and dictionaries.
@@ -29,10 +44,6 @@
       * dict_isomasses   ;        string --> mass
       * dict_UFURC       ;  molecularity --> conversion factor
 
-*----------------------------------*
-| Main Author:  David Ferro-Costas |
-| Last Update:  Mar-02st-2018      |
-*----------------------------------*
 '''
 
 import math
@@ -76,6 +87,7 @@ cal      = joule / cal_SI                       #
 kcal     = cal /1000.0                          #
 kjmol    = joule * NA_SI / 1000.0               #
 kcalmol  = kjmol / cal_SI                       #
+jmol     = kjmol   * 1000.0                     #
 calmol   = kcalmol * 1000.0                     #
 meter3   = meter**3                             #
 cm       = 100 * meter                          #
