@@ -1,0 +1,17 @@
+#--------------#                                                                    
+# For Gaussian #                                                                    
+#--------------#                                                                    
+mesc_gaussian  gauexe  "Path for Gaussian main executable"                          
+mesc_gaussian  fchk    "Path for formchk"                                           
+                                                                                    
+#--------------#                                                                    
+# For Orca     #                                                                    
+#--------------#                                                                    
+mesc_orca      orca  "Path for Orca main executable"                                
+                                                                                    
+                                                                                    
+# Examples:                                                                         
+# mesc_gaussian  gauexe   "/home/programs/G09_64D/g09/g09"                          
+# mesc_gaussian  fchk     "/home/programs/G09_64D/g09/formchk"                      
+# mesc_orca      orca     "/home/programs/orca_4_0_1_2/orca"                        
+                                                                                    
