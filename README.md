@@ -68,8 +68,7 @@ List of known bugs and changes/additions in version 1.1:
     specified in the input file.
   - Now, by default, the scan of the PES starts at the closest point to the input
     geometry instead of at (phi1,phi2)=(0,0).
-  - Option --units is now available.
-    Energies in kJ/mol are printed with: --units joule
+  - Option --SI is now available, which prints the energies in kJ/mol.
   - A new table for each thermodynamic function is added.
 
 
@@ -119,7 +118,6 @@ The _Q2DTor_ source folder consists of:
        It contains some quotes to print when the program ends.
 
 The tests folder contains the output files of the tests set and an script to run them. 
-The documents folder contains this manual.
 
 
 ## Installation
@@ -242,32 +240,32 @@ geometry and the corresponding _Q2DTor_ input file.
                                                             
 After executing Q2DTor.py for a given system (or for all of
 them), you can check your results by using the option 2
-of the Q2DTorTesting.py script in the second menu.
+of the `Q2DTorTesting.py` script in the second menu.
 
-### Executing _Q2DTor__ with the script
+### Executing _Q2DTor_ with the script
 
-The Q2DTorTesting.py script can be used to run _Q2DTor_ (option
-3 of the second menu). However, the execution is carried out
-via the nohup command. In order to execute _Q2DTor_ sending the
+The `Q2DTorTesting.py` script can be used to run _Q2DTor_ (second menu, option 3).
+However, the execution is carried out
+using the `nohup` command. In order to execute _Q2DTor_ sending the
 calculations to a queue or without using nohup, the user should
-execute it manually (or modify the script).
+execute it manually (_i.e._ without the script) or modify the script.
                                                             
-### IMPORTANT NOTICE 
+### Carrying out S10 and S19 test systems
 
 The searching algorithm for systems
-_S10_ and _S19_ is not able to find one transition state, and
-Q2DTor_tests.py complains if you execute it once
-_Q2DTor_ ends the tasks associated to the --optsp argument.
+_S10_ and _S19_ is not able to find one transition state (we recommned to generate the pdf file
+after executing _Q2DTor_ with th --findsp option to visualize this).
+Consequently, `Q2DTorTesting.py` will not execute _Q2DTor_ with the  --optsp argument.
 In these cases, the user should add the following line
-at the end of the `SXX/IOfiles/SXX.splist` file (XX=10,19).
+at the end of the `SXX/IOfiles/SXX.splist` file (XX=10,19):
 
-For XX=10:
+  - For XX=10:
 
-   ```1 170.00 60.00 - NO S10_170_060```
+    ```1 170.00 60.00 - NO S10_170_060```
 
-For XX=19
+  - For XX=19
 
-   ```1 130.00 70.00 - NO S19_130_070```
+    ```1 130.00 70.00 - NO S19_130_070```
 
 Check the manual for more information about the search
 and optimization procedures of the stationary points.                              
