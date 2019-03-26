@@ -177,7 +177,7 @@ two simple steps:
 
    where PATH_FOR_PYTHON indicates the location of the Python interpreter.
    Example:
-     `#!/usr/bin/env python`
+     ```#!/usr/bin/env python```
    In this example Python is located in /usr/bin/env. 
 
 (2) Make the main program Q2DTor.py executable:
