@@ -177,27 +177,23 @@ two simple steps:
 
 (1) Add as first line in the Q2DTor.py the following:
 
-    ```python
-    #!PATH_FOR_PYTHON python
-    ```  
+         ```#!PATH_FOR_PYTHON python```  
 
     where PATH_FOR_PYTHON indicates the location of the Python interpreter.
 
     Example:
 
-    ```python
-    #!/usr/bin/env python
-    ```
+        ```#!/usr/bin/env python```
 
    In this example Python is located in /usr/bin/env. 
 
 (2) Make the main program Q2DTor.py executable:
 
-    ```chmod u+x Q2DTor.py```
+        ```chmod u+x Q2DTor.py```
 
     This allows you to run _Q2DTor_ just using:
 
-    ```Q2DTor.py```
+        ```Q2DTor.py```
 
 Before run _Q2DTor_, we recommend to read the help menu.
 It can be displayed either by typing
@@ -230,8 +226,10 @@ This action opens the next interactive menu:
 where you should choose option 1. 
 
 At this point, the script generates two folders:                                      
+
 - GAUSSIAN                                              
 - ORCA                                                  
+
 and each of them contains 20 test folders (one per system). 
                                                             
 For each system, you can find the xyz file with the         
@@ -243,8 +241,9 @@ of the Q2DTor_tests.py script. This checking process can
 be performed after every single step of _Q2DTor_ or after     
 executing it with all the options.                          
                                                             
-IMPORTANT NOTICE: The searching algorithm for systems  
-S10 and S19 is not able to find one transition state, and     
+__IMPORTANT NOTICE__  
+The searching algorithm for systems  
+_S10_ and _S19_ is not able to find one transition state, and     
 Q2DTor_tests.py complains if you execute it once      
 _Q2DTor_ ends the tasks associated to the --optsp argument.   
 In these cases, the user should add the following line  
@@ -252,11 +251,11 @@ at the end of the SXX/IOfiles/SXX.splist file (XX=10,19).
 
 For XX=10:
 
-   1 170.00 60.00 - NO S10_170_060
+   ```1 170.00 60.00 - NO S10_170_060```
 
 For XX=19
 
-   1 130.00 70.00 - NO S19_130_070
+   ```1 130.00 70.00 - NO S19_130_070```
 
 Check the manual for more information about the search and
 optimization procedures of the stationary points.                              
