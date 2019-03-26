@@ -175,25 +175,25 @@ You can run _Q2DTor_ by invoking the Python interpreter manually as follows:
 If you prefer to avoid invoking the Python interpreter, you have to follow these
 two simple steps:
 
-(1) Add as first line in the Q2DTor.py the following:
+1. Add as first line in the Q2DTor.py the following:
 
-```#!PATH_FOR_PYTHON python```
+   ```#!PATH_FOR_PYTHON python```
 
-    where PATH_FOR_PYTHON indicates the location of the Python interpreter.
+   where PATH_FOR_PYTHON indicates the location of the Python interpreter.
 
-    Example:
+   Example:
 
-        `#!/usr/bin/env python`
+   ```#!/usr/bin/env python```
 
    In this example Python is located in /usr/bin/env. 
 
-(2) Make the main program Q2DTor.py executable:
+2. Make the main program Q2DTor.py executable:
 
-        `chmod u+x Q2DTor.py`
+   ```chmod u+x Q2DTor.py```
 
-    This allows you to run _Q2DTor_ just using:
+   This allows you to run _Q2DTor_ just using:
 
-        `Q2DTor.py`
+   ```Q2DTor.py```
 
 Before run _Q2DTor_, we recommend to read the help menu.
 It can be displayed either by typing
