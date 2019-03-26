@@ -49,6 +49,8 @@ given task (and before proceeding to the next one).
 
 ## Version information
 
+### version 1.1
+
 List of known bugs and changes/additions in version 1.1:
 - Important:
   - Corrected a bug in the function that reads the xyz file (problem with empty lines).
@@ -92,40 +94,31 @@ The Q2DTor source folder consists of:
      This is the main file of Q2DTor, i.e., the one to be executed
 
    - Directory mq2dtor, which contains the following files: 
-
-   - mesc.txt:
-     It contains the path to the executables to the Electronic Structure Calculation software.
-     THIS IS THE ONLY FILE THAT HAS TO BE MODIFIED BY THE USER.
-
-   - constants.py:
-      It contains different physical constants as well as atomic masses and covalent radii.
-
-   - classes.py:
-     It contains different Python classes that are used along the whole code. 
-     For example, it contains different classes related to graph theory. 
-     These allow to obtain the connectivity of a given geometry or a set of
-     internal coordinates in just a few calls.
-
-   - gtsfile.py:
-     It contains functions that read and write a gts file (the format used by Q2Dtor). 
-     These gts files contain information about stationary points: geometry, gradient, 
-     Hessian matrix, etc.
-
-   - helpfns.py:
-     It contains different auxiliary functions (for example for example the function
-     that converts Cartesian coordinates to mass-scaled Cartesian).
-
-   - mesc_gaussian.py:
-     It contains the interface to the Gaussian Package.
-
-   - mesc_orca.py:
-     It contains the interface to the Orca Package.
-
-   - tesselation.py:
-     It contains functions related to the tesselation of the 2D potential energy surface.
-
-   - quotes.py:
-     It contains some quotes to print when the program ends.
+     - mesc.txt:
+       It contains the path to the executables to the Electronic Structure Calculation software.
+       THIS IS THE ONLY FILE THAT HAS TO BE MODIFIED BY THE USER.
+     - constants.py:
+        It contains different physical constants as well as atomic masses and covalent radii.
+     - classes.py:
+       It contains different Python classes that are used along the whole code. 
+       For example, it contains different classes related to graph theory. 
+       These allow to obtain the connectivity of a given geometry or a set of
+       internal coordinates in just a few calls.
+     - gtsfile.py:
+       It contains functions that read and write a gts file (the format used by Q2Dtor). 
+       These gts files contain information about stationary points: geometry, gradient, 
+       Hessian matrix, etc.
+     - helpfns.py:
+       It contains different auxiliary functions (for example for example the function
+       that converts Cartesian coordinates to mass-scaled Cartesian).
+     - mesc_gaussian.py:
+       It contains the interface to the Gaussian Package.  
+     - mesc_orca.py:
+       It contains the interface to the Orca Package.
+     - tesselation.py:
+       It contains functions related to the tesselation of the 2D potential energy surface.
+     - quotes.py:
+       It contains some quotes to print when the program ends.
 
 The tests folder contains the output files of the tests set and an script to run them. 
 The documents folder contains this manual.
@@ -184,8 +177,7 @@ two simple steps:
 
    where PATH_FOR_PYTHON indicates the location of the Python interpreter.
    Example:
-      #!/usr/bin/env python
-
+     `#!/usr/bin/env python`
    In this example Python is located in /usr/bin/env. 
 
 (2) Make the main program Q2DTor.py executable:
