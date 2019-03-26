@@ -252,8 +252,8 @@ execute it manually (_i.e._ without the script) or modify the script.
                                                             
 ### Carrying out S10 and S19 test systems
 
-The searching algorithm for systems
-_S10_ and _S19_ is not able to find one transition state (we recommned to generate the pdf file
+The searching algorithm for systems _S10_ and _S19_ is not able to find one
+transition state (we recommned to generate the pdf file
 after executing _Q2DTor_ with the --findsp option to visualize this).
 Consequently, `Q2DTorTesting.py` will not execute _Q2DTor_ with the  --optsp argument.
 In these cases, the user should add the following line
