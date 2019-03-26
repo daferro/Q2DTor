@@ -239,8 +239,8 @@ For each system, you can find the xyz file with the reference
 geometry and the corresponding _Q2DTor_ input file. 
                                                             
 After executing Q2DTor.py for a given system (or for all of
-them), you can check your results by using the option 2
-of the `Q2DTorTesting.py` script in the second menu.
+them), you can check your results by using the option 2 (second menu)
+of the `Q2DTorTesting.py` script.
 
 ### Executing _Q2DTor_ with the script
 
@@ -254,16 +254,16 @@ execute it manually (_i.e._ without the script) or modify the script.
 
 The searching algorithm for systems
 _S10_ and _S19_ is not able to find one transition state (we recommned to generate the pdf file
-after executing _Q2DTor_ with th --findsp option to visualize this).
+after executing _Q2DTor_ with the --findsp option to visualize this).
 Consequently, `Q2DTorTesting.py` will not execute _Q2DTor_ with the  --optsp argument.
 In these cases, the user should add the following line
 at the end of the `SXX/IOfiles/SXX.splist` file (XX=10,19):
 
-  - For XX=10:
+  - In 'S10/IOfiles/S10.splist':
 
     ```1 170.00 60.00 - NO S10_170_060```
 
-  - For XX=19
+  - For 'S19/IOfiles/S19.splist'
 
     ```1 130.00 70.00 - NO S19_130_070```
 
