@@ -177,7 +177,7 @@ two simple steps:
 
 (1) Add as first line in the Q2DTor.py the following:
 
-         `#!PATH_FOR_PYTHON python`
+```#!PATH_FOR_PYTHON python```
 
     where PATH_FOR_PYTHON indicates the location of the Python interpreter.
 
