@@ -206,31 +206,35 @@ or
 
 ## Running the tests set
 
-In the tests directory there is a script called Q2DTor_tests.py 
+In the tests directory there is a script called `Q2DTorTesting.py`
 that facilitates running the tests set. 
                                                             
 The script runs under Python version 2.x. It is executed by typing:
 
-  ```python Q2DTor_tests.py```
+  ```python Q2DTorTesting.py```
 
 This action opens the next interactive menu:                  
 
-     | << Test creator for Q2DTor >>                        
-     |                                                      
-     |    (1) Create input files                            
-     |    (2) Check results                                 
-     |                                                      
-     |    your choice:                                      
-     |                                                      
+     |  << Test creator for Q2DTor >>
+     | 
+     |     Q2DTOR PATH: '/home/david/PyFerro/q2dtor/Q2DTor.py'
+     | 
+     |     Select case:
+     |      (1) HF/sto-3g (GAUSSIAN)
+     |      (2) HF/sto-3g (ORCA)
+     | 
+     |     your choice: 
 
-where you should choose option 1. 
+where you should choose option 1 to run the tests with Gaussian and 2
+for Orca. Once selected, the menu displays:
 
-At this point, the script generates two folders:                                      
+     |    Select action:
+     |     (1) Create input files
+     |     (2) Check results against refdata file
+     |     ..  to exit
 
-- GAUSSIAN                                              
-- ORCA                                                  
-
-and each of them contains 20 test folders (one per system). 
+Selecting option 1, the corresponding folder (GAUSSIAN/ or ORCA/)
+containing the 20 test folders (one per system) will be created. 
                                                             
 For each system, you can find the xyz file with the         
 reference geometry and the corresponding _Q2DTor_ input file. 
