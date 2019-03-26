@@ -27,10 +27,13 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ## About Q2DTor
 
- Name of the Program: Q2DTor
- Program Version : 1.1
- Program Version Date: March 20, 2019
- Manual Version Date: March 20, 2018 
+Name of the Program: Q2DTor
+
+Program Version : 1.1
+
+Program Version Date: March 20, 2019
+
+Manual Version Date: March 20, 2018 
 
 Q2DTor is a program designed to calculate partition functions and thermodynamic 
 properties of molecular systems with two or more torsional modes. 
@@ -47,29 +50,28 @@ given task (and before proceeding to the next one).
 ## Version information
 
 List of known bugs and changes/additions in version 1.1:
-
-       - Important:
-         - Corrected a bug in the function that reads the xyz file (problem with empty lines).
-         - Corrected a bug related to the calculation of partition functions
-           in systems with the 'a' symmetry condition.
-         - Corrected a bug in the calculation of S and G for MSHO.
-       - Minor:
-         - The version of Q2DTor is printed after the logo of the program.
-         - The date is added at the beginning of each execution.
-         - The Q2DTor.py executable and its modules are now separated.
-           Modules are stored in the modsQ2DTor/ folder.
-         - If tsigma1 * tsigma2 is not equal to 1, it is assumed that the system meets the
-           'c'  type condition of symmetry even if that it is not specified in the input file.
-         - For systems with 'b' type symmetry, odd symmetry terms of the Fourier series are
-           automatically removed, even if they are specified by the user in the input file.
-         - If tsigma_i is not 1, the corresponding Fourier terms of the phi_i dihedral
-           are multiplies of tsigma_i. Other terms are automatically removed even if they are
-           specified in the input file.
-         - Now, by default, the scan of the PES starts at the closest point to the input
-           geometry instead of at (phi1,phi2)=(0,0).
-         - Option --units is now available.
-           Energies in kJ/mol are printed with: --units joule
-         - A new table for each thermodynamic function is added.
+- Important:
+  - Corrected a bug in the function that reads the xyz file (problem with empty lines).
+  - Corrected a bug related to the calculation of partition functions
+    in systems with the 'a' symmetry condition.
+  - Corrected a bug in the calculation of S and G for MSHO.
+- Minor:
+  - The version of Q2DTor is printed after the logo of the program.
+  - The date is added at the beginning of each execution.
+  - The Q2DTor.py executable and its modules are now separated.
+    Modules are stored in the modsQ2DTor/ folder.
+  - If tsigma1 * tsigma2 is not equal to 1, it is assumed that the system meets the
+    'c'  type condition of symmetry even if that it is not specified in the input file.
+  - For systems with 'b' type symmetry, odd symmetry terms of the Fourier series are
+    automatically removed, even if they are specified by the user in the input file.
+  - If tsigma_i is not 1, the corresponding Fourier terms of the phi_i dihedral
+    are multiplies of tsigma_i. Other terms are automatically removed even if they are
+    specified in the input file.
+  - Now, by default, the scan of the PES starts at the closest point to the input
+    geometry instead of at (phi1,phi2)=(0,0).
+  - Option --units is now available.
+    Energies in kJ/mol are printed with: --units joule
+  - A new table for each thermodynamic function is added.
 
 
 ## How to cite
