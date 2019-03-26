@@ -13,6 +13,8 @@
   #                                                                 #
   #-----------------------------------------------------------------#
   #                                                                 #
+  #    Q2DTor v1.1 (2018-12)                                        #
+  #                                                                 #
   #    A software for the calculation of torsional                  #
   #    anharmonicity of two coupled rotors                          #
   #                                                                 #
@@ -39,6 +41,7 @@
    *==============================
    | Executing Q2DTor with option: --init  [Initialization]
    *==============================
+     Data: 2019-03-24 20:50
 
      Information from input file:
         * torsion1      1-2-5-10
@@ -63,24 +66,21 @@
              H     -0.81082    -1.34189    +0.88512   (  1.008 amu)
              H     +2.37987    -0.32889    -0.00000   (  1.008 amu)
 
-     Creating folder: 'IOfiles/'
-
      Generation of (redundant) internal coordinates:
-          nbonds + 1 - natoms = 0
-        - Internal coordinates stored in 'IOfiles/S07.ics' 
-        - List of internal coordinates (25)
-               1-2            2-4           5-10            2-5            4-9  
-               1-6            4-7            4-8            1-3          1-2-5  
-             2-1-6          4-2-5          2-4-9          2-4-7          2-4-8  
-            2-5-10          7-4-9          8-4-9          3-1-6        2-3-6-1  
-           1-4-5-2        7-8-9-4        4-2-1-6       1-2-5-10        1-2-4-7  
+        - File 'IOfiles/S07.ics' already exists
+        - List of internal coordinates (24)
+               1-2            1-3            1-6            2-4            2-5  
+               4-7            4-8            4-9           5-10          1-2-5  
+             2-1-6          2-4-8          2-4-9         2-5-10          3-1-6  
+             4-2-5          7-4-8          8-4-9        1-2-4-7       1-2-5-10  
+           1-4-5-2        2-3-6-1        2-7-8-4        4-2-1-6  
 
      File generation for electronic structure calculations:
         - Selected software is 'orca'
-        - File 'S07.calcs' has been created
+        - File 'S07.calcs' already exists
 
 
-                                          | Elapsed time 2.0 msecs |
+                                          | Elapsed time 0.9 msecs |
 
    \\\\\\\\\\\\\\\\\\\\\\\ ///////////////////////
        End of execution of Q2DTor with --init  
@@ -91,6 +91,7 @@
    *==============================
    | Executing Q2DTor with option: --pes  [Calculation of the 2D-PES]
    *==============================
+     Data: 2019-03-24 20:50
 
      Information from the input file:
         * torsion1      1-2-5-10
@@ -139,693 +140,11 @@
 
       File 'IOfiles/S07.ics' exists: using its connectivity
 
-      Creating a file with the PES energies: 'IOfiles/S07.pes'
+      File 'IOfiles/S07.pes' already exists:
+        * 684 PES points stored
+        * Calculated points will be omitted
 
-      Calculating PES (684 points)
-         S07_000_000: calculating...
-         S07_000_010: calculating...
-         S07_000_020: calculating...
-         S07_000_030: calculating...
-         S07_000_040: calculating...
-         S07_000_050: calculating...
-         S07_000_060: calculating...
-         S07_000_070: calculating...
-         S07_000_080: calculating...
-         S07_000_090: calculating...
-         S07_000_100: calculating...
-         S07_000_110: calculating...
-         S07_000_120: calculating...
-         S07_000_130: calculating...
-         S07_000_140: calculating...
-         S07_000_150: calculating...
-         S07_000_160: calculating...
-         S07_000_170: calculating...
-         S07_000_180: calculating...
-         S07_000_190: calculating...
-         S07_000_200: calculating...
-         S07_000_210: calculating...
-         S07_000_220: calculating...
-         S07_000_230: calculating...
-         S07_000_240: calculating...
-         S07_000_250: calculating...
-         S07_000_260: calculating...
-         S07_000_270: calculating...
-         S07_000_280: calculating...
-         S07_000_290: calculating...
-         S07_000_300: calculating...
-         S07_000_310: calculating...
-         S07_000_320: calculating...
-         S07_000_330: calculating...
-         S07_000_340: calculating...
-         S07_000_350: calculating...
-         S07_010_340: calculating...
-         S07_010_330: calculating...
-         S07_010_320: calculating...
-         S07_010_310: calculating...
-         S07_010_300: calculating...
-         S07_010_290: calculating...
-         S07_010_280: calculating...
-         S07_010_270: calculating...
-         S07_010_260: calculating...
-         S07_010_250: calculating...
-         S07_010_240: calculating...
-         S07_010_230: calculating...
-         S07_010_220: calculating...
-         S07_010_210: calculating...
-         S07_010_200: calculating...
-         S07_010_190: calculating...
-         S07_010_180: calculating...
-         S07_010_170: calculating...
-         S07_010_160: calculating...
-         S07_010_150: calculating...
-         S07_010_140: calculating...
-         S07_010_130: calculating...
-         S07_010_120: calculating...
-         S07_010_110: calculating...
-         S07_010_100: calculating...
-         S07_010_090: calculating...
-         S07_010_080: calculating...
-         S07_010_070: calculating...
-         S07_010_060: calculating...
-         S07_010_050: calculating...
-         S07_010_040: calculating...
-         S07_010_030: calculating...
-         S07_010_020: calculating...
-         S07_010_010: calculating...
-         S07_010_000: calculating...
-         S07_020_000: calculating...
-         S07_020_010: calculating...
-         S07_020_020: calculating...
-         S07_020_030: calculating...
-         S07_020_040: calculating...
-         S07_020_050: calculating...
-         S07_020_060: calculating...
-         S07_020_070: calculating...
-         S07_020_080: calculating...
-         S07_020_090: calculating...
-         S07_020_100: calculating...
-         S07_020_110: calculating...
-         S07_020_120: calculating...
-         S07_020_130: calculating...
-         S07_020_140: calculating...
-         S07_020_150: calculating...
-         S07_020_160: calculating...
-         S07_020_170: calculating...
-         S07_020_180: calculating...
-         S07_020_190: calculating...
-         S07_020_200: calculating...
-         S07_020_210: calculating...
-         S07_020_220: calculating...
-         S07_020_230: calculating...
-         S07_020_240: calculating...
-         S07_020_250: calculating...
-         S07_020_260: calculating...
-         S07_020_270: calculating...
-         S07_020_280: calculating...
-         S07_020_290: calculating...
-         S07_020_300: calculating...
-         S07_020_310: calculating...
-         S07_020_320: calculating...
-         S07_020_330: calculating...
-         S07_030_320: calculating...
-         S07_030_310: calculating...
-         S07_030_300: calculating...
-         S07_030_290: calculating...
-         S07_030_280: calculating...
-         S07_030_270: calculating...
-         S07_030_260: calculating...
-         S07_030_250: calculating...
-         S07_030_240: calculating...
-         S07_030_230: calculating...
-         S07_030_220: calculating...
-         S07_030_210: calculating...
-         S07_030_200: calculating...
-         S07_030_190: calculating...
-         S07_030_180: calculating...
-         S07_030_170: calculating...
-         S07_030_160: calculating...
-         S07_030_150: calculating...
-         S07_030_140: calculating...
-         S07_030_130: calculating...
-         S07_030_120: calculating...
-         S07_030_110: calculating...
-         S07_030_100: calculating...
-         S07_030_090: calculating...
-         S07_030_080: calculating...
-         S07_030_070: calculating...
-         S07_030_060: calculating...
-         S07_030_050: calculating...
-         S07_030_040: calculating...
-         S07_030_030: calculating...
-         S07_030_020: calculating...
-         S07_030_010: calculating...
-         S07_030_000: calculating...
-         S07_040_000: calculating...
-         S07_040_010: calculating...
-         S07_040_020: calculating...
-         S07_040_030: calculating...
-         S07_040_040: calculating...
-         S07_040_050: calculating...
-         S07_040_060: calculating...
-         S07_040_070: calculating...
-         S07_040_080: calculating...
-         S07_040_090: calculating...
-         S07_040_100: calculating...
-         S07_040_110: calculating...
-         S07_040_120: calculating...
-         S07_040_130: calculating...
-         S07_040_140: calculating...
-         S07_040_150: calculating...
-         S07_040_160: calculating...
-         S07_040_170: calculating...
-         S07_040_180: calculating...
-         S07_040_190: calculating...
-         S07_040_200: calculating...
-         S07_040_210: calculating...
-         S07_040_220: calculating...
-         S07_040_230: calculating...
-         S07_040_240: calculating...
-         S07_040_250: calculating...
-         S07_040_260: calculating...
-         S07_040_270: calculating...
-         S07_040_280: calculating...
-         S07_040_290: calculating...
-         S07_040_300: calculating...
-         S07_040_310: calculating...
-         S07_050_300: calculating...
-         S07_050_290: calculating...
-         S07_050_280: calculating...
-         S07_050_270: calculating...
-         S07_050_260: calculating...
-         S07_050_250: calculating...
-         S07_050_240: calculating...
-         S07_050_230: calculating...
-         S07_050_220: calculating...
-         S07_050_210: calculating...
-         S07_050_200: calculating...
-         S07_050_190: calculating...
-         S07_050_180: calculating...
-         S07_050_170: calculating...
-         S07_050_160: calculating...
-         S07_050_150: calculating...
-         S07_050_140: calculating...
-         S07_050_130: calculating...
-         S07_050_120: calculating...
-         S07_050_110: calculating...
-         S07_050_100: calculating...
-         S07_050_090: calculating...
-         S07_050_080: calculating...
-         S07_050_070: calculating...
-         S07_050_060: calculating...
-         S07_050_050: calculating...
-         S07_050_040: calculating...
-         S07_050_030: calculating...
-         S07_050_020: calculating...
-         S07_050_010: calculating...
-         S07_050_000: calculating...
-         S07_060_000: calculating...
-         S07_060_010: calculating...
-         S07_060_020: calculating...
-         S07_060_030: calculating...
-         S07_060_040: calculating...
-         S07_060_050: calculating...
-         S07_060_060: calculating...
-         S07_060_070: calculating...
-         S07_060_080: calculating...
-         S07_060_090: calculating...
-         S07_060_100: calculating...
-         S07_060_110: calculating...
-         S07_060_120: calculating...
-         S07_060_130: calculating...
-         S07_060_140: calculating...
-         S07_060_150: calculating...
-         S07_060_160: calculating...
-         S07_060_170: calculating...
-         S07_060_180: calculating...
-         S07_060_190: calculating...
-         S07_060_200: calculating...
-         S07_060_210: calculating...
-         S07_060_220: calculating...
-         S07_060_230: calculating...
-         S07_060_240: calculating...
-         S07_060_250: calculating...
-         S07_060_260: calculating...
-         S07_060_270: calculating...
-         S07_060_280: calculating...
-         S07_060_290: calculating...
-         S07_070_280: calculating...
-         S07_070_270: calculating...
-         S07_070_260: calculating...
-         S07_070_250: calculating...
-         S07_070_240: calculating...
-         S07_070_230: calculating...
-         S07_070_220: calculating...
-         S07_070_210: calculating...
-         S07_070_200: calculating...
-         S07_070_190: calculating...
-         S07_070_180: calculating...
-         S07_070_170: calculating...
-         S07_070_160: calculating...
-         S07_070_150: calculating...
-         S07_070_140: calculating...
-         S07_070_130: calculating...
-         S07_070_120: calculating...
-         S07_070_110: calculating...
-         S07_070_100: calculating...
-         S07_070_090: calculating...
-         S07_070_080: calculating...
-         S07_070_070: calculating...
-         S07_070_060: calculating...
-         S07_070_050: calculating...
-         S07_070_040: calculating...
-         S07_070_030: calculating...
-         S07_070_020: calculating...
-         S07_070_010: calculating...
-         S07_070_000: calculating...
-         S07_080_000: calculating...
-         S07_080_010: calculating...
-         S07_080_020: calculating...
-         S07_080_030: calculating...
-         S07_080_040: calculating...
-         S07_080_050: calculating...
-         S07_080_060: calculating...
-         S07_080_070: calculating...
-         S07_080_080: calculating...
-         S07_080_090: calculating...
-         S07_080_100: calculating...
-         S07_080_110: calculating...
-         S07_080_120: calculating...
-         S07_080_130: calculating...
-         S07_080_140: calculating...
-         S07_080_150: calculating...
-         S07_080_160: calculating...
-         S07_080_170: calculating...
-         S07_080_180: calculating...
-         S07_080_190: calculating...
-         S07_080_200: calculating...
-         S07_080_210: calculating...
-         S07_080_220: calculating...
-         S07_080_230: calculating...
-         S07_080_240: calculating...
-         S07_080_250: calculating...
-         S07_080_260: calculating...
-         S07_080_270: calculating...
-         S07_090_260: calculating...
-         S07_090_250: calculating...
-         S07_090_240: calculating...
-         S07_090_230: calculating...
-         S07_090_220: calculating...
-         S07_090_210: calculating...
-         S07_090_200: calculating...
-         S07_090_190: calculating...
-         S07_090_180: calculating...
-         S07_090_170: calculating...
-         S07_090_160: calculating...
-         S07_090_150: calculating...
-         S07_090_140: calculating...
-         S07_090_130: calculating...
-         S07_090_120: calculating...
-         S07_090_110: calculating...
-         S07_090_100: calculating...
-         S07_090_090: calculating...
-         S07_090_080: calculating...
-         S07_090_070: calculating...
-         S07_090_060: calculating...
-         S07_090_050: calculating...
-         S07_090_040: calculating...
-         S07_090_030: calculating...
-         S07_090_020: calculating...
-         S07_090_010: calculating...
-         S07_090_000: calculating...
-         S07_100_000: calculating...
-         S07_100_010: calculating...
-         S07_100_020: calculating...
-         S07_100_030: calculating...
-         S07_100_040: calculating...
-         S07_100_050: calculating...
-         S07_100_060: calculating...
-         S07_100_070: calculating...
-         S07_100_080: calculating...
-         S07_100_090: calculating...
-         S07_100_100: calculating...
-         S07_100_110: calculating...
-         S07_100_120: calculating...
-         S07_100_130: calculating...
-         S07_100_140: calculating...
-         S07_100_150: calculating...
-         S07_100_160: calculating...
-         S07_100_170: calculating...
-         S07_100_180: calculating...
-         S07_100_190: calculating...
-         S07_100_200: calculating...
-         S07_100_210: calculating...
-         S07_100_220: calculating...
-         S07_100_230: calculating...
-         S07_100_240: calculating...
-         S07_100_250: calculating...
-         S07_110_240: calculating...
-         S07_110_230: calculating...
-         S07_110_220: calculating...
-         S07_110_210: calculating...
-         S07_110_200: calculating...
-         S07_110_190: calculating...
-         S07_110_180: calculating...
-         S07_110_170: calculating...
-         S07_110_160: calculating...
-         S07_110_150: calculating...
-         S07_110_140: calculating...
-         S07_110_130: calculating...
-         S07_110_120: calculating...
-         S07_110_110: calculating...
-         S07_110_100: calculating...
-         S07_110_090: calculating...
-         S07_110_080: calculating...
-         S07_110_070: calculating...
-         S07_110_060: calculating...
-         S07_110_050: calculating...
-         S07_110_040: calculating...
-         S07_110_030: calculating...
-         S07_110_020: calculating...
-         S07_110_010: calculating...
-         S07_110_000: calculating...
-         S07_120_000: calculating...
-         S07_120_010: calculating...
-         S07_120_020: calculating...
-         S07_120_030: calculating...
-         S07_120_040: calculating...
-         S07_120_050: calculating...
-         S07_120_060: calculating...
-         S07_120_070: calculating...
-         S07_120_080: calculating...
-         S07_120_090: calculating...
-         S07_120_100: calculating...
-         S07_120_110: calculating...
-         S07_120_120: calculating...
-         S07_120_130: calculating...
-         S07_120_140: calculating...
-         S07_120_150: calculating...
-         S07_120_160: calculating...
-         S07_120_170: calculating...
-         S07_120_180: calculating...
-         S07_120_190: calculating...
-         S07_120_200: calculating...
-         S07_120_210: calculating...
-         S07_120_220: calculating...
-         S07_120_230: calculating...
-         S07_130_220: calculating...
-         S07_130_210: calculating...
-         S07_130_200: calculating...
-         S07_130_190: calculating...
-         S07_130_180: calculating...
-         S07_130_170: calculating...
-         S07_130_160: calculating...
-         S07_130_150: calculating...
-         S07_130_140: calculating...
-         S07_130_130: calculating...
-         S07_130_120: calculating...
-         S07_130_110: calculating...
-         S07_130_100: calculating...
-         S07_130_090: calculating...
-         S07_130_080: calculating...
-         S07_130_070: calculating...
-         S07_130_060: calculating...
-         S07_130_050: calculating...
-         S07_130_040: calculating...
-         S07_130_030: calculating...
-         S07_130_020: calculating...
-         S07_130_010: calculating...
-         S07_130_000: calculating...
-         S07_140_000: calculating...
-         S07_140_010: calculating...
-         S07_140_020: calculating...
-         S07_140_030: calculating...
-         S07_140_040: calculating...
-         S07_140_050: calculating...
-         S07_140_060: calculating...
-         S07_140_070: calculating...
-         S07_140_080: calculating...
-         S07_140_090: calculating...
-         S07_140_100: calculating...
-         S07_140_110: calculating...
-         S07_140_120: calculating...
-         S07_140_130: calculating...
-         S07_140_140: calculating...
-         S07_140_150: calculating...
-         S07_140_160: calculating...
-         S07_140_170: calculating...
-         S07_140_180: calculating...
-         S07_140_190: calculating...
-         S07_140_200: calculating...
-         S07_140_210: calculating...
-         S07_150_200: calculating...
-         S07_150_190: calculating...
-         S07_150_180: calculating...
-         S07_150_170: calculating...
-         S07_150_160: calculating...
-         S07_150_150: calculating...
-         S07_150_140: calculating...
-         S07_150_130: calculating...
-         S07_150_120: calculating...
-         S07_150_110: calculating...
-         S07_150_100: calculating...
-         S07_150_090: calculating...
-         S07_150_080: calculating...
-         S07_150_070: calculating...
-         S07_150_060: calculating...
-         S07_150_050: calculating...
-         S07_150_040: calculating...
-         S07_150_030: calculating...
-         S07_150_020: calculating...
-         S07_150_010: calculating...
-         S07_150_000: calculating...
-         S07_160_000: calculating...
-         S07_160_010: calculating...
-         S07_160_020: calculating...
-         S07_160_030: calculating...
-         S07_160_040: calculating...
-         S07_160_050: calculating...
-         S07_160_060: calculating...
-         S07_160_070: calculating...
-         S07_160_080: calculating...
-         S07_160_090: calculating...
-         S07_160_100: calculating...
-         S07_160_110: calculating...
-         S07_160_120: calculating...
-         S07_160_130: calculating...
-         S07_160_140: calculating...
-         S07_160_150: calculating...
-         S07_160_160: calculating...
-         S07_160_170: calculating...
-         S07_160_180: calculating...
-         S07_160_190: calculating...
-         S07_170_180: calculating...
-         S07_170_170: calculating...
-         S07_170_160: calculating...
-         S07_170_150: calculating...
-         S07_170_140: calculating...
-         S07_170_130: calculating...
-         S07_170_120: calculating...
-         S07_170_110: calculating...
-         S07_170_100: calculating...
-         S07_170_090: calculating...
-         S07_170_080: calculating...
-         S07_170_070: calculating...
-         S07_170_060: calculating...
-         S07_170_050: calculating...
-         S07_170_040: calculating...
-         S07_170_030: calculating...
-         S07_170_020: calculating...
-         S07_170_010: calculating...
-         S07_170_000: calculating...
-         S07_180_000: calculating...
-         S07_180_010: calculating...
-         S07_180_020: calculating...
-         S07_180_030: calculating...
-         S07_180_040: calculating...
-         S07_180_050: calculating...
-         S07_180_060: calculating...
-         S07_180_070: calculating...
-         S07_180_080: calculating...
-         S07_180_090: calculating...
-         S07_180_100: calculating...
-         S07_180_110: calculating...
-         S07_180_120: calculating...
-         S07_180_130: calculating...
-         S07_180_140: calculating...
-         S07_180_150: calculating...
-         S07_180_160: calculating...
-         S07_180_170: calculating...
-         S07_180_180: calculating...
-         S07_190_170: calculating...
-         S07_190_160: calculating...
-         S07_190_150: calculating...
-         S07_190_140: calculating...
-         S07_190_130: calculating...
-         S07_190_120: calculating...
-         S07_190_110: calculating...
-         S07_190_100: calculating...
-         S07_190_090: calculating...
-         S07_190_080: calculating...
-         S07_190_070: calculating...
-         S07_190_060: calculating...
-         S07_190_050: calculating...
-         S07_190_040: calculating...
-         S07_190_030: calculating...
-         S07_190_020: calculating...
-         S07_190_010: calculating...
-         S07_190_000: calculating...
-         S07_200_000: calculating...
-         S07_200_010: calculating...
-         S07_200_020: calculating...
-         S07_200_030: calculating...
-         S07_200_040: calculating...
-         S07_200_050: calculating...
-         S07_200_060: calculating...
-         S07_200_070: calculating...
-         S07_200_080: calculating...
-         S07_200_090: calculating...
-         S07_200_100: calculating...
-         S07_200_110: calculating...
-         S07_200_120: calculating...
-         S07_200_130: calculating...
-         S07_200_140: calculating...
-         S07_200_150: calculating...
-         S07_200_160: calculating...
-         S07_210_150: calculating...
-         S07_210_140: calculating...
-         S07_210_130: calculating...
-         S07_210_120: calculating...
-         S07_210_110: calculating...
-         S07_210_100: calculating...
-         S07_210_090: calculating...
-         S07_210_080: calculating...
-         S07_210_070: calculating...
-         S07_210_060: calculating...
-         S07_210_050: calculating...
-         S07_210_040: calculating...
-         S07_210_030: calculating...
-         S07_210_020: calculating...
-         S07_210_010: calculating...
-         S07_210_000: calculating...
-         S07_220_000: calculating...
-         S07_220_010: calculating...
-         S07_220_020: calculating...
-         S07_220_030: calculating...
-         S07_220_040: calculating...
-         S07_220_050: calculating...
-         S07_220_060: calculating...
-         S07_220_070: calculating...
-         S07_220_080: calculating...
-         S07_220_090: calculating...
-         S07_220_100: calculating...
-         S07_220_110: calculating...
-         S07_220_120: calculating...
-         S07_220_130: calculating...
-         S07_220_140: calculating...
-         S07_230_130: calculating...
-         S07_230_120: calculating...
-         S07_230_110: calculating...
-         S07_230_100: calculating...
-         S07_230_090: calculating...
-         S07_230_080: calculating...
-         S07_230_070: calculating...
-         S07_230_060: calculating...
-         S07_230_050: calculating...
-         S07_230_040: calculating...
-         S07_230_030: calculating...
-         S07_230_020: calculating...
-         S07_230_010: calculating...
-         S07_230_000: calculating...
-         S07_240_000: calculating...
-         S07_240_010: calculating...
-         S07_240_020: calculating...
-         S07_240_030: calculating...
-         S07_240_040: calculating...
-         S07_240_050: calculating...
-         S07_240_060: calculating...
-         S07_240_070: calculating...
-         S07_240_080: calculating...
-         S07_240_090: calculating...
-         S07_240_100: calculating...
-         S07_240_110: calculating...
-         S07_240_120: calculating...
-         S07_250_110: calculating...
-         S07_250_100: calculating...
-         S07_250_090: calculating...
-         S07_250_080: calculating...
-         S07_250_070: calculating...
-         S07_250_060: calculating...
-         S07_250_050: calculating...
-         S07_250_040: calculating...
-         S07_250_030: calculating...
-         S07_250_020: calculating...
-         S07_250_010: calculating...
-         S07_250_000: calculating...
-         S07_260_000: calculating...
-         S07_260_010: calculating...
-         S07_260_020: calculating...
-         S07_260_030: calculating...
-         S07_260_040: calculating...
-         S07_260_050: calculating...
-         S07_260_060: calculating...
-         S07_260_070: calculating...
-         S07_260_080: calculating...
-         S07_260_090: calculating...
-         S07_260_100: calculating...
-         S07_270_090: calculating...
-         S07_270_080: calculating...
-         S07_270_070: calculating...
-         S07_270_060: calculating...
-         S07_270_050: calculating...
-         S07_270_040: calculating...
-         S07_270_030: calculating...
-         S07_270_020: calculating...
-         S07_270_010: calculating...
-         S07_270_000: calculating...
-         S07_280_000: calculating...
-         S07_280_010: calculating...
-         S07_280_020: calculating...
-         S07_280_030: calculating...
-         S07_280_040: calculating...
-         S07_280_050: calculating...
-         S07_280_060: calculating...
-         S07_280_070: calculating...
-         S07_280_080: calculating...
-         S07_290_070: calculating...
-         S07_290_060: calculating...
-         S07_290_050: calculating...
-         S07_290_040: calculating...
-         S07_290_030: calculating...
-         S07_290_020: calculating...
-         S07_290_010: calculating...
-         S07_290_000: calculating...
-         S07_300_000: calculating...
-         S07_300_010: calculating...
-         S07_300_020: calculating...
-         S07_300_030: calculating...
-         S07_300_040: calculating...
-         S07_300_050: calculating...
-         S07_300_060: calculating...
-         S07_310_050: calculating...
-         S07_310_040: calculating...
-         S07_310_030: calculating...
-         S07_310_020: calculating...
-         S07_310_010: calculating...
-         S07_310_000: calculating...
-         S07_320_000: calculating...
-         S07_320_010: calculating...
-         S07_320_020: calculating...
-         S07_320_030: calculating...
-         S07_320_040: calculating...
-         S07_330_030: calculating...
-         S07_330_020: calculating...
-         S07_330_010: calculating...
-         S07_330_000: calculating...
-         S07_340_000: calculating...
-         S07_340_010: calculating...
-         S07_340_020: calculating...
-         S07_350_010: calculating...
-         S07_350_000: calculating...
+      Calculating PES (685 points)
 
       Minimum energy (EMIN) in calculated points is  -289.18402109 hartree
 
@@ -848,14 +167,14 @@
                      0.00 |  90.00 |  1927.57 
                      0.00 | 100.00 |  1842.64 
                      0.00 | 110.00 |  1778.02 
-                     0.00 | 120.00 |  1757.24 
+                     0.00 | 120.00 |  1757.23 
                      0.00 | 130.00 |  1797.38 
                      0.00 | 140.00 |  1910.54 
                      0.00 | 150.00 |  2096.06 
                      0.00 | 160.00 |  2325.02 
                      0.00 | 170.00 |  2527.49 
                      0.00 | 180.00 |  2610.64 
-                     0.00 | 190.00 |  2527.48 
+                     0.00 | 190.00 |  2527.49 
                      0.00 | 200.00 |  2325.03 
                      0.00 | 210.00 |  2096.06 
                      0.00 | 220.00 |  1910.53 
@@ -874,7 +193,7 @@
                      0.00 | 350.00 |    81.35 
                     10.00 |   0.00 |    50.60 
                     10.00 |  10.00 |   136.41 
-                    10.00 |  20.00 |   380.27 
+                    10.00 |  20.00 |   380.26 
                     10.00 |  30.00 |   756.95 
                     10.00 |  40.00 |  1207.37 
                     10.00 |  50.00 |  1633.11 
@@ -893,7 +212,7 @@
                     10.00 | 180.00 |  2666.52 
                     10.00 | 190.00 |  2554.13 
                     10.00 | 200.00 |  2328.92 
-                    10.00 | 210.00 |  2085.10 
+                    10.00 | 210.00 |  2085.09 
                     10.00 | 220.00 |  1890.93 
                     10.00 | 230.00 |  1774.09 
                     10.00 | 240.00 |  1735.16 
@@ -935,13 +254,13 @@
                     20.00 | 250.00 |  1844.49 
                     20.00 | 260.00 |  1932.92 
                     20.00 | 270.00 |  2046.58 
-                    20.00 | 280.00 |  2141.74 
+                    20.00 | 280.00 |  2141.73 
                     20.00 | 290.00 |  2157.29 
                     20.00 | 300.00 |  2029.48 
                     20.00 | 310.00 |  1730.29 
                     20.00 | 320.00 |  1307.95 
                     20.00 | 330.00 |   867.19 
-                    30.00 |   0.00 |   413.81 
+                    30.00 |   0.00 |   413.80 
                     30.00 |  10.00 |   512.08 
                     30.00 |  20.00 |   774.50 
                     30.00 |  30.00 |  1172.17 
@@ -950,13 +269,13 @@
                     30.00 |  60.00 |  2382.69 
                     30.00 |  70.00 |  2530.96 
                     30.00 |  80.00 |  2554.89 
-                    30.00 |  90.00 |  2510.49 
+                    30.00 |  90.00 |  2510.48 
                     30.00 | 100.00 |  2445.80 
                     30.00 | 110.00 |  2394.09 
                     30.00 | 120.00 |  2378.94 
                     30.00 | 130.00 |  2419.48 
                     30.00 | 140.00 |  2528.67 
-                    30.00 | 150.00 |  2702.52 
+                    30.00 | 150.00 |  2702.53 
                     30.00 | 160.00 |  2903.72 
                     30.00 | 170.00 |  3052.82 
                     30.00 | 180.00 |  3058.04 
@@ -964,17 +283,17 @@
                     30.00 | 200.00 |  2617.60 
                     30.00 | 210.00 |  2337.74 
                     30.00 | 220.00 |  2120.27 
-                    30.00 | 230.00 |  1993.45 
+                    30.00 | 230.00 |  1993.46 
                     30.00 | 240.00 |  1958.35 
                     30.00 | 250.00 |  2002.16 
                     30.00 | 260.00 |  2103.93 
                     30.00 | 270.00 |  2232.53 
                     30.00 | 280.00 |  2341.09 
                     30.00 | 290.00 |  2366.43 
-                    30.00 | 300.00 |  2244.21 
+                    30.00 | 300.00 |  2244.20 
                     30.00 | 310.00 |  1947.22 
                     30.00 | 320.00 |  1524.90 
-                    40.00 |   0.00 |   676.44 
+                    40.00 |   0.00 |   676.43 
                     40.00 |  10.00 |   782.20 
                     40.00 |  20.00 |  1055.05 
                     40.00 |  30.00 |  1463.66 
@@ -1034,7 +353,7 @@
                     50.00 | 250.00 |  2397.74 
                     50.00 | 260.00 |  2522.54 
                     50.00 | 270.00 |  2675.77 
-                    50.00 | 280.00 |  2807.22 
+                    50.00 | 280.00 |  2807.21 
                     50.00 | 290.00 |  2853.23 
                     50.00 | 300.00 |  2749.79 
                     60.00 |   0.00 |  1199.83 
@@ -1057,7 +376,7 @@
                     60.00 | 170.00 |  3819.03 
                     60.00 | 180.00 |  3778.01 
                     60.00 | 190.00 |  3557.57 
-                    60.00 | 200.00 |  3230.15 
+                    60.00 | 200.00 |  3230.14 
                     60.00 | 210.00 |  2903.30 
                     60.00 | 220.00 |  2653.98 
                     60.00 | 230.00 |  2515.05 
@@ -1070,10 +389,10 @@
                     70.00 |   0.00 |  1406.21 
                     70.00 |  10.00 |  1533.75 
                     70.00 |  20.00 |  1828.16 
-                    70.00 |  30.00 |  2253.69 
+                    70.00 |  30.00 |  2253.68 
                     70.00 |  40.00 |  2741.94 
                     70.00 |  50.00 |  3192.51 
-                    70.00 |  60.00 |  3511.67 
+                    70.00 |  60.00 |  3511.68 
                     70.00 |  70.00 |  3667.02 
                     70.00 |  80.00 |  3687.83 
                     70.00 |  90.00 |  3628.73 
@@ -1110,7 +429,7 @@
                     80.00 | 110.00 |  3572.21 
                     80.00 | 120.00 |  3521.92 
                     80.00 | 130.00 |  3528.13 
-                    80.00 | 140.00 |  3599.28 
+                    80.00 | 140.00 |  3599.27 
                     80.00 | 150.00 |  3726.32 
                     80.00 | 160.00 |  3869.65 
                     80.00 | 170.00 |  3952.27 
@@ -1129,7 +448,7 @@
                     90.00 |  20.00 |  2094.69 
                     90.00 |  30.00 |  2516.65 
                     90.00 |  40.00 |  2998.36 
-                    90.00 |  50.00 |  3443.22 
+                    90.00 |  50.00 |  3443.21 
                     90.00 |  60.00 |  3756.20 
                     90.00 |  70.00 |  3899.61 
                     90.00 |  80.00 |  3900.68 
@@ -1186,9 +505,9 @@
                    110.00 |  60.00 |  3810.07 
                    110.00 |  70.00 |  3923.49 
                    110.00 |  80.00 |  3887.36 
-                   110.00 |  90.00 |  3765.65 
+                   110.00 |  90.00 |  3765.64 
                    110.00 | 100.00 |  3617.11 
-                   110.00 | 110.00 |  3481.72 
+                   110.00 | 110.00 |  3481.71 
                    110.00 | 120.00 |  3383.06 
                    110.00 | 130.00 |  3334.27 
                    110.00 | 140.00 |  3339.64 
@@ -1204,9 +523,9 @@
                    110.00 | 240.00 |  2029.17 
                    120.00 |   0.00 |  1792.69 
                    120.00 |  10.00 |  1936.98 
-                   120.00 |  20.00 |  2229.55 
+                   120.00 |  20.00 |  2229.54 
                    120.00 |  30.00 |  2638.88 
-                   120.00 |  40.00 |  3104.07 
+                   120.00 |  40.00 |  3104.06 
                    120.00 |  50.00 |  3527.72 
                    120.00 |  60.00 |  3806.77 
                    120.00 |  70.00 |  3898.49 
@@ -1236,11 +555,11 @@
                    130.00 |  70.00 |  3866.63 
                    130.00 |  80.00 |  3779.12 
                    130.00 |  90.00 |  3609.98 
-                   130.00 | 100.00 |  3419.53 
+                   130.00 | 100.00 |  3419.54 
                    130.00 | 110.00 |  3244.47 
                    130.00 | 120.00 |  3102.91 
                    130.00 | 130.00 |  3001.76 
-                   130.00 | 140.00 |  2940.07 
+                   130.00 | 140.00 |  2940.06 
                    130.00 | 150.00 |  2906.78 
                    130.00 | 160.00 |  2874.00 
                    130.00 | 170.00 |  2790.70 
@@ -1298,14 +617,14 @@
                    160.00 |  30.00 |  2749.78 
                    160.00 |  40.00 |  3182.78 
                    160.00 |  50.00 |  3563.78 
-                   160.00 |  60.00 |  3772.81 
+                   160.00 |  60.00 |  3772.82 
                    160.00 |  70.00 |  3768.70 
                    160.00 |  80.00 |  3608.21 
                    160.00 |  90.00 |  3371.93 
                    160.00 | 100.00 |  3115.57 
                    160.00 | 110.00 |  2864.01 
                    160.00 | 120.00 |  2621.01 
-                   160.00 | 130.00 |  2383.57 
+                   160.00 | 130.00 |  2383.56 
                    160.00 | 140.00 |  2156.60 
                    160.00 | 150.00 |  1955.82 
                    160.00 | 160.00 |  1789.27 
@@ -1345,7 +664,7 @@
                    180.00 | 110.00 |  2569.35 
                    180.00 | 120.00 |  2220.59 
                    180.00 | 130.00 |  1860.35 
-                   180.00 | 140.00 |  1528.94 
+                   180.00 | 140.00 |  1528.93 
                    180.00 | 150.00 |  1277.30 
                    180.00 | 160.00 |  1138.46 
                    180.00 | 170.00 |  1099.97 
@@ -1371,7 +690,7 @@
                    200.00 |   0.00 |  1996.78 
                    200.00 |  10.00 |  2037.27 
                    200.00 |  20.00 |  2229.25 
-                   200.00 |  30.00 |  2550.09 
+                   200.00 |  30.00 |  2550.08 
                    200.00 |  40.00 |  2941.72 
                    200.00 |  50.00 |  3294.19 
                    200.00 |  60.00 |  3479.93 
@@ -1389,7 +708,7 @@
                    210.00 |  10.00 |  1965.51 
                    210.00 |  20.00 |  2146.72 
                    210.00 |  30.00 |  2459.25 
-                   210.00 |  40.00 |  2844.48 
+                   210.00 |  40.00 |  2844.47 
                    210.00 |  50.00 |  3191.75 
                    210.00 |  60.00 |  3375.41 
                    210.00 |  70.00 |  3350.75 
@@ -1471,10 +790,10 @@
                    270.00 |  20.00 |  1898.74 
                    270.00 |  30.00 |  2240.25 
                    270.00 |  40.00 |  2648.82 
-                   270.00 |  50.00 |  3013.25 
+                   270.00 |  50.00 |  3013.24 
                    270.00 |  60.00 |  3228.31 
                    270.00 |  70.00 |  3263.72 
-                   270.00 |  80.00 |  3157.73 
+                   270.00 |  80.00 |  3157.74 
                    270.00 |  90.00 |  2969.15 
                    280.00 |   0.00 |  1558.26 
                    280.00 |  10.00 |  1601.88 
@@ -1490,7 +809,7 @@
                    290.00 |  20.00 |  1679.56 
                    290.00 |  30.00 |  2039.30 
                    290.00 |  40.00 |  2468.94 
-                   290.00 |  50.00 |  2862.28 
+                   290.00 |  50.00 |  2862.27 
                    290.00 |  60.00 |  3113.84 
                    290.00 |  70.00 |  3186.49 
                    300.00 |   0.00 |  1199.83 
@@ -1512,7 +831,7 @@
                    320.00 |  30.00 |  1343.68 
                    320.00 |  40.00 |  1785.94 
                    330.00 |   0.00 |   413.80 
-                   330.00 |  10.00 |   485.65 
+                   330.00 |  10.00 |   485.64 
                    330.00 |  20.00 |   718.01 
                    330.00 |  30.00 |  1083.37 
                    340.00 |   0.00 |   195.28 
@@ -1524,8 +843,11 @@
                      phi1, phi2 in degrees    
                      E-EMIN in cm^-1          
 
+      Rewriting 'IOfiles/S07.pes' file
+        * Number of 'FAIL' points: 0
 
-                                          | Elapsed time 2.3 hours |
+
+                                          | Elapsed time 153.0 msecs |
 
    \\\\\\\\\\\\\\\\\\\\\\\ ///////////////////////
        End of execution of Q2DTor with --pes  
@@ -1536,6 +858,7 @@
    *==============================
    | Executing Q2DTor with option: --fourier  [Fitting the numerical 2D-PES to Fourier series]
    *==============================
+     Data: 2019-03-24 20:51
 
      Information read by the input file:
         * symmetry      b
@@ -2939,6 +2262,8 @@
       Performing a fit to Fourier series 
      ====================================
 
+        * File 'IOfiles/S07.vfit' exists. Using its data as guess...
+
         * Elements in Fourier series (117):
           number of constants               : 1
           number of cos(i*phi1)             : 9
@@ -3075,13 +2400,13 @@
             average abs. errors:
                  1.2e+00 cm^-1
                  8.7e-01 cm^-1 (for points below mean value)
-            elapsed time: 963.6 seconds
+            elapsed time: 85.0 seconds
           ---------------------------------------------------------------
 
      Storing the fitting parameters at: IOfiles/S07.vfit
 
 
-                                          | Elapsed time 16.1 mins |
+                                          | Elapsed time 1.4 mins |
 
    \\\\\\\\\\\\\\\\\\\\\\\ ///////////////////////
        End of execution of Q2DTor with --fourier  
@@ -3092,6 +2417,7 @@
    *==============================
    | Executing Q2DTor with option: --findsp  [Looking for stationary points in the fitted 2D-PES]
    *==============================
+     Data: 2019-03-24 20:54
 
      Information read by the input file:
         * symmetry      b
@@ -3182,7 +2508,7 @@
                 -------------------------------
 
 
-                                          | Elapsed time 48.5 secs |
+                                          | Elapsed time 34.2 secs |
 
    \\\\\\\\\\\\\\\\\\\\\\\ ///////////////////////
        End of execution of Q2DTor with --findsp  
@@ -3193,6 +2519,7 @@
    *==============================
    | Executing Q2DTor with option: --optsp  [Optimizing the stationary points]
    *==============================
+     Data: 2019-03-24 20:55
 
      Information read by the input file:
         * ttype         min
@@ -3369,16 +2696,15 @@
 
      Generation of non-redundant internal coordinates
         - File 'IOfiles/S07.ics' already exists
-          number of internal coordinates: 25
-        - Creating copy of original set: IOfiles/S07.ics_original
+          number of internal coordinates: 24
 
-        - Depurating using 'S07_200_151' critical point... 
-             removing IC 2-4-8...
+        - Skipping step: number of icoords = number of vib d.o.f.
 
         - Checking set of non-redundant internal coordinates
              * MIN01 --> S07_000_000 --> OK
+             * MIN02 --> S07_200_151 --> OK
              * TS_01 --> S07_180_180 --> OK
-             * MIN02 --> S07_007_241 --> OK
+             * MIN03 --> S07_007_241 --> OK
              * TS_02 --> S07_003_285 --> OK
              * TS_03 --> S07_180_000 --> OK
              * TS_04 --> S07_074_237 --> OK
@@ -4159,7 +3485,7 @@
      The information about each stationary point is stored at: IOfiles/S07.spinfo
 
 
-                                          | Elapsed time 8.3 mins |
+                                          | Elapsed time 5.9 mins |
 
    \\\\\\\\\\\\\\\\\\\\\\\ ///////////////////////
        End of execution of Q2DTor with --optsp  
@@ -4170,6 +3496,7 @@
    *==============================
    | Executing Q2DTor with option: --tor2dns  [Calculating the 2D-NS torsional eigenvalues]
    *==============================
+     Data: 2019-03-24 21:42
 
      Information from input file:
         * torsion1      1-2-5-10
@@ -4203,9 +3530,9 @@
         - file name: IOfiles/S07.ics
                1-2            1-3            1-6            2-4            2-5  
                4-7            4-8            4-9           5-10          1-2-5  
-             2-1-6          2-4-7          2-4-9         2-5-10          3-1-6  
-             4-2-5          7-4-9          8-4-9        1-2-4-7       1-2-5-10  
-           1-4-5-2        2-3-6-1        4-2-1-6        7-8-9-4  
+             2-1-6          2-4-8          2-4-9         2-5-10          3-1-6  
+             4-2-5          7-4-8          8-4-9        1-2-4-7       1-2-5-10  
+           1-4-5-2        2-3-6-1        2-7-8-4        4-2-1-6  
 
         - file name: IOfiles/S07.pes
           number of points    684
@@ -4228,7 +3555,7 @@
         * Calculating...
         * Diagonalizing...
               last eigenvalue is  2712.71 cm^-1
-              last eigenvalue is  3102.70 cm^-1
+              last eigenvalue is  3102.71 cm^-1
               last eigenvalue is  3407.97 cm^-1
               last eigenvalue is  3668.14 cm^-1
               last eigenvalue is  3904.67 cm^-1
@@ -4247,8 +3574,8 @@
               last eigenvalue is  6684.63 cm^-1
               last eigenvalue is  6900.21 cm^-1
               last eigenvalue is  7106.18 cm^-1
-              last eigenvalue is  7319.94 cm^-1
-              last eigenvalue is  7531.78 cm^-1
+              last eigenvalue is  7319.91 cm^-1
+              last eigenvalue is  7531.80 cm^-1
               last eigenvalue is  7739.96 cm^-1
               last eigenvalue is  7958.49 cm^-1
               last eigenvalue is  8175.00 cm^-1
@@ -4312,503 +3639,503 @@
              3048.55   3048.96   3050.69   3053.54   3057.58   3059.12   3063.42   3063.43
              3067.57   3069.23   3071.50   3071.92   3074.68   3075.27   3075.33   3075.93
              3078.68   3079.22   3080.99   3084.18   3085.06   3085.43   3094.07   3095.78
-             3101.04   3102.70   3102.70   3110.20   3115.14   3115.24   3115.70   3116.20
-             3121.92   3122.24   3130.67   3130.76   3131.15   3132.91   3134.14   3139.30
-             3141.52   3144.50   3147.39   3150.58   3150.87   3152.34   3153.03   3155.36
-             3157.54   3159.46   3166.73   3166.78   3170.29   3174.55   3175.64   3180.51
-             3180.72   3183.67   3185.41   3187.57   3187.60   3189.95   3191.09   3193.58
-             3199.81   3200.48   3202.45   3205.12   3207.38   3209.27   3210.18   3213.96
-             3217.20   3222.31   3222.89   3223.59   3227.14   3228.13   3228.43   3231.83
-             3232.78   3234.41   3235.45   3236.55   3238.93   3241.27   3241.97   3249.25
-             3249.58   3252.46   3252.99   3254.86   3255.69   3257.56   3265.91   3271.71
-             3272.14   3276.70   3280.40   3280.92   3282.31   3283.00   3289.89   3295.27
-             3296.33   3298.21   3298.61   3299.91   3301.34   3303.10   3303.59   3305.44
-             3309.19   3309.23   3310.63   3310.67   3311.19   3311.21   3313.70   3317.27
-             3318.05   3320.80   3321.25   3324.87   3328.93   3332.53   3334.17   3336.04
-             3337.39   3339.40   3343.58   3346.96   3348.69   3350.39   3350.42   3351.48
-             3354.30   3354.33   3356.01   3356.60   3363.58   3364.31   3367.38   3368.06
-             3372.22   3376.67   3377.04   3381.46   3384.92   3388.54   3389.31   3391.54
-             3392.37   3394.29   3394.31   3398.50   3398.84   3404.38   3405.10   3407.97
-             3409.62   3409.69   3413.85   3416.29   3417.09   3424.61   3424.91   3426.31
-             3429.53   3429.72   3432.63   3434.18   3434.62   3434.89   3436.24   3436.30
-             3438.04   3438.06   3439.61   3445.44   3446.84   3448.52   3449.75   3454.38
-             3458.46   3460.82   3461.80   3466.10   3466.28   3466.54   3466.94   3468.21
-             3469.19   3471.70   3472.13   3473.58   3479.04   3481.04   3481.10   3481.25
-             3489.53   3490.43   3492.91   3494.55   3496.50   3496.96   3499.81   3502.71
-             3509.51   3510.12   3511.78   3513.20   3516.25   3516.94   3519.58   3522.43
-             3522.57   3525.38   3527.50   3530.17   3530.21   3534.65   3539.11   3540.90
-             3542.50   3543.44   3546.16   3547.99   3548.39   3549.03   3550.05   3550.43
-             3550.93   3558.91   3559.22   3560.18   3560.24   3562.19   3569.60   3569.82
-             3569.94   3570.09   3574.43   3574.55   3575.39   3576.51   3577.78   3577.93
-             3582.51   3584.42   3585.72   3590.28   3590.45   3592.74   3594.27   3596.33
-             3596.81   3603.27   3606.67   3608.96   3610.14   3612.26   3614.19   3618.45
-             3619.97   3622.21   3624.04   3625.60   3628.74   3629.36   3631.14   3633.88
-             3634.62   3634.75   3635.14   3636.59   3638.97   3641.84   3649.48   3649.82
-             3650.73   3656.24   3657.33   3659.07   3659.15   3661.84   3662.83   3663.19
-             3666.00   3668.12   3668.14   3672.29   3672.74   3673.51   3675.33   3676.29
-             3679.29   3680.77   3681.90   3682.48   3683.20   3685.59   3686.18   3688.44
-             3689.59   3689.79   3690.94   3694.05   3698.08   3699.06   3701.72   3703.53
-             3705.42   3706.26   3708.30   3710.38   3711.84   3713.60   3720.54   3720.58
-             3721.83   3723.07   3724.08   3725.08   3729.36   3732.05   3732.05   3733.42
-             3734.06   3737.94   3740.61   3744.68   3745.49   3748.79   3749.53   3753.70
-             3755.30   3755.63   3756.88   3758.01   3759.74   3762.22   3763.66   3765.68
-             3768.25   3769.38   3771.92   3771.95   3773.39   3774.08   3775.26   3775.69
-             3776.52   3778.42   3779.96   3783.11   3783.32   3786.42   3790.88   3791.24
-             3792.49   3794.69   3796.05   3796.35   3803.35   3803.40   3803.50   3803.80
-             3803.97   3808.32   3808.81   3809.49   3816.68   3818.05   3818.79   3822.46
-             3822.72   3830.01   3831.29   3832.48   3835.08   3836.19   3836.77   3837.00
-             3838.13   3839.58   3842.29   3844.51   3846.88   3849.25   3849.43   3851.89
-             3852.81   3853.75   3857.18   3857.18   3860.58   3861.93   3864.12   3865.18
-             3865.74   3867.05   3870.42   3873.08   3874.77   3874.81   3876.83   3878.39
-             3880.22   3881.21   3881.78   3882.51   3883.30   3888.55   3891.95   3894.19
-             3895.91   3897.98   3898.78   3904.67   3904.93   3906.31   3906.32   3912.27
-             3912.42   3913.92   3916.19   3920.63   3921.63   3922.44   3922.77   3923.11
-             3923.53   3924.40   3927.93   3928.14   3931.86   3933.33   3935.66   3936.04
-             3939.52   3940.29   3942.96   3943.08   3943.09   3943.93   3944.12   3948.46
-             3948.46   3950.19   3952.83   3952.99   3958.90   3958.98   3959.64   3961.47
-             3963.76   3964.33   3965.27   3965.41   3969.67   3973.85   3974.96   3977.23
-             3978.66   3978.71   3980.97   3980.97   3981.71   3983.70   3988.72   3990.95
-             3994.74   3994.77   3995.87   3997.24   3998.38   3998.68   4000.10   4002.99
-             4008.92   4010.68   4011.98   4012.56   4015.48   4015.63   4017.72   4017.89
-             4024.16   4025.15   4026.31   4027.48   4028.11   4028.59   4030.44   4030.96
-             4031.67   4032.18   4033.75   4033.75   4039.27   4039.27   4039.75   4042.34
-             4043.22   4044.17   4044.51   4049.93   4052.85   4055.75   4060.47   4061.65
-             4063.81   4064.26   4066.71   4067.36   4068.45   4068.52   4072.98   4073.05
-             4073.52   4081.81   4082.83   4086.00   4086.35   4086.96   4087.00   4088.91
-             4090.34   4093.40   4093.89   4096.35   4098.36   4101.73   4102.39   4103.24
-             4103.24   4106.63   4108.75   4110.69   4110.69   4112.14   4112.30   4113.03
-             4116.29   4116.47   4118.56   4118.69   4121.35   4121.42   4122.21   4125.41
-             4126.61   4129.30   4135.10   4135.66   4138.04   4140.44   4143.18   4143.62
-             4145.34   4148.54   4149.86   4151.21   4152.75   4153.44   4153.44   4154.29
-             4155.59   4163.37   4164.95   4166.76   4167.09   4168.49   4172.35   4173.84
-             4174.52   4174.54   4176.60   4180.57   4182.46   4184.91   4185.37   4189.20
-             4189.79   4190.02   4190.78   4195.20   4195.54   4195.98   4196.91   4198.92
-             4200.32   4201.57   4201.75   4201.75   4204.51   4205.61   4210.43   4211.97
-             4211.98   4213.10   4213.77   4222.47   4223.70   4223.80   4223.80   4224.90
-             4226.02   4229.95   4230.64   4233.45   4235.11   4235.67   4241.32   4242.00
-             4242.75   4245.09   4247.56   4249.04   4250.58   4255.63   4256.51   4261.21
-             4262.90   4264.88   4264.88   4265.00   4266.61   4267.81   4270.08   4270.16
-             4271.66   4272.60   4274.95   4275.17   4278.27   4280.49   4281.72   4282.73
-             4283.13   4287.29   4288.28   4291.25   4291.59   4300.13   4300.13   4300.28
-             4300.51   4300.51   4303.37   4303.37   4306.93   4307.00   4307.96   4308.94
-             4312.58   4312.80   4316.68   4317.38   4317.49   4323.80   4325.54   4325.74
-             4325.87   4326.70   4326.70   4328.27   4330.25   4333.56   4336.90   4336.98
-             4339.68   4341.34   4342.42   4342.42   4342.80   4343.30   4345.67   4345.67
-             4348.75   4350.05   4355.22   4358.49   4359.39   4366.08   4367.62   4368.15
-             4368.78   4369.38   4372.91   4372.98   4374.56   4374.72   4378.43   4379.32
-             4385.30   4385.35   4385.42   4385.73   4385.74   4386.52   4387.67   4391.79
-             4392.15   4395.76   4396.03   4396.20   4397.01   4397.92   4400.14   4401.52
-             4402.68   4402.84   4405.03   4405.66   4406.83   4407.64   4410.36   4412.46
-             4414.82   4415.42   4420.53   4423.44   4431.95   4433.12   4434.18   4434.70
-             4438.80   4440.90   4441.95   4442.40   4444.49   4444.90   4448.82   4450.25
-             4450.25   4452.01   4457.28   4457.38   4457.86   4457.86   4458.80   4458.80
-             4464.57   4465.10   4466.59   4467.52   4468.10   4468.25   4468.44   4468.54
-             4468.68   4469.08   4476.95   4477.57   4478.01   4478.06   4479.01   4481.33
-             4482.94   4483.41   4484.13   4484.34   4493.70   4493.95   4495.01   4495.65
-             4496.33   4496.34   4509.77   4509.79   4509.99   4510.03   4513.79   4517.83
-             4520.30   4520.34   4523.48   4523.71   4528.04   4528.06   4533.78   4533.87
-             4535.61   4535.86   4539.53   4539.77   4544.90   4546.18   4547.69   4547.99
-             4548.22   4548.50   4550.35   4550.51   4551.13   4553.11   4559.10   4559.13
-             4563.73   4564.06   4565.02   4565.07   4570.72   4570.77   4571.54   4571.54
-             4573.12   4573.24   4574.41   4574.77   4576.97   4577.40   4583.28   4583.71
-             4584.81   4586.43   4587.73   4588.02   4593.71   4594.80   4595.73   4596.23
-             4606.89   4607.39   4608.17   4608.33   4619.22   4620.08   4620.35   4622.11
-             4624.35   4624.38   4624.77   4624.78   4625.26   4625.74   4630.73   4630.85
-             4632.07   4632.14   4634.97   4635.83   4640.03   4640.14   4645.13   4647.42
-             4649.82   4651.75   4653.89   4654.17   4654.38   4655.74   4657.65   4658.36
-             4664.46   4665.14   4666.35   4666.90   4673.82   4674.14   4676.81   4676.86
-             4683.43   4684.06   4685.95   4686.30   4686.79   4686.80   4688.32   4690.32
-             4693.43   4693.43   4693.75   4693.96   4696.18   4696.34   4697.27   4697.28
-             4699.60   4699.83   4705.80   4706.06   4708.40   4708.40   4708.42   4708.42
-             4709.70   4711.61   4714.93   4715.81   4717.14   4718.65   4718.65   4718.90
-             4724.56   4724.60   4728.97   4729.34   4729.52   4730.85   4739.23   4739.28
-             4744.52   4744.76   4748.29   4749.22   4749.94   4750.23   4751.70   4751.77
-             4755.21   4755.44   4759.32   4759.33   4762.57   4762.57   4767.33   4767.39
-             4768.52   4768.52   4773.33   4773.34   4774.23   4774.31   4775.54   4775.55
-             4782.55   4782.55   4787.03   4787.05   4792.19   4792.19   4793.76   4793.76
-             4793.78   4793.78   4794.38   4794.61   4795.20   4795.35   4799.01   4799.10
-             4804.78   4804.92   4808.08   4808.12   4811.85   4811.85   4814.51   4814.54
-             4818.74   4818.75   4822.50   4822.51   4833.12   4833.13   4836.65   4836.65
-             4838.35   4838.79   4842.24   4842.42   4843.50   4843.50   4845.73   4846.03
-             4849.97   4850.18   4853.63   4853.69   4855.95   4856.07   4859.36   4859.57
-             4864.88   4864.92   4868.10   4868.10   4870.22   4870.31   4874.30   4874.48
-             4875.78   4875.80   4876.73   4876.76   4876.77   4876.79   4883.78   4883.78
-             4891.74   4891.75   4897.40   4897.42   4897.99   4897.99   4899.70   4899.70
-             4905.83   4905.87   4906.89   4906.90   4910.94   4910.99   4914.61   4914.77
-             4919.56   4919.56   4925.42   4925.45   4926.35   4926.38   4928.28   4928.28
-             4934.91   4934.98   4938.30   4938.32   4942.31   4942.33   4943.70   4943.73
-             4947.10   4947.25   4954.63   4954.67   4956.66   4956.68   4956.72   4956.75
-             4957.10   4957.21   4959.60   4959.60   4967.03   4967.03   4973.54   4973.68
-             4975.75   4975.79   4977.15   4977.25   4982.47   4982.70   4987.74   4987.77
-             4994.59   4994.62   5000.45   5000.48   5001.82   5001.82   5004.80   5004.88
-             5009.03   5009.06   5011.58   5011.77   5014.77   5014.80   5016.69   5016.74
-             5018.43   5018.91   5020.25   5020.28   5021.55   5022.10   5022.49   5022.54
-             5032.51   5032.53   5032.56   5032.56   5033.08   5033.10   5038.80   5038.81
-             5042.41   5042.41   5044.92   5045.09   5047.38   5047.55   5053.05   5053.13
-             5061.24   5061.24   5071.78   5071.90   5073.72   5073.95   5079.04   5079.08
-             5082.53   5082.57   5084.14   5084.29   5087.89   5088.03   5089.07   5089.07
-             5095.06   5095.13   5100.33   5100.33   5100.94   5100.97   5101.49   5101.50
-             5104.66   5104.67   5105.58   5105.60   5105.72   5105.74   5111.53   5111.54
-             5113.13   5113.15   5114.84   5114.84   5119.71   5119.73   5121.81   5121.82
-             5124.46   5124.48   5132.28   5132.30   5138.25   5138.25   5144.33   5144.33
-             5150.13   5150.13   5152.66   5152.67   5153.90   5153.90   5155.44   5155.50
-             5158.94   5158.96   5163.53   5163.57   5165.77   5165.77   5165.77   5165.77
-             5167.16   5167.16   5170.38   5170.41   5175.86   5175.88   5177.68   5177.71
-             5187.07   5187.08   5191.57   5191.58   5193.74   5193.74   5196.51   5196.51
-             5200.91   5200.92   5205.38   5205.64   5205.78   5206.03   5209.44   5209.44
-             5209.44   5209.45   5215.87   5215.89   5217.65   5217.65   5218.71   5218.72
-             5222.93   5222.94   5226.03   5226.09   5227.91   5227.95   5235.53   5235.53
-             5240.42   5240.43   5246.18   5246.19   5251.24   5251.24   5251.25   5251.25
-             5253.49   5253.49   5260.12   5260.12   5262.29   5262.29   5262.55   5262.55
-             5265.24   5265.25   5268.08   5268.09   5274.79   5274.79   5276.77   5276.77
-             5282.24   5282.24   5282.75   5282.76   5284.14   5284.14   5285.67   5285.68
-             5291.32   5291.32   5293.62   5293.63   5298.84   5298.84   5303.05   5303.05
-             5304.86   5304.86   5314.95   5314.95   5317.68   5317.70   5318.96   5319.00
-             5321.12   5321.13   5323.53   5323.54   5327.93   5327.93   5332.01   5332.01
-             5334.31   5334.31   5334.32   5334.32   5337.89   5337.89   5344.97   5344.97
-             5350.78   5350.78   5354.15   5354.17   5358.10   5358.10   5360.66   5360.67
-             5362.34   5362.34   5369.93   5369.94   5371.26   5371.26   5373.42   5373.43
-             5375.87   5375.88   5381.97   5381.98   5387.32   5387.34   5389.50   5389.51
-             5391.25   5391.27   5393.09   5393.09   5401.45   5401.45   5403.19   5403.19
-             5404.66   5404.66   5406.99   5406.99   5408.75   5408.75   5414.29   5414.29
-             5414.36   5414.36   5423.37   5423.38   5425.36   5425.38   5428.34   5428.34
-             5430.82   5430.82   5435.74   5435.76   5437.86   5437.88   5444.30   5444.30
-             5444.44   5444.44   5451.91   5451.91   5455.49   5455.49   5458.40   5458.42
-             5458.81   5458.84   5465.42   5465.46   5469.29   5469.32   5470.45   5470.45
-             5474.89   5474.89   5480.90   5480.90   5482.73   5482.73   5487.56   5487.57
-             5490.07   5490.07   5490.19   5490.19   5490.82   5490.82   5496.90   5496.90
-             5499.31   5499.32   5501.53   5501.54   5506.47   5506.47   5511.26   5511.26
-             5513.44   5513.45   5524.48   5524.49   5528.05   5528.05   5530.41   5530.41
-             5534.45   5534.46   5537.59   5537.59   5540.84   5540.84   5543.59   5543.60
-             5544.22   5544.24   5545.30   5545.32   5549.02   5549.03   5557.59   5557.60
-             5558.19   5558.19   5558.55   5558.55   5563.40   5563.40   5567.73   5567.73
-             5568.86   5568.86   5570.51   5570.51   5574.75   5574.75   5577.19   5577.19
-             5579.68   5579.68   5585.36   5585.36   5589.58   5589.59   5594.78   5594.78
-             5602.36   5602.36   5608.53   5608.53   5613.14   5613.14   5614.79   5614.79
-             5615.39   5615.39   5615.51   5615.51   5617.38   5617.38   5623.96   5623.96
-             5630.07   5630.07   5633.79   5633.79   5636.80   5636.80   5641.60   5641.60
-             5649.65   5649.65   5652.26   5652.26   5652.34   5652.34   5656.55   5656.55
-             5660.40   5660.40   5661.63   5661.64   5663.39   5663.39   5670.44   5670.44
-             5670.59   5670.59   5670.59   5670.59   5671.23   5671.23   5673.38   5673.38
-             5674.56   5674.56   5682.81   5682.81   5684.78   5684.78   5687.64   5687.64
-             5688.75   5688.75   5693.64   5693.64   5703.38   5703.38   5704.59   5704.59
-             5705.76   5705.76   5709.77   5709.77   5719.07   5719.07   5724.37   5724.37
-             5729.08   5729.08   5729.75   5729.75   5736.90   5736.90   5739.07   5739.07
-             5741.36   5741.36   5743.75   5743.75   5747.22   5747.22   5749.61   5749.61
-             5753.85   5753.85   5756.17   5756.17   5756.17   5756.17   5759.27   5759.27
-             5766.00   5766.00   5766.32   5766.32   5772.56   5772.56   5774.62   5774.62
-             5776.88   5776.88   5778.81   5778.81   5778.95   5778.95   5783.22   5783.22
-             5790.61   5790.61   5795.22   5795.22   5808.09   5808.09   5809.71   5809.71
-             5813.28   5813.29   5813.40   5813.42   5814.78   5814.79   5818.52   5818.53
-             5821.59   5821.59   5825.36   5825.36   5825.63   5825.63   5832.42   5832.42
-             5837.64   5837.64   5839.32   5839.32   5839.33   5839.33   5844.21   5844.21
-             5849.62   5849.62   5855.52   5855.52   5856.90   5856.90   5859.51   5859.51
-             5865.04   5865.04   5866.73   5866.73   5871.27   5871.27   5879.62   5879.62
-             5881.34   5881.34   5883.91   5883.91   5884.91   5884.91   5885.88   5885.88
-             5888.99   5888.99   5891.13   5891.13   5892.22   5892.22   5900.02   5900.02
-             5904.78   5904.78   5905.46   5905.46   5906.67   5906.67   5915.87   5915.87
-             5919.34   5919.34   5919.42   5919.42   5920.43   5920.43   5921.02   5921.03
-             5923.79   5923.79   5932.65   5932.65   5936.34   5936.34   5942.42   5942.42
-             5947.64   5947.64   5952.06   5952.06   5952.49   5952.49   5957.52   5957.52
-             5960.48   5960.48   5968.22   5968.22   5969.17   5969.17   5972.92   5972.92
-             5980.54   5980.54   5985.82   5985.82   5986.28   5986.28   5986.50   5986.51
-             5987.08   5987.08   5993.57   5993.57   5994.22   5994.22   5995.04   5995.04
-             5995.49   5995.49   5995.84   5995.84   5998.19   5998.19   6007.40   6007.40
-             6009.29   6009.29   6011.17   6011.17   6016.51   6016.51   6016.87   6016.87
-             6019.39   6019.39   6025.89   6025.90   6028.67   6028.67   6031.16   6031.16
-             6038.22   6038.22   6049.97   6049.97   6054.75   6054.75   6055.33   6055.33
-             6060.71   6060.71   6063.02   6063.02   6065.95   6065.95   6067.74   6067.74
-             6068.54   6068.54   6069.47   6069.47   6074.67   6074.67   6077.12   6077.12
-             6078.98   6078.98   6084.02   6084.02   6085.81   6085.81   6095.02   6095.02
-             6101.35   6101.35   6106.70   6106.70   6108.90   6108.90   6113.99   6113.99
-             6116.42   6116.42   6119.49   6119.49   6120.05   6120.05   6121.39   6121.39
-             6121.88   6121.88   6122.82   6122.82   6128.47   6128.47   6130.33   6130.33
-             6135.75   6135.75   6139.19   6139.19   6140.21   6140.21   6145.62   6145.62
-             6154.17   6154.17   6156.33   6156.33   6162.13   6162.13   6168.05   6168.05
-             6169.88   6169.88   6176.50   6176.50   6177.79   6177.79   6178.46   6178.46
-             6180.32   6180.32   6182.56   6182.56   6183.63   6183.63   6187.71   6187.71
-             6191.44   6191.44   6196.52   6196.52   6208.29   6208.29   6210.49   6210.49
-             6212.96   6212.96   6218.85   6218.85   6221.91   6221.91   6221.91   6221.91
-             6222.99   6222.99   6225.87   6225.87   6232.41   6232.41   6232.79   6232.79
-             6237.89   6237.89   6244.49   6244.49   6247.44   6247.44   6248.76   6248.76
-             6249.99   6249.99   6253.95   6253.95   6257.08   6257.08   6262.05   6262.05
-             6262.74   6262.74   6264.19   6264.19   6265.56   6265.56   6266.31   6266.31
-             6272.26   6272.26   6283.40   6283.40   6283.42   6283.42   6287.66   6287.66
-             6289.91   6289.91   6294.95   6294.95   6299.34   6299.34   6307.58   6307.58
-             6307.58   6307.58   6308.93   6308.93   6309.90   6309.90   6313.23   6313.23
-             6318.32   6318.32   6320.28   6320.28   6321.15   6321.15   6328.21   6328.21
-             6335.88   6335.88   6338.70   6338.70   6340.91   6340.91   6342.46   6342.46
-             6347.04   6347.04   6347.94   6347.94   6356.82   6356.82   6359.29   6359.29
-             6362.03   6362.03   6364.83   6364.83   6374.81   6374.81   6376.83   6376.83
-             6380.88   6380.88   6382.23   6382.23   6383.40   6383.40   6386.63   6386.63
-             6390.82   6390.82   6390.83   6390.83   6393.08   6393.08   6394.67   6394.68
-             6394.96   6394.96   6399.31   6399.31   6409.34   6409.34   6414.14   6414.14
-             6416.18   6416.18   6418.48   6418.48   6421.53   6421.53   6428.89   6428.89
-             6429.25   6429.25   6435.08   6435.08   6440.03   6440.03   6442.48   6442.48
-             6446.89   6446.89   6447.57   6447.57   6451.70   6451.70   6455.14   6455.14
-             6458.28   6458.28   6461.13   6461.13   6466.73   6466.73   6470.88   6470.88
-             6470.98   6470.98   6471.25   6471.25   6475.19   6475.19   6481.52   6481.52
-             6483.87   6483.87   6491.53   6491.53   6493.00   6493.00   6494.55   6494.55
-             6497.68   6497.68   6500.54   6500.54   6507.59   6507.59   6510.61   6510.61
-             6513.20   6513.20   6519.62   6519.62   6524.49   6524.49   6525.57   6525.57
-             6525.79   6525.79   6532.48   6532.48   6534.85   6534.85   6536.35   6536.35
-             6536.53   6536.53   6546.49   6546.49   6547.41   6547.41   6548.34   6548.34
-             6548.70   6548.70   6556.91   6556.91   6558.08   6558.08   6565.78   6565.78
-             6566.25   6566.25   6569.44   6569.44   6572.92   6572.92   6574.61   6574.61
-             6575.21   6575.21   6578.71   6578.71   6583.88   6583.88   6586.42   6586.42
-             6590.38   6590.38   6602.45   6602.45   6604.20   6604.20   6612.52   6612.52
-             6613.93   6613.93   6616.76   6616.76   6618.86   6618.86   6620.14   6620.14
-             6620.34   6620.34   6621.97   6621.97   6624.62   6624.62   6629.17   6629.17
-             6635.60   6635.60   6636.36   6636.36   6646.60   6646.60   6648.53   6648.53
-             6649.61   6649.61   6651.36   6651.36   6655.63   6655.63   6665.50   6665.50
-             6666.23   6666.23   6670.03   6670.03   6670.13   6670.13   6672.91   6672.91
-             6673.72   6673.72   6676.73   6676.73   6682.37   6682.37   6684.63   6684.63
-             6691.09   6691.09   6693.24   6693.24   6695.77   6695.77   6699.31   6699.31
-             6711.90   6711.90   6715.22   6715.22   6721.92   6721.92   6722.05   6722.05
-             6730.11   6730.11   6730.61   6730.61   6731.54   6731.54   6732.62   6732.62
-             6736.49   6736.49   6739.42   6739.42   6740.06   6740.06   6740.79   6740.79
-             6743.46   6743.46   6749.27   6749.27   6753.84   6753.84   6760.17   6760.17
-             6762.91   6762.91   6763.40   6763.40   6765.30   6765.30   6767.11   6767.11
-             6782.12   6782.12   6785.29   6785.29   6786.95   6786.95   6789.08   6789.08
-             6796.15   6796.15   6799.65   6799.65   6800.08   6800.08   6800.94   6800.94
-             6808.53   6808.53   6813.13   6813.13   6817.22   6817.22   6817.89   6817.89
-             6819.14   6819.14   6819.14   6819.15   6826.43   6826.43   6827.83   6827.83
-             6830.79   6830.80   6831.08   6831.08   6836.46   6836.46   6842.12   6842.12
-             6846.96   6846.96   6850.02   6850.02   6853.08   6853.08   6856.94   6856.94
-             6860.07   6860.07   6866.37   6866.38   6866.78   6866.79   6868.72   6868.73
-             6873.64   6873.64   6873.65   6873.65   6884.33   6884.33   6885.20   6885.20
-             6888.36   6888.37   6891.79   6891.80   6895.84   6895.84   6900.21   6900.21
-             6904.91   6904.91   6904.91   6904.91   6909.28   6909.28   6910.57   6910.57
-             6910.57   6910.57   6917.90   6917.90   6918.21   6918.21   6923.76   6923.76
-             6931.61   6931.61   6935.85   6935.85   6937.44   6937.44   6938.46   6938.46
-             6939.35   6939.35   6947.20   6947.20   6947.46   6947.46   6950.56   6950.56
-             6951.32   6951.32   6955.66   6955.66   6965.27   6965.27   6968.54   6968.54
-             6970.34   6970.34   6975.12   6975.12   6977.85   6977.85   6980.71   6980.71
-             6984.60   6984.60   6988.23   6988.23   6988.24   6988.24   6989.95   6989.95
-             6993.25   6993.25   6997.24   6997.24   7003.40   7003.40   7009.21   7009.21
-             7011.56   7011.56   7013.38   7013.38   7016.61   7016.61   7022.93   7022.93
-             7028.79   7028.79   7029.01   7029.01   7029.80   7029.80   7037.99   7037.99
-             7039.80   7039.80   7042.77   7042.77   7043.42   7043.42   7049.44   7049.44
-             7055.94   7055.94   7057.07   7057.07   7062.76   7062.76   7068.34   7068.34
-             7068.44   7068.44   7068.94   7068.94   7074.17   7074.17   7076.38   7076.38
-             7077.94   7077.94   7078.28   7078.28   7080.27   7080.27   7084.29   7084.29
-             7090.13   7090.13   7091.53   7091.53   7093.28   7093.28   7096.93   7096.93
-             7103.54   7103.54   7105.65   7105.65   7106.18   7106.18   7121.63   7121.63
-             7123.62   7123.62   7125.04   7125.04   7130.45   7130.45   7134.24   7134.24
-             7137.24   7137.24   7139.56   7139.56   7142.89   7142.89   7143.83   7143.83
-             7144.90   7144.90   7152.75   7152.75   7155.92   7155.92   7156.09   7156.10
-             7157.77   7157.78   7160.86   7160.87   7164.50   7164.50   7174.22   7174.22
-             7182.54   7182.54   7182.67   7182.67   7185.08   7185.08   7185.88   7185.89
-             7188.73   7188.73   7189.98   7189.98   7198.61   7198.61   7205.01   7205.01
-             7210.71   7210.71   7212.30   7212.31   7217.24   7217.25   7217.72   7217.72
-             7219.60   7219.61   7220.38   7220.39   7223.68   7223.68   7226.05   7226.06
-             7230.13   7230.14   7237.11   7237.11   7239.66   7239.67   7243.64   7243.65
-             7245.08   7245.09   7245.40   7245.40   7250.47   7250.47   7255.48   7255.48
-             7258.87   7258.88   7263.31   7263.35   7266.55   7266.56   7267.41   7267.41
-             7270.28   7270.30   7272.37   7272.37   7276.69   7276.71   7284.33   7284.34
-             7288.70   7288.70   7288.94   7288.97   7292.48   7292.50   7294.05   7294.08
-             7298.09   7298.10   7300.84   7300.85   7305.25   7305.26   7307.68   7307.69
-             7315.50   7315.51   7319.91   7319.94   7327.79   7327.79   7329.69   7329.69
-             7333.10   7333.10   7336.40   7336.40   7343.22   7343.22   7344.83   7344.83
-             7348.50   7348.50   7352.59   7352.59   7356.28   7356.28   7360.63   7360.63
-             7361.30   7361.30   7361.82   7361.82   7368.25   7368.25   7368.90   7368.90
-             7373.38   7373.38   7374.94   7374.94   7375.45   7375.45   7380.10   7380.10
-             7386.19   7386.19   7386.56   7386.56   7386.78   7386.78   7395.88   7395.88
-             7398.70   7398.70   7405.07   7405.07   7408.53   7408.53   7409.49   7409.49
-             7417.52   7417.52   7422.29   7422.29   7428.49   7428.49   7430.38   7430.38
-             7435.02   7435.02   7435.44   7435.44   7435.86   7435.86   7436.73   7436.73
-             7440.64   7440.64   7442.17   7442.17   7444.73   7444.73   7455.71   7455.71
-             7459.20   7459.20   7461.93   7461.93   7461.93   7461.93   7464.06   7464.06
-             7472.99   7472.99   7476.63   7476.63   7480.21   7480.21   7485.54   7485.54
-             7489.78   7489.78   7493.83   7493.83   7497.42   7497.42   7498.06   7498.06
-             7498.10   7498.10   7505.92   7505.92   7506.14   7506.14   7509.50   7509.50
-             7510.28   7510.28   7514.69   7514.69   7515.87   7515.87   7517.97   7517.97
-             7523.75   7523.75   7524.10   7524.10   7526.02   7526.02   7529.32   7529.32
-             7530.47   7530.47   7531.78   7531.78   7543.67   7543.67   7547.28   7547.28
-             7547.79   7547.79   7547.79   7547.79   7557.84   7557.84   7562.36   7562.39
-             7571.43   7571.44   7572.49   7579.09   7579.11   7579.16   7579.17   7581.37
-             7581.38   7583.11   7583.11   7584.91   7584.93   7591.20   7591.23   7591.77
-             7591.77   7594.66   7594.67   7598.47   7598.48   7604.89   7604.90   7605.87
-             7605.88   7606.85   7606.86   7610.96   7611.00   7617.91   7617.92   7618.20
-             7618.20   7619.75   7619.77   7624.74   7624.75   7624.89   7624.90   7628.57
-             7628.57   7631.19   7631.20   7631.20   7631.22   7634.21   7634.25   7638.41
-             7638.42   7642.23   7642.23   7647.35   7647.35   7650.37   7650.38   7650.54
-             7650.57   7652.18   7652.18   7655.27   7655.29   7657.72   7657.74   7669.39
-             7669.39   7669.97   7670.00   7678.43   7678.44   7684.79   7684.81   7687.35
-             7687.35   7692.55   7692.56   7694.04   7694.05   7696.04   7696.04   7704.49
-             7704.52   7711.09   7711.09   7711.34   7711.34   7711.46   7711.48   7715.52
-             7715.52   7721.09   7721.10   7721.24   7721.26   7721.36   7721.36   7724.59
-             7724.60   7727.49   7727.49   7730.52   7730.54   7734.35   7734.35   7734.77
-             7734.83   7739.75   7739.75   7739.86   7739.86   7739.96   7740.41   7740.41
-             7744.92   7744.92   7761.07   7761.07   7764.06   7764.06   7764.84   7764.84
-             7768.98   7768.98   7774.90   7774.90   7778.00   7778.00   7786.71   7786.71
-             7787.06   7787.06   7787.94   7787.94   7790.42   7790.42   7791.29   7791.29
-             7792.91   7792.91   7794.27   7794.27   7800.78   7800.78   7810.59   7810.59
-             7812.76   7812.76   7813.25   7813.25   7816.35   7816.35   7820.52   7820.52
-             7827.03   7827.03   7831.29   7831.29   7836.57   7836.57   7838.63   7838.63
-             7841.62   7841.62   7842.90   7842.90   7846.85   7846.85   7852.28   7852.28
-             7852.99   7852.99   7854.87   7854.87   7857.88   7857.88   7858.28   7858.28
-             7860.84   7860.84   7865.94   7865.94   7872.55   7872.55   7887.63   7887.63
-             7888.12   7888.12   7891.35   7891.35   7892.61   7892.61   7901.20   7901.20
-             7901.73   7901.73   7902.63   7902.63   7904.36   7904.36   7907.07   7907.07
-             7907.75   7907.75   7908.69   7908.69   7910.64   7910.64   7917.02   7917.02
-             7922.41   7922.41   7922.81   7922.81   7925.31   7925.31   7932.38   7932.38
-             7935.17   7935.17   7941.94   7941.94   7945.06   7945.06   7949.86   7949.86
-             7958.49   7958.49   7964.23   7964.23   7965.85   7965.85   7969.61   7969.61
-             7971.12   7971.12   7973.92   7973.92   7974.09   7974.09   7979.34   7979.34
-             7980.07   7980.07   7985.42   7985.42   7988.93   7988.93   7989.47   7989.47
-             7995.78   7995.78   7998.47   7998.48   7999.01   7999.01   8003.49   8003.49
-             8003.84   8003.85   8004.60   8004.61   8005.30   8005.30   8016.69   8016.69
-             8021.26   8021.26   8027.05   8027.06   8027.27   8027.27   8032.41   8032.41
-             8037.06   8037.06   8042.94   8042.97   8045.09   8045.09   8049.56   8049.56
-             8054.26   8054.27   8062.66   8062.67   8069.42   8069.42   8070.22   8070.22
-             8073.77   8073.77   8076.65   8076.66   8079.44   8079.45   8080.13   8080.15
-             8080.50   8080.50   8087.62   8087.63   8090.37   8090.37   8091.19   8091.20
-             8092.83   8092.85   8099.25   8099.25   8102.15   8102.16   8107.32   8107.33
-             8111.09   8111.10   8112.81   8112.81   8114.89   8114.90   8117.97   8117.98
-             8119.84   8119.84   8122.84   8122.86   8124.38   8124.38   8127.61   8127.61
-             8134.42   8134.42   8138.94   8138.95   8150.02   8150.02   8150.02   8150.04
-             8151.70   8151.71   8154.38   8154.39   8155.61   8155.62   8162.31   8162.33
-             8163.79   8163.79   8164.93   8164.95   8172.29   8172.30   8172.72   8172.72
-             8173.67   8173.67   8175.00   8175.00   8180.76   8180.76   8182.13   8182.13
-             8193.00   8193.00   8195.04   8195.04   8198.82   8198.82   8205.66   8205.66
-             8207.07   8207.07   8210.68   8210.68   8214.21   8214.21   8216.99   8216.99
-             8221.50   8221.50   8223.54   8223.54   8229.51   8229.51   8233.52   8233.52
-             8235.98   8235.98   8235.98   8235.98   8244.51   8244.51   8244.73   8244.73
-             8245.07   8245.07   8245.90   8245.90   8250.80   8250.80   8252.26   8252.26
-             8255.73   8255.73   8256.05   8256.05   8256.90   8256.90   8261.19   8261.19
-             8264.86   8264.86   8266.90   8266.90   8268.82   8268.82   8270.71   8270.71
-             8282.76   8282.76   8286.61   8286.61   8291.39   8291.39   8297.50   8297.50
-             8302.96   8302.96   8305.33   8305.33   8307.23   8307.23   8311.91   8311.91
-             8316.53   8316.53   8319.46   8319.46   8319.47   8319.47   8326.25   8326.25
-             8329.57   8329.57   8332.46   8332.46   8334.03   8334.03   8334.46   8334.46
-             8335.81   8335.81   8338.47   8338.47   8340.38   8340.38   8348.74   8348.74
-             8351.40   8351.40   8357.34   8357.34   8359.66   8359.66   8360.16   8360.16
-             8364.48   8364.48   8367.47   8367.47   8367.67   8367.67   8369.84   8369.84
-             8372.61   8372.61   8376.51   8376.51   8380.24   8380.24   8393.04   8393.04
-             8393.15   8393.15   8393.66   8393.66   8397.76   8397.76   8399.63   8399.63
-             8399.78   8399.78   8411.27   8411.27   8412.25   8412.25   8412.75   8412.75
-             8418.11   8418.11   8421.16   8421.16   8423.32   8423.32   8429.95   8429.95
-             8431.22   8431.22   8431.99   8431.99   8439.67   8439.67   8444.75   8444.75
-             8448.71   8448.71   8452.06   8452.06   8456.09   8456.09   8463.14   8463.14
-             8465.45   8465.45   8469.20   8469.20   8473.05   8473.05   8474.87   8474.87
-             8476.27   8476.27   8478.23   8478.23   8484.39   8484.39   8486.47   8486.47
-             8487.37   8487.37   8489.44   8489.44   8494.36   8494.36   8495.83   8495.83
-             8500.59   8500.59   8503.83   8503.83   8506.26   8506.26   8513.82   8513.82
-             8515.84   8515.84   8517.18   8517.18   8521.38   8521.38   8529.51   8529.51
-             8531.94   8531.94   8534.97   8534.97   8536.69   8536.69   8540.51   8540.51
-             8545.71   8545.71   8547.33   8547.33   8549.27   8549.27   8556.06   8556.06
-             8560.84   8560.84   8561.36   8561.36   8566.63   8566.63   8573.54   8573.54
-             8573.56   8573.56   8575.60   8575.60   8580.23   8580.23   8583.22   8583.22
-             8586.90   8586.90   8590.66   8590.66   8591.80   8591.80   8596.00   8596.00
-             8596.19   8596.19   8596.32   8596.32   8602.41   8602.41   8605.40   8605.40
-             8608.53   8608.53   8611.32   8611.32   8611.98   8611.98   8621.16   8621.16
-             8625.21   8625.21   8626.65   8626.65   8640.99   8640.99   8648.31   8648.31
-             8657.61   8657.61   8659.84   8659.84   8665.38   8665.38   8668.32   8668.32
-             8669.55   8669.55   8673.39   8673.39   8674.34   8674.34   8674.74   8674.74
-             8677.48   8677.48   8680.37   8680.37   8680.60   8680.60   8683.14   8683.14
-             8687.56   8687.56   8691.43   8691.43   8692.55   8692.55   8694.66   8694.66
-             8694.82   8694.82   8695.73   8695.73   8701.92   8701.92   8704.33   8704.33
-             8708.20   8708.20   8711.77   8711.77   8713.73   8713.73   8720.59   8720.59
-             8721.36   8721.36   8730.37   8730.37   8731.20   8731.20   8732.58   8732.58
-             8740.23   8740.23   8741.90   8741.90   8744.08   8744.08   8761.96   8761.96
-             8766.43   8766.43   8766.71   8766.71   8770.17   8770.17   8771.58   8771.58
-             8776.27   8776.27   8778.79   8778.79   8785.40   8785.40   8790.36   8790.36
-             8791.88   8791.88   8792.27   8792.27   8794.82   8794.82   8802.12   8802.12
-             8808.34   8808.34   8813.49   8813.49   8814.26   8814.26   8816.56   8816.56
-             8820.01   8820.01   8828.83   8828.83   8829.26   8829.26   8831.73   8831.73
-             8834.99   8834.99   8835.45   8835.45   8835.68   8835.68   8838.78   8838.78
-             8846.35   8846.35   8848.58   8848.58   8857.31   8857.32   8859.95   8859.95
-             8861.09   8861.09   8862.20   8862.21   8866.48   8866.49   8869.48   8869.48
-             8869.90   8869.90   8872.93   8872.94   8876.37   8876.38   8876.91   8876.92
-             8878.70   8878.72   8883.25   8883.25   8883.25   8883.25   8884.11   8884.11
-             8892.06   8892.06   8896.50   8896.50   8898.87   8898.87   8902.02   8902.02
-             8902.84   8902.84   8906.48   8906.48   8912.16   8912.16   8916.54   8916.54
-             8921.14   8921.14   8934.60   8934.61   8945.07   8945.07   8945.15   8945.15
-             8946.14   8946.15   8948.10   8948.11   8951.81   8951.81   8957.25   8957.25
-             8958.98   8958.98   8959.71   8959.72   8960.73   8960.74   8961.81   8961.81
-             8969.01   8969.01   8969.29   8969.29   8969.29   8969.31   8970.52   8970.52
-             8974.09   8974.09   8981.32   8981.32   8983.74   8983.74   8990.12   8990.14
-             8991.05   8991.06   8991.60   8991.64   9001.00   9001.00   9002.41   9002.44
-             9004.62   9004.62   9005.17   9005.18   9011.97   9011.97   9018.02   9018.03
-             9021.69   9021.70   9023.72   9023.73   9025.95   9025.95   9028.05   9028.05
-             9031.03   9031.03   9039.50   9039.50   9041.35   9041.35   9045.61   9045.61
-             9047.17   9047.17   9047.48   9047.48   9051.87   9051.87   9052.85   9052.85
-             9052.86   9052.86   9054.25   9054.25   9059.57   9059.57   9062.03   9062.03
-             9065.13   9065.13   9070.34   9070.34   9071.04   9071.04   9072.98   9072.98
-             9074.67   9074.67   9075.43   9075.43   9080.26   9080.26   9090.82   9090.82
-             9092.65   9092.65   9094.78   9094.78   9106.60   9106.60   9120.56   9120.56
-             9120.99   9120.99   9125.99   9125.99   9130.06   9130.06   9131.04   9131.04
-             9133.06   9133.06   9133.22   9133.22   9133.96   9133.96   9135.89   9135.89
-             9136.13   9136.13   9141.63   9141.63   9144.57   9144.57   9146.95   9146.95
-             9153.58   9153.58   9158.88   9158.88   9159.17   9159.17   9159.26   9159.26
-             9160.97   9160.97   9166.05   9166.05   9169.81   9169.81   9175.63   9175.63
-             9176.27   9176.27   9181.48   9181.48   9184.46   9184.46   9189.64   9189.64
-             9193.24   9193.24   9201.25   9201.25   9204.80   9204.80   9208.14   9208.14
-             9209.74   9209.74   9211.73   9211.73   9218.51   9218.51   9222.28   9222.28
-             9222.55   9222.55   9223.21   9223.21   9227.63   9227.63   9234.39   9234.39
-             9234.45   9234.45   9238.44   9238.44   9246.93   9246.93   9250.46   9250.46
-             9251.36   9251.36   9254.50   9254.50   9255.13   9255.13   9256.48   9256.48
-             9260.54   9260.54   9260.93   9260.93   9261.92   9261.92   9272.80   9272.80
-             9273.09   9273.10   9280.77   9280.77   9281.04   9281.04   9282.85   9282.85
-             9283.82   9283.82   9287.39   9287.39   9296.77   9296.77   9296.88   9296.88
-             9307.81   9307.81   9311.88   9311.88   9313.12   9313.13   9313.74   9313.74
-             9321.38   9321.39   9325.63   9325.63   9328.89   9328.89   9331.47   9331.47
-             9338.04   9338.04   9341.13   9341.13   9343.83   9343.83   9349.02   9349.02
-             9355.12   9355.12   9355.37   9355.37   9357.01   9357.01   9358.10   9358.10
-             9362.55   9362.56   9365.23   9365.23   9372.86   9372.86   9374.63   9374.64
-             9379.70   9379.71   9382.29   9382.30   9384.38   9384.38   9391.46   9391.46
-             9393.02   9393.03   9393.24   9393.25   9393.79   9393.80   9394.57   9394.57
-             9398.71   9398.71   9405.04   9405.06   9405.60   9405.61   9405.82   9405.83
-             9411.18   9411.18   9414.59   9414.59   9426.71   9426.74   9429.23   9429.24
-             9431.03   9431.05   9431.57   9431.58   9431.82   9431.83   9436.65   9436.65
-             9439.42   9439.43   9450.89   9450.90   9451.91   9463.60   9463.60   9467.43
-             9467.43   9471.58   9471.58   9475.84   9475.84   9484.24   9484.24   9491.65
-             9491.65   9494.08   9494.08   9494.52   9494.52   9496.28   9496.28   9497.45
-             9497.45   9500.48   9500.48   9501.28   9501.28   9503.72   9503.72   9505.42
-             9505.42   9505.60   9505.60   9505.72   9505.72   9509.40   9509.40   9510.10
-             9510.10   9514.55   9514.55   9517.28   9517.28   9527.35   9527.35   9528.58
-             9528.58   9537.20   9537.20   9538.62   9538.62   9543.94   9543.94   9544.49
-             9544.49   9548.97   9548.97   9556.33   9556.33   9557.23   9557.23   9565.62
-             9565.62   9574.07   9574.07   9578.85   9578.85   9581.63   9581.63   9582.33
-             9582.33   9587.92   9587.92   9589.62   9589.62   9593.41   9593.41   9599.21
-             9599.21   9599.54   9599.54   9609.30   9609.30   9611.27   9611.27   9613.19
-             9613.19   9616.60   9616.60   9617.90   9617.90   9619.23   9619.23   9620.49
-             9620.49   9626.94   9626.94   9628.09   9628.09   9630.27   9630.27   9631.80
-             9631.80   9633.88   9633.88   9634.58   9634.58   9637.34   9637.34   9648.74
-             9648.74   9651.32   9651.32   9655.08   9655.08   9656.97   9656.97   9657.97
-             9657.97   9661.47   9661.47   9661.47   9661.47   9666.56   9666.56   9669.96
-             9669.96   9671.79   9671.79   9682.22   9682.22   9682.72   9682.72   9690.26
-             9690.26   9693.16   9693.16   9695.22   9695.22   9695.47   9695.47   9700.53
-             9700.53   9706.55   9706.55   9709.17   9709.17   9715.76   9715.76   9726.41
-             9726.41   9726.88   9726.88   9726.99   9726.99   9728.16   9728.16   9738.04
-             9738.04   9738.80   9738.80   9739.03   9739.03   9741.15   9741.15   9742.30
-             9742.30   9746.13   9746.13   9747.61   9747.61   9747.61   9747.61   9750.49
-             9750.49   9751.23   9751.23   9755.41   9755.41   9755.96   9755.96   9761.88
-             9761.88   9763.29   9763.29   9765.65   9765.65   9766.37   9766.37   9772.50
-             9772.50   9775.66   9775.66   9776.92   9776.92   9784.26   9784.26   9790.53
-             9790.53   9791.87   9791.87   9801.74   9801.74   9802.31   9802.31   9804.25
-             9804.25   9807.54   9807.54   9821.98   9821.98   9826.06   9826.06   9829.61
-             9829.61   9831.25   9831.25   9831.26   9831.26   9832.37   9832.37   9835.63
-             9835.63   9837.78   9837.78   9838.96   9838.96   9847.12   9847.12   9847.15
-             9847.15   9847.33   9847.33   9850.31   9850.31   9856.34   9856.34   9860.94
-             9860.94   9861.59   9861.59   9863.80   9863.80   9864.60   9864.60   9871.60
-             9871.60   9877.01   9877.01   9878.82   9878.82   9882.28   9882.28   9890.25
-             9890.25   9890.43   9890.43   9899.65   9899.65   9901.64   9901.64   9905.70
-             9905.70   9907.27   9907.27   9908.62   9908.62   9910.35   9910.35   9910.78
-             9910.78   9911.48   9911.48   9911.67   9911.67   9912.13   9912.13   9920.89
-             9920.89   9922.79   9922.79   9926.67   9926.67   9937.80   9937.80   9940.03
-             9940.03   9941.61   9941.61   9946.76   9946.76   9949.82   9949.82   9951.39
-             9951.39   9952.02   9952.02   9967.21   9967.21   9968.52   9968.52   9970.10
-             9970.10   9977.50   9977.50   9985.04   9985.04   9985.79   9985.79   9986.37
-             9986.37   9988.21   9988.21   9993.39   9993.39   9998.35   9998.35   9999.85
-             9999.85  10000.19  10000.19  10004.63  10004.63  10007.74  10007.74  10009.69
-            10009.69  10013.11  10013.11  10019.89  10019.89  10020.84  10020.84  10029.12
-            10029.12  10030.48  10030.48  10036.34  10036.34  10039.84  10039.84  10039.99
-            10039.99  10046.04  10046.04  10049.49  10049.49  10050.60  10050.60  10051.08
-            10051.08  10052.18  10052.18  10053.32  10053.32  10061.44  10061.44  10062.46
-            10062.46  10065.90  10065.90  10068.10  10068.10  10070.99  10070.99  10071.99
-            10071.99  10074.02  10074.02  10077.47  10077.47  10090.74  10090.74
+             3101.04   3102.71   3110.20   3115.14   3115.24   3115.70   3116.20   3121.92
+             3122.24   3130.67   3130.76   3131.15   3132.91   3134.14   3139.30   3141.52
+             3144.50   3147.39   3150.58   3150.87   3152.34   3153.03   3155.36   3157.54
+             3159.46   3166.73   3166.78   3170.29   3174.55   3175.64   3180.51   3180.72
+             3183.67   3185.41   3187.57   3187.60   3189.95   3191.09   3193.58   3199.81
+             3200.48   3202.45   3205.12   3207.38   3209.27   3210.18   3213.96   3217.20
+             3222.31   3222.89   3223.59   3227.14   3228.13   3228.43   3231.83   3232.78
+             3234.41   3235.45   3236.55   3238.93   3241.27   3241.97   3249.25   3249.58
+             3252.46   3252.99   3254.86   3255.69   3257.56   3265.91   3271.71   3272.14
+             3276.70   3280.40   3280.92   3282.31   3283.00   3289.89   3295.27   3296.33
+             3298.21   3298.61   3299.91   3301.34   3303.10   3303.59   3305.44   3309.19
+             3309.23   3310.63   3310.67   3311.19   3311.21   3313.70   3317.27   3318.05
+             3320.80   3321.25   3324.87   3328.93   3332.53   3334.17   3336.04   3337.39
+             3339.40   3343.58   3346.96   3348.69   3350.39   3350.42   3351.48   3354.30
+             3354.33   3356.01   3356.60   3363.58   3364.31   3367.38   3368.06   3372.22
+             3376.67   3377.04   3381.46   3384.92   3388.54   3389.31   3391.54   3392.37
+             3394.29   3394.31   3398.50   3398.84   3404.38   3405.10   3407.97   3409.62
+             3409.69   3413.85   3416.29   3417.09   3424.61   3424.91   3426.31   3429.53
+             3429.72   3432.63   3434.18   3434.62   3434.89   3436.24   3436.30   3438.04
+             3438.06   3439.61   3445.44   3446.84   3448.52   3449.75   3454.38   3458.46
+             3460.82   3461.80   3466.10   3466.28   3466.54   3466.94   3468.21   3469.19
+             3471.70   3472.13   3473.58   3479.04   3481.04   3481.10   3481.25   3489.53
+             3490.43   3492.91   3494.55   3496.50   3496.96   3499.81   3502.71   3509.51
+             3510.12   3511.78   3513.20   3516.25   3516.94   3519.58   3522.42   3522.57
+             3525.38   3527.50   3530.17   3530.21   3534.65   3539.11   3540.90   3542.50
+             3543.44   3546.16   3547.99   3548.39   3549.03   3550.05   3550.43   3550.93
+             3558.91   3559.22   3560.18   3560.24   3562.19   3569.60   3569.82   3569.94
+             3570.09   3574.42   3574.54   3575.39   3576.51   3577.78   3577.93   3582.51
+             3584.42   3585.72   3590.28   3590.45   3592.74   3594.27   3596.33   3596.80
+             3603.27   3606.67   3608.96   3610.14   3612.26   3614.19   3618.46   3619.97
+             3622.21   3624.04   3625.60   3628.74   3629.36   3631.14   3633.88   3634.61
+             3634.75   3635.14   3636.59   3638.97   3641.84   3649.48   3649.82   3650.73
+             3656.24   3657.33   3659.07   3659.15   3661.84   3662.84   3663.19   3666.00
+             3668.12   3668.14   3672.29   3672.74   3673.51   3675.33   3676.29   3679.29
+             3680.77   3681.90   3682.48   3683.20   3685.59   3686.18   3688.44   3689.59
+             3689.79   3690.94   3694.05   3698.08   3699.06   3701.72   3703.53   3705.42
+             3706.26   3708.30   3710.38   3711.84   3713.60   3720.54   3720.58   3721.83
+             3723.07   3724.08   3725.08   3729.36   3732.05   3732.05   3733.42   3734.06
+             3737.94   3740.61   3744.68   3745.49   3748.79   3749.53   3753.70   3755.30
+             3755.63   3756.88   3758.01   3759.74   3762.22   3763.66   3765.68   3768.25
+             3769.38   3771.92   3771.95   3773.39   3774.08   3775.26   3775.69   3776.52
+             3778.42   3779.96   3783.11   3783.32   3786.42   3790.88   3791.24   3792.49
+             3794.69   3796.05   3796.35   3803.35   3803.40   3803.50   3803.80   3803.97
+             3808.32   3808.81   3809.49   3816.68   3818.05   3818.79   3822.46   3822.72
+             3830.01   3831.29   3832.48   3835.08   3836.19   3836.77   3837.00   3838.13
+             3839.58   3842.29   3844.51   3846.88   3849.25   3849.43   3851.89   3852.81
+             3853.75   3857.18   3857.18   3860.58   3861.93   3864.12   3865.18   3865.74
+             3867.05   3870.42   3873.08   3874.77   3874.81   3876.83   3878.39   3880.22
+             3881.21   3881.78   3882.51   3883.30   3888.55   3891.95   3894.19   3895.91
+             3897.98   3898.78   3904.67   3904.93   3906.31   3906.32   3912.27   3912.42
+             3913.92   3916.19   3920.63   3921.63   3922.44   3922.77   3923.11   3923.53
+             3924.40   3927.93   3928.14   3931.86   3933.33   3935.66   3936.04   3939.52
+             3940.29   3942.96   3943.08   3943.09   3943.93   3944.12   3948.46   3948.46
+             3950.19   3952.83   3952.99   3958.90   3958.98   3959.64   3961.47   3963.76
+             3964.33   3965.27   3965.41   3969.67   3973.85   3974.96   3977.23   3978.66
+             3978.71   3980.97   3980.97   3981.71   3983.70   3988.72   3990.95   3994.74
+             3994.77   3995.87   3997.24   3998.38   3998.68   4000.10   4002.99   4008.92
+             4010.68   4011.98   4012.56   4015.48   4015.63   4017.72   4017.89   4024.16
+             4025.15   4026.31   4027.48   4028.11   4028.59   4030.44   4030.96   4031.67
+             4032.18   4033.75   4033.75   4039.27   4039.27   4039.75   4042.34   4043.22
+             4044.17   4044.51   4049.93   4052.85   4055.75   4060.47   4061.65   4063.81
+             4064.26   4066.71   4067.36   4068.45   4068.52   4072.98   4073.05   4073.52
+             4081.81   4082.83   4086.00   4086.35   4086.96   4087.00   4088.91   4090.34
+             4093.40   4093.89   4096.35   4098.36   4101.73   4102.39   4103.24   4103.24
+             4106.63   4108.75   4110.69   4110.69   4112.14   4112.30   4113.03   4116.29
+             4116.47   4118.55   4118.69   4121.35   4121.42   4122.21   4125.41   4126.61
+             4129.30   4135.10   4135.66   4138.04   4140.44   4143.18   4143.62   4145.34
+             4148.54   4149.86   4151.21   4152.75   4153.44   4153.44   4154.29   4155.59
+             4163.37   4164.95   4166.76   4167.09   4168.49   4172.35   4173.84   4174.52
+             4174.54   4176.60   4180.57   4182.46   4184.91   4185.37   4189.20   4189.79
+             4190.02   4190.78   4195.20   4195.54   4195.98   4196.91   4198.92   4200.32
+             4201.57   4201.75   4201.75   4204.51   4205.61   4210.43   4211.97   4211.98
+             4213.10   4213.77   4222.47   4223.70   4223.80   4223.80   4224.90   4226.02
+             4229.95   4230.64   4233.45   4235.11   4235.67   4241.32   4242.00   4242.75
+             4245.09   4247.56   4249.04   4250.58   4255.63   4256.51   4261.21   4262.90
+             4264.88   4264.88   4265.00   4266.61   4267.81   4270.08   4270.16   4271.66
+             4272.60   4274.95   4275.17   4278.27   4280.49   4281.72   4282.73   4283.13
+             4287.29   4288.28   4291.25   4291.59   4300.13   4300.13   4300.28   4300.51
+             4300.51   4303.37   4303.37   4306.93   4307.00   4307.96   4308.94   4312.58
+             4312.80   4316.68   4317.38   4317.49   4323.80   4325.54   4325.74   4325.87
+             4326.70   4326.70   4328.27   4330.25   4333.56   4336.90   4336.98   4339.68
+             4341.34   4342.42   4342.42   4342.80   4343.30   4345.67   4345.67   4348.75
+             4350.05   4355.22   4358.49   4359.39   4366.08   4367.62   4368.15   4368.78
+             4369.38   4372.91   4372.98   4374.56   4374.72   4378.43   4379.32   4385.30
+             4385.35   4385.42   4385.73   4385.74   4386.52   4387.67   4391.79   4392.15
+             4395.76   4396.03   4396.20   4397.01   4397.92   4400.14   4401.52   4402.68
+             4402.84   4405.03   4405.66   4406.83   4407.64   4410.36   4412.46   4414.82
+             4415.42   4420.53   4423.44   4431.95   4433.12   4434.18   4434.70   4438.80
+             4440.90   4441.95   4442.40   4444.49   4444.90   4448.82   4450.25   4450.25
+             4452.01   4457.28   4457.38   4457.86   4457.86   4458.80   4458.80   4464.57
+             4465.10   4466.59   4467.52   4468.10   4468.25   4468.44   4468.54   4468.68
+             4469.08   4476.95   4477.57   4478.01   4478.06   4479.01   4481.33   4482.94
+             4483.41   4484.13   4484.34   4493.71   4493.95   4495.01   4495.65   4496.33
+             4496.34   4509.77   4509.79   4509.99   4510.03   4513.79   4517.83   4520.30
+             4520.34   4523.48   4523.71   4528.04   4528.06   4533.78   4533.87   4535.61
+             4535.86   4539.53   4539.78   4544.90   4546.18   4547.69   4547.99   4548.22
+             4548.50   4550.35   4550.51   4551.13   4553.11   4559.10   4559.13   4563.73
+             4564.06   4565.02   4565.07   4570.72   4570.77   4571.54   4571.54   4573.12
+             4573.24   4574.41   4574.77   4576.97   4577.40   4583.28   4583.71   4584.81
+             4586.43   4587.73   4588.02   4593.71   4594.80   4595.73   4596.23   4606.89
+             4607.39   4608.17   4608.33   4619.22   4620.08   4620.35   4622.11   4624.35
+             4624.38   4624.77   4624.78   4625.26   4625.74   4630.73   4630.85   4632.07
+             4632.14   4634.97   4635.83   4640.03   4640.14   4645.13   4647.42   4649.82
+             4651.75   4653.89   4654.17   4654.38   4655.74   4657.65   4658.36   4664.46
+             4665.14   4666.35   4666.90   4673.82   4674.14   4676.81   4676.86   4683.43
+             4684.06   4685.95   4686.30   4686.79   4686.80   4688.32   4690.32   4693.43
+             4693.43   4693.75   4693.96   4696.18   4696.34   4697.27   4697.28   4699.60
+             4699.83   4705.80   4706.06   4708.40   4708.40   4708.42   4708.42   4709.70
+             4711.61   4714.93   4715.81   4717.14   4718.65   4718.65   4718.90   4724.56
+             4724.60   4728.97   4729.34   4729.52   4730.85   4739.23   4739.28   4744.52
+             4744.76   4748.29   4749.22   4749.94   4750.23   4751.70   4751.77   4755.21
+             4755.44   4759.32   4759.33   4762.57   4762.57   4767.33   4767.39   4768.52
+             4768.52   4773.33   4773.34   4774.23   4774.31   4775.54   4775.55   4782.55
+             4782.55   4787.03   4787.05   4792.19   4792.19   4793.76   4793.76   4793.78
+             4793.78   4794.38   4794.61   4795.20   4795.35   4799.01   4799.10   4804.78
+             4804.92   4808.08   4808.12   4811.85   4811.85   4814.51   4814.54   4818.74
+             4818.75   4822.50   4822.51   4833.12   4833.13   4836.65   4836.65   4838.35
+             4838.79   4842.24   4842.42   4843.50   4843.50   4845.73   4846.03   4849.97
+             4850.18   4853.63   4853.69   4855.95   4856.07   4859.36   4859.57   4864.88
+             4864.92   4868.10   4868.10   4870.22   4870.31   4874.30   4874.48   4875.78
+             4875.80   4876.73   4876.76   4876.77   4876.79   4883.78   4883.78   4891.74
+             4891.75   4897.40   4897.42   4897.99   4897.99   4899.70   4899.70   4905.83
+             4905.87   4906.89   4906.90   4910.94   4910.99   4914.61   4914.77   4919.56
+             4919.56   4925.42   4925.45   4926.35   4926.38   4928.28   4928.28   4934.91
+             4934.98   4938.30   4938.32   4942.31   4942.33   4943.70   4943.73   4947.10
+             4947.25   4954.63   4954.67   4956.66   4956.68   4956.72   4956.75   4957.10
+             4957.21   4959.60   4959.60   4967.03   4967.03   4973.54   4973.68   4975.75
+             4975.79   4977.15   4977.25   4982.47   4982.70   4987.74   4987.77   4994.59
+             4994.62   5000.45   5000.48   5001.82   5001.82   5004.80   5004.88   5009.03
+             5009.06   5011.58   5011.77   5014.77   5014.80   5016.69   5016.74   5018.43
+             5018.91   5020.25   5020.28   5021.55   5022.10   5022.49   5022.54   5032.51
+             5032.53   5032.56   5032.56   5033.08   5033.10   5038.80   5038.81   5042.41
+             5042.41   5044.92   5045.09   5047.38   5047.55   5053.05   5053.13   5061.24
+             5061.24   5071.78   5071.90   5073.72   5073.95   5079.04   5079.08   5082.53
+             5082.57   5084.14   5084.29   5087.89   5088.03   5089.07   5089.07   5095.06
+             5095.13   5100.33   5100.33   5100.94   5100.97   5101.49   5101.50   5104.66
+             5104.67   5105.58   5105.60   5105.72   5105.74   5111.53   5111.54   5113.13
+             5113.15   5114.84   5114.84   5119.71   5119.73   5121.81   5121.82   5124.46
+             5124.48   5132.28   5132.30   5138.25   5138.25   5144.33   5144.33   5150.13
+             5150.13   5152.66   5152.67   5153.90   5153.90   5155.44   5155.50   5158.94
+             5158.96   5163.53   5163.57   5165.77   5165.77   5165.77   5165.77   5167.16
+             5167.16   5170.38   5170.41   5175.86   5175.88   5177.68   5177.71   5187.07
+             5187.08   5191.57   5191.58   5193.74   5193.74   5196.51   5196.51   5200.91
+             5200.92   5205.38   5205.64   5205.78   5206.03   5209.44   5209.44   5209.44
+             5209.45   5215.87   5215.89   5217.65   5217.65   5218.71   5218.72   5222.93
+             5222.94   5226.03   5226.09   5227.91   5227.95   5235.53   5235.53   5240.42
+             5240.43   5246.18   5246.19   5251.24   5251.24   5251.25   5251.25   5253.49
+             5253.49   5260.12   5260.12   5262.29   5262.29   5262.55   5262.55   5265.24
+             5265.25   5268.08   5268.09   5274.79   5274.79   5276.77   5276.77   5282.24
+             5282.24   5282.75   5282.76   5284.14   5284.14   5285.67   5285.68   5291.32
+             5291.32   5293.62   5293.63   5298.84   5298.84   5303.05   5303.05   5304.86
+             5304.86   5314.95   5314.95   5317.68   5317.70   5318.96   5319.00   5321.12
+             5321.13   5323.53   5323.54   5327.93   5327.93   5332.01   5332.01   5334.31
+             5334.31   5334.32   5334.32   5337.89   5337.89   5344.97   5344.97   5350.78
+             5350.78   5354.15   5354.17   5358.10   5358.10   5360.66   5360.67   5362.34
+             5362.34   5369.93   5369.94   5371.26   5371.26   5373.42   5373.43   5375.87
+             5375.88   5381.97   5381.98   5387.32   5387.34   5389.50   5389.51   5391.25
+             5391.27   5393.09   5393.09   5401.45   5401.45   5403.19   5403.19   5404.66
+             5404.66   5406.99   5406.99   5408.75   5408.75   5414.29   5414.29   5414.36
+             5414.36   5423.37   5423.38   5425.36   5425.38   5428.34   5428.34   5430.82
+             5430.82   5435.74   5435.76   5437.86   5437.88   5444.30   5444.30   5444.44
+             5444.44   5451.91   5451.91   5455.49   5455.49   5458.40   5458.42   5458.81
+             5458.84   5465.42   5465.46   5469.29   5469.32   5470.45   5470.45   5474.89
+             5474.89   5480.90   5480.90   5482.73   5482.73   5487.56   5487.57   5490.07
+             5490.07   5490.19   5490.19   5490.82   5490.82   5496.90   5496.90   5499.31
+             5499.32   5501.53   5501.54   5506.47   5506.47   5511.26   5511.26   5513.44
+             5513.45   5524.48   5524.49   5528.05   5528.05   5530.41   5530.41   5534.45
+             5534.46   5537.59   5537.59   5540.84   5540.84   5543.59   5543.60   5544.22
+             5544.24   5545.30   5545.32   5549.02   5549.03   5557.59   5557.60   5558.19
+             5558.19   5558.55   5558.55   5563.40   5563.40   5567.73   5567.73   5568.86
+             5568.86   5570.51   5570.51   5574.75   5574.75   5577.19   5577.19   5579.68
+             5579.68   5585.36   5585.36   5589.58   5589.59   5594.78   5594.78   5602.36
+             5602.36   5608.53   5608.53   5613.14   5613.14   5614.79   5614.79   5615.39
+             5615.39   5615.51   5615.51   5617.38   5617.38   5623.96   5623.96   5630.07
+             5630.07   5633.79   5633.79   5636.80   5636.80   5641.60   5641.60   5649.65
+             5649.65   5652.26   5652.26   5652.34   5652.34   5656.55   5656.55   5660.40
+             5660.40   5661.63   5661.64   5663.39   5663.39   5670.44   5670.44   5670.59
+             5670.59   5670.59   5670.59   5671.23   5671.23   5673.38   5673.38   5674.56
+             5674.56   5682.81   5682.81   5684.78   5684.78   5687.64   5687.64   5688.75
+             5688.75   5693.64   5693.64   5703.38   5703.38   5704.59   5704.59   5705.76
+             5705.76   5709.77   5709.77   5719.07   5719.07   5724.37   5724.37   5729.08
+             5729.08   5729.75   5729.75   5736.90   5736.90   5739.07   5739.07   5741.36
+             5741.36   5743.75   5743.75   5747.22   5747.22   5749.61   5749.61   5753.85
+             5753.85   5756.17   5756.17   5756.17   5756.17   5759.27   5759.27   5766.00
+             5766.00   5766.32   5766.32   5772.56   5772.56   5774.62   5774.62   5776.88
+             5776.88   5778.81   5778.81   5778.95   5778.95   5783.22   5783.22   5790.61
+             5790.61   5795.22   5795.22   5808.09   5808.09   5809.71   5809.71   5813.28
+             5813.29   5813.40   5813.42   5814.78   5814.79   5818.52   5818.53   5821.59
+             5821.59   5825.36   5825.36   5825.63   5825.63   5832.42   5832.42   5837.64
+             5837.64   5839.32   5839.32   5839.33   5839.33   5844.21   5844.21   5849.62
+             5849.62   5855.52   5855.52   5856.90   5856.90   5859.51   5859.51   5865.04
+             5865.04   5866.73   5866.73   5871.27   5871.27   5879.62   5879.62   5881.34
+             5881.34   5883.91   5883.91   5884.91   5884.91   5885.88   5885.88   5888.99
+             5888.99   5891.13   5891.13   5892.22   5892.22   5900.02   5900.02   5904.78
+             5904.78   5905.46   5905.46   5906.67   5906.67   5915.87   5915.87   5919.34
+             5919.34   5919.42   5919.42   5920.43   5920.43   5921.02   5921.03   5923.79
+             5923.79   5932.65   5932.65   5936.34   5936.34   5942.42   5942.42   5947.64
+             5947.64   5952.06   5952.06   5952.49   5952.49   5957.52   5957.52   5960.48
+             5960.48   5968.22   5968.22   5969.17   5969.17   5972.92   5972.92   5980.54
+             5980.54   5985.82   5985.82   5986.28   5986.28   5986.50   5986.51   5987.08
+             5987.08   5993.57   5993.57   5994.22   5994.22   5995.04   5995.04   5995.49
+             5995.49   5995.84   5995.84   5998.19   5998.19   6007.40   6007.40   6009.29
+             6009.29   6011.17   6011.17   6016.50   6016.51   6016.87   6016.87   6019.39
+             6019.39   6025.89   6025.90   6028.67   6028.67   6031.16   6031.16   6038.22
+             6038.22   6049.97   6049.97   6054.75   6054.75   6055.33   6055.33   6060.71
+             6060.71   6063.02   6063.02   6065.95   6065.95   6067.74   6067.74   6068.54
+             6068.54   6069.47   6069.47   6074.67   6074.67   6077.12   6077.12   6078.98
+             6078.98   6084.02   6084.02   6085.81   6085.81   6095.02   6095.02   6101.35
+             6101.35   6106.70   6106.70   6108.90   6108.90   6113.99   6113.99   6116.42
+             6116.42   6119.49   6119.49   6120.05   6120.05   6121.39   6121.39   6121.88
+             6121.88   6122.82   6122.82   6128.47   6128.47   6130.33   6130.33   6135.75
+             6135.75   6139.19   6139.19   6140.21   6140.21   6145.62   6145.62   6154.17
+             6154.17   6156.33   6156.33   6162.13   6162.13   6168.05   6168.05   6169.88
+             6169.88   6176.50   6176.50   6177.79   6177.79   6178.46   6178.46   6180.32
+             6180.32   6182.56   6182.56   6183.63   6183.63   6187.71   6187.71   6191.44
+             6191.44   6196.52   6196.52   6208.29   6208.29   6210.49   6210.49   6212.96
+             6212.96   6218.85   6218.85   6221.91   6221.91   6221.91   6221.91   6222.99
+             6222.99   6225.87   6225.87   6232.41   6232.41   6232.79   6232.79   6237.89
+             6237.89   6244.49   6244.49   6247.44   6247.44   6248.76   6248.76   6249.99
+             6249.99   6253.95   6253.95   6257.08   6257.08   6262.05   6262.05   6262.74
+             6262.74   6264.19   6264.19   6265.56   6265.56   6266.31   6266.31   6272.26
+             6272.26   6283.40   6283.40   6283.42   6283.42   6287.66   6287.67   6289.91
+             6289.92   6294.95   6294.95   6299.34   6299.34   6307.58   6307.58   6307.58
+             6307.59   6308.93   6308.94   6309.90   6309.90   6313.23   6313.23   6318.32
+             6318.32   6320.28   6320.28   6321.15   6321.15   6328.21   6328.22   6335.88
+             6335.88   6338.70   6338.70   6340.91   6340.91   6342.46   6342.46   6347.04
+             6347.04   6347.94   6347.94   6356.82   6356.82   6359.29   6359.31   6362.03
+             6362.03   6364.83   6364.83   6374.81   6374.81   6376.83   6376.84   6380.88
+             6380.88   6382.23   6382.23   6383.40   6383.40   6386.63   6386.63   6390.82
+             6390.82   6390.83   6390.84   6393.08   6393.09   6394.67   6394.68   6394.96
+             6394.96   6399.31   6399.32   6409.34   6409.34   6414.14   6414.14   6416.18
+             6416.18   6418.48   6418.48   6421.53   6421.53   6428.89   6428.90   6429.25
+             6429.25   6435.08   6435.08   6440.03   6440.04   6442.48   6442.49   6446.89
+             6446.90   6447.57   6447.58   6451.70   6451.70   6455.14   6455.15   6458.28
+             6458.30   6461.13   6461.15   6466.73   6466.73   6470.88   6470.89   6470.98
+             6471.25   6471.25   6475.19   6475.19   6481.52   6481.52   6483.87   6483.87
+             6491.53   6491.53   6493.00   6493.00   6494.55   6494.55   6497.68   6497.68
+             6500.54   6500.54   6507.59   6507.59   6510.61   6510.61   6513.20   6513.20
+             6519.62   6519.62   6524.49   6524.49   6525.57   6525.57   6525.79   6525.79
+             6532.48   6532.48   6534.85   6534.85   6536.35   6536.35   6536.53   6536.53
+             6546.49   6546.49   6547.41   6547.41   6548.34   6548.34   6548.70   6548.70
+             6556.91   6556.91   6558.08   6558.08   6565.78   6565.78   6566.25   6566.25
+             6569.44   6569.44   6572.92   6572.92   6574.61   6574.61   6575.21   6575.21
+             6578.71   6578.71   6583.88   6583.88   6586.42   6586.42   6590.38   6590.38
+             6602.45   6602.45   6604.20   6604.20   6612.52   6612.52   6613.93   6613.93
+             6616.76   6616.76   6618.86   6618.86   6620.14   6620.14   6620.34   6620.34
+             6621.97   6621.97   6624.62   6624.62   6629.17   6629.17   6635.60   6635.60
+             6636.36   6636.36   6646.60   6646.60   6648.53   6648.53   6649.61   6649.61
+             6651.36   6651.36   6655.63   6655.63   6665.50   6665.50   6666.23   6666.23
+             6670.03   6670.03   6670.13   6670.13   6672.91   6672.91   6673.72   6673.72
+             6676.73   6676.73   6682.37   6682.37   6684.63   6684.63   6691.09   6691.09
+             6693.24   6693.24   6695.77   6695.77   6699.31   6699.31   6711.90   6711.90
+             6715.22   6715.22   6721.92   6721.92   6722.05   6722.05   6730.11   6730.11
+             6730.61   6730.61   6731.54   6731.54   6732.62   6732.62   6736.49   6736.49
+             6739.42   6739.42   6740.06   6740.06   6740.79   6740.79   6743.46   6743.46
+             6749.27   6749.27   6753.84   6753.84   6760.17   6760.17   6762.91   6762.91
+             6763.40   6763.40   6765.30   6765.30   6767.11   6767.11   6782.12   6782.12
+             6785.29   6785.29   6786.95   6786.95   6789.08   6789.08   6796.15   6796.15
+             6799.65   6799.65   6800.08   6800.08   6800.94   6800.94   6808.53   6808.53
+             6813.13   6813.13   6817.22   6817.22   6817.89   6817.89   6819.14   6819.14
+             6819.14   6819.14   6826.43   6826.43   6827.83   6827.83   6830.79   6830.79
+             6831.08   6831.08   6836.46   6836.46   6842.12   6842.12   6846.96   6846.96
+             6850.02   6850.02   6853.08   6853.08   6856.94   6856.94   6860.07   6860.07
+             6866.37   6866.37   6866.78   6866.78   6868.72   6868.72   6873.64   6873.64
+             6873.65   6873.65   6884.33   6884.33   6885.20   6885.20   6888.36   6888.36
+             6891.79   6891.79   6895.84   6895.84   6900.21   6900.21   6904.91   6904.91
+             6904.91   6904.91   6909.28   6909.28   6910.57   6910.57   6910.57   6910.57
+             6917.90   6917.90   6918.21   6918.21   6923.76   6923.76   6931.61   6931.61
+             6935.85   6935.85   6937.44   6937.44   6938.46   6938.46   6939.35   6939.35
+             6947.20   6947.20   6947.46   6947.46   6950.56   6950.56   6951.32   6951.32
+             6955.66   6955.66   6965.27   6965.27   6968.54   6968.54   6970.34   6970.34
+             6975.12   6975.12   6977.85   6977.85   6980.71   6980.71   6984.60   6984.60
+             6988.23   6988.23   6988.24   6988.24   6989.95   6989.95   6993.25   6993.25
+             6997.24   6997.24   7003.40   7003.40   7009.21   7009.21   7011.56   7011.56
+             7013.38   7013.38   7016.61   7016.61   7022.93   7022.93   7028.79   7028.79
+             7029.01   7029.01   7029.80   7029.80   7037.99   7037.99   7039.80   7039.80
+             7042.77   7042.77   7043.42   7043.42   7049.44   7049.44   7055.94   7055.94
+             7057.07   7057.07   7062.76   7062.76   7068.34   7068.34   7068.44   7068.44
+             7068.94   7068.94   7074.17   7074.17   7076.38   7076.38   7077.94   7077.94
+             7078.28   7078.28   7080.27   7080.27   7084.29   7084.29   7090.13   7090.13
+             7091.53   7091.53   7093.28   7093.28   7096.93   7096.93   7103.54   7103.54
+             7105.65   7105.65   7106.18   7106.18   7121.63   7121.63   7123.62   7123.62
+             7125.04   7125.04   7130.45   7130.45   7134.24   7134.24   7137.24   7137.24
+             7139.56   7139.56   7142.89   7142.89   7143.83   7143.83   7144.90   7144.90
+             7152.75   7152.75   7155.92   7155.92   7156.09   7156.09   7157.77   7157.77
+             7160.86   7160.86   7164.50   7164.50   7174.22   7174.22   7182.54   7182.54
+             7182.67   7182.67   7185.08   7185.08   7185.88   7185.88   7188.73   7188.73
+             7189.98   7189.98   7198.61   7198.61   7205.01   7205.01   7210.71   7210.71
+             7212.30   7212.30   7217.24   7217.24   7217.72   7217.72   7219.60   7219.60
+             7220.38   7220.38   7223.68   7223.68   7226.05   7226.05   7230.13   7230.13
+             7237.11   7237.11   7239.66   7239.66   7243.64   7243.64   7245.08   7245.08
+             7245.40   7245.40   7250.47   7250.47   7255.48   7255.48   7258.87   7258.87
+             7263.31   7263.31   7266.55   7266.55   7267.41   7267.41   7270.28   7270.28
+             7272.37   7272.37   7276.69   7276.69   7284.33   7284.33   7288.70   7288.70
+             7288.94   7288.94   7292.48   7292.48   7294.05   7294.05   7298.09   7298.09
+             7300.84   7300.84   7305.25   7305.25   7307.68   7307.68   7315.50   7315.50
+             7319.91   7319.91   7327.79   7327.79   7329.69   7329.69   7333.10   7333.10
+             7336.40   7336.40   7343.22   7343.22   7344.83   7344.83   7348.50   7348.50
+             7352.59   7352.59   7356.28   7356.28   7360.63   7360.63   7361.30   7361.30
+             7361.82   7361.82   7368.25   7368.25   7368.90   7368.90   7373.38   7373.38
+             7374.94   7374.94   7375.45   7375.45   7380.10   7380.11   7386.19   7386.19
+             7386.56   7386.56   7386.78   7386.78   7395.88   7395.88   7398.70   7398.70
+             7405.07   7405.07   7408.53   7408.53   7409.49   7409.49   7417.52   7417.52
+             7422.29   7422.29   7428.49   7428.49   7430.38   7430.38   7435.02   7435.02
+             7435.44   7435.44   7435.86   7435.86   7436.73   7436.73   7440.64   7440.64
+             7442.17   7442.17   7444.73   7444.73   7455.71   7455.72   7459.20   7459.20
+             7461.93   7461.93   7461.93   7461.94   7464.06   7464.07   7472.99   7473.00
+             7476.63   7476.63   7480.21   7480.21   7485.54   7485.54   7489.78   7489.79
+             7493.83   7493.84   7497.42   7497.42   7498.06   7498.07   7498.10   7498.12
+             7505.92   7505.92   7506.14   7506.15   7509.50   7509.50   7510.28   7510.28
+             7514.69   7514.69   7515.87   7515.88   7517.97   7517.97   7523.75   7523.76
+             7524.10   7524.12   7526.02   7526.03   7529.32   7529.33   7530.47   7530.48
+             7531.78   7531.80   7543.67   7543.67   7547.28   7547.28   7547.79   7547.79
+             7547.79   7547.79   7557.84   7557.84   7562.39   7562.39   7571.44   7571.44
+             7579.09   7579.09   7579.16   7579.16   7581.37   7581.37   7583.11   7583.11
+             7584.91   7584.91   7591.20   7591.20   7591.77   7591.77   7594.66   7594.66
+             7598.47   7598.47   7604.89   7604.89   7605.87   7605.87   7606.85   7606.85
+             7610.96   7610.96   7617.91   7617.91   7618.20   7618.20   7619.75   7619.75
+             7624.74   7624.74   7624.89   7624.89   7628.57   7628.57   7631.19   7631.19
+             7631.20   7631.20   7634.21   7634.21   7638.41   7638.41   7642.23   7642.23
+             7647.35   7647.35   7650.37   7650.37   7650.54   7650.54   7652.18   7652.18
+             7655.27   7655.27   7657.72   7657.72   7669.39   7669.39   7669.97   7669.97
+             7678.43   7678.43   7684.79   7684.79   7687.35   7687.35   7692.55   7692.55
+             7694.04   7694.04   7696.04   7696.04   7704.49   7704.49   7711.09   7711.09
+             7711.34   7711.34   7711.46   7711.46   7715.52   7715.52   7721.09   7721.09
+             7721.24   7721.24   7721.36   7721.36   7724.59   7724.59   7727.49   7727.49
+             7730.52   7730.52   7734.35   7734.35   7734.77   7734.77   7739.75   7739.75
+             7739.86   7739.86   7739.96   7739.96   7740.41   7740.41   7744.92   7744.92
+             7761.07   7761.07   7764.06   7764.06   7764.84   7764.84   7768.98   7768.98
+             7774.90   7774.90   7778.00   7778.01   7786.71   7786.71   7787.06   7787.06
+             7787.94   7787.94   7790.42   7790.42   7791.29   7791.29   7792.91   7792.91
+             7794.27   7794.27   7800.78   7800.78   7810.59   7810.59   7812.76   7812.76
+             7813.25   7813.26   7816.35   7816.35   7820.52   7820.52   7827.03   7827.03
+             7831.29   7831.29   7836.57   7836.58   7838.63   7838.63   7841.62   7841.62
+             7842.90   7842.91   7846.85   7846.85   7852.28   7852.28   7852.99   7852.99
+             7854.87   7854.88   7857.88   7857.88   7858.28   7858.28   7860.84   7860.84
+             7865.94   7865.95   7872.55   7872.55   7887.63   7887.64   7888.12   7888.12
+             7891.35   7891.35   7892.61   7892.61   7901.20   7901.20   7901.73   7901.73
+             7902.63   7902.64   7904.36   7904.36   7907.07   7907.07   7907.75   7907.75
+             7908.69   7908.69   7910.64   7910.64   7917.02   7917.05   7922.41   7922.42
+             7922.81   7922.82   7925.31   7925.33   7932.38   7932.39   7935.17   7935.18
+             7941.94   7941.95   7945.06   7945.06   7949.86   7949.87   7958.49   7964.23
+             7964.23   7965.85   7965.85   7969.61   7969.61   7971.12   7971.12   7973.92
+             7973.92   7974.09   7974.09   7979.34   7979.34   7980.07   7980.07   7985.42
+             7985.42   7988.93   7988.93   7989.47   7989.47   7995.78   7995.78   7998.47
+             7998.48   7999.01   7999.01   8003.49   8003.49   8003.84   8003.85   8004.60
+             8004.61   8005.30   8005.30   8016.69   8016.69   8021.26   8021.26   8027.05
+             8027.06   8027.27   8027.27   8032.41   8032.41   8037.06   8037.06   8042.94
+             8042.97   8045.09   8045.09   8049.56   8049.56   8054.26   8054.27   8062.66
+             8062.67   8069.42   8069.42   8070.22   8070.22   8073.77   8073.77   8076.65
+             8076.66   8079.44   8079.45   8080.13   8080.15   8080.50   8080.50   8087.62
+             8087.63   8090.37   8090.37   8091.19   8091.20   8092.83   8092.85   8099.25
+             8099.25   8102.15   8102.16   8107.32   8107.33   8111.09   8111.10   8112.81
+             8112.81   8114.89   8114.90   8117.97   8117.98   8119.84   8119.84   8122.84
+             8122.86   8124.38   8124.38   8127.61   8127.61   8134.42   8134.42   8138.94
+             8138.95   8150.02   8150.02   8150.02   8150.04   8151.70   8151.71   8154.38
+             8154.39   8155.61   8155.62   8162.31   8162.33   8163.79   8163.79   8164.93
+             8164.95   8172.29   8172.30   8172.72   8172.72   8173.67   8173.67   8175.00
+             8175.00   8180.76   8180.76   8182.13   8182.13   8193.00   8193.00   8195.04
+             8195.04   8198.82   8198.82   8205.66   8205.66   8207.07   8207.07   8210.68
+             8210.68   8214.21   8214.21   8216.99   8216.99   8221.50   8221.50   8223.54
+             8223.54   8229.51   8229.51   8233.52   8233.52   8235.98   8235.98   8235.98
+             8235.98   8244.51   8244.51   8244.73   8244.73   8245.07   8245.07   8245.90
+             8245.90   8250.80   8250.80   8252.26   8252.26   8255.73   8255.73   8256.05
+             8256.05   8256.90   8256.90   8261.19   8261.19   8264.86   8264.86   8266.90
+             8266.90   8268.82   8268.82   8270.71   8270.71   8282.76   8282.76   8286.61
+             8286.61   8291.39   8291.39   8297.50   8297.50   8302.96   8302.96   8305.33
+             8305.33   8307.23   8307.23   8311.91   8311.91   8316.53   8316.53   8319.46
+             8319.46   8319.47   8319.47   8326.25   8326.25   8329.57   8329.57   8332.46
+             8332.46   8334.03   8334.03   8334.46   8334.46   8335.81   8335.81   8338.47
+             8338.47   8340.38   8340.38   8348.74   8348.74   8351.40   8351.40   8357.34
+             8357.34   8359.66   8359.66   8360.16   8360.16   8364.48   8364.48   8367.47
+             8367.47   8367.67   8367.67   8369.84   8369.84   8372.61   8372.61   8376.51
+             8376.51   8380.24   8380.24   8393.04   8393.04   8393.15   8393.15   8393.66
+             8393.66   8397.76   8397.76   8399.63   8399.63   8399.78   8399.78   8411.27
+             8411.27   8412.25   8412.25   8412.75   8412.75   8418.11   8418.11   8421.16
+             8421.16   8423.32   8423.32   8429.95   8429.95   8431.22   8431.22   8431.99
+             8431.99   8439.67   8439.67   8444.74   8444.75   8448.71   8448.71   8452.06
+             8452.06   8456.09   8456.09   8463.14   8463.14   8465.45   8465.45   8469.20
+             8469.20   8473.05   8473.05   8474.87   8474.87   8476.27   8476.27   8478.23
+             8478.23   8484.39   8484.39   8486.47   8486.47   8487.37   8487.37   8489.44
+             8489.44   8494.36   8494.36   8495.83   8495.83   8500.59   8500.59   8503.83
+             8503.83   8506.26   8506.26   8513.82   8513.82   8515.84   8515.84   8517.18
+             8517.18   8521.38   8521.38   8529.51   8529.51   8531.94   8531.94   8534.97
+             8534.97   8536.69   8536.69   8540.51   8540.51   8545.71   8545.71   8547.33
+             8547.33   8549.27   8549.27   8556.06   8556.06   8560.84   8560.84   8561.36
+             8561.36   8566.63   8566.63   8573.54   8573.54   8573.56   8573.56   8575.60
+             8575.60   8580.23   8580.23   8583.22   8583.22   8586.90   8586.90   8590.66
+             8590.66   8591.80   8591.80   8596.00   8596.00   8596.19   8596.19   8596.32
+             8596.32   8602.41   8602.41   8605.40   8605.40   8608.53   8608.53   8611.32
+             8611.32   8611.98   8611.98   8621.16   8621.16   8625.21   8625.21   8626.65
+             8626.65   8640.99   8640.99   8648.31   8648.31   8657.61   8657.61   8659.84
+             8659.84   8665.38   8665.38   8668.32   8668.32   8669.55   8669.55   8673.39
+             8673.39   8674.34   8674.34   8674.74   8674.74   8677.48   8677.48   8680.37
+             8680.37   8680.60   8680.60   8683.14   8683.14   8687.56   8687.56   8691.43
+             8691.43   8692.55   8692.55   8694.66   8694.66   8694.82   8694.82   8695.73
+             8695.73   8701.92   8701.92   8704.33   8704.33   8708.20   8708.20   8711.77
+             8711.77   8713.73   8713.73   8720.59   8720.59   8721.36   8721.36   8730.37
+             8730.37   8731.20   8731.20   8732.58   8732.58   8740.23   8740.23   8741.90
+             8741.90   8744.08   8744.08   8761.96   8761.96   8766.43   8766.43   8766.71
+             8766.71   8770.17   8770.17   8771.58   8771.58   8776.27   8776.27   8778.79
+             8778.79   8785.40   8785.40   8790.36   8790.36   8791.88   8791.88   8792.27
+             8792.27   8794.82   8794.82   8802.12   8802.12   8808.34   8808.34   8813.49
+             8813.49   8814.26   8814.26   8816.56   8816.56   8820.01   8820.01   8828.83
+             8828.83   8829.26   8829.26   8831.73   8831.73   8834.99   8834.99   8835.45
+             8835.45   8835.68   8835.68   8838.78   8838.78   8846.35   8846.35   8848.58
+             8848.58   8857.31   8857.32   8859.95   8859.95   8861.09   8861.09   8862.20
+             8862.20   8866.48   8866.48   8869.48   8869.48   8869.90   8869.90   8872.93
+             8872.93   8876.37   8876.37   8876.91   8876.91   8878.70   8878.70   8883.25
+             8883.25   8883.25   8883.25   8884.11   8884.11   8892.06   8892.06   8896.50
+             8896.50   8898.87   8898.87   8902.02   8902.02   8902.84   8902.84   8906.48
+             8906.48   8912.16   8912.16   8916.54   8916.54   8921.14   8921.14   8934.60
+             8934.60   8945.07   8945.07   8945.15   8945.15   8946.14   8946.14   8948.10
+             8948.10   8951.81   8951.81   8957.25   8957.25   8958.98   8958.98   8959.71
+             8959.71   8960.73   8960.73   8961.81   8961.81   8969.01   8969.01   8969.29
+             8969.29   8969.29   8969.30   8970.52   8970.52   8974.09   8974.09   8981.32
+             8981.32   8983.74   8983.74   8990.12   8990.12   8991.05   8991.05   8991.60
+             8991.61   9001.00   9001.00   9002.41   9002.42   9004.62   9004.62   9005.17
+             9005.17   9011.97   9011.97   9018.02   9018.02   9021.69   9021.69   9023.72
+             9023.72   9025.95   9025.95   9028.05   9028.05   9031.03   9031.03   9039.50
+             9039.50   9041.35   9041.35   9045.61   9045.61   9047.17   9047.17   9047.48
+             9047.48   9051.87   9051.87   9052.85   9052.85   9052.86   9052.86   9054.25
+             9054.25   9059.57   9059.57   9062.03   9062.03   9065.13   9065.13   9070.34
+             9070.34   9071.04   9071.04   9072.98   9072.98   9074.67   9074.67   9075.43
+             9075.43   9080.26   9080.26   9090.82   9090.82   9092.65   9092.65   9094.78
+             9094.78   9106.60   9106.60   9120.56   9120.56   9120.99   9120.99   9125.99
+             9125.99   9130.06   9130.06   9131.04   9131.04   9133.06   9133.06   9133.22
+             9133.22   9133.96   9133.96   9135.89   9135.89   9136.13   9136.13   9141.63
+             9141.63   9144.57   9144.57   9146.95   9146.95   9153.58   9153.58   9158.88
+             9158.88   9159.17   9159.17   9159.26   9159.26   9160.97   9160.97   9166.05
+             9166.05   9169.81   9169.81   9175.63   9175.63   9176.27   9176.27   9181.48
+             9181.48   9184.46   9184.46   9189.64   9189.64   9193.24   9193.24   9201.25
+             9201.25   9204.80   9204.80   9208.14   9208.14   9209.74   9209.74   9211.73
+             9211.73   9218.51   9218.51   9222.28   9222.28   9222.55   9222.55   9223.21
+             9223.21   9227.63   9227.63   9234.39   9234.39   9234.45   9234.45   9238.44
+             9238.44   9238.47   9246.93   9246.93   9250.46   9250.46   9251.36   9251.36
+             9254.50   9254.50   9255.13   9255.13   9256.48   9256.48   9260.54   9260.54
+             9260.93   9260.93   9261.92   9261.92   9272.80   9272.80   9273.09   9273.10
+             9280.77   9280.77   9281.04   9281.04   9282.85   9282.85   9283.82   9283.82
+             9287.39   9287.39   9296.77   9296.77   9296.88   9296.88   9307.81   9307.81
+             9311.88   9311.88   9313.12   9313.13   9313.74   9313.74   9321.38   9321.39
+             9325.63   9325.63   9328.89   9328.89   9331.47   9331.47   9338.04   9338.04
+             9341.13   9341.13   9343.83   9343.83   9349.02   9349.02   9355.12   9355.12
+             9355.37   9355.37   9357.01   9357.01   9358.10   9358.10   9362.55   9362.56
+             9365.23   9365.23   9372.86   9372.86   9374.63   9374.64   9379.70   9379.71
+             9382.29   9382.30   9384.38   9384.38   9391.46   9391.46   9393.02   9393.03
+             9393.24   9393.25   9393.79   9393.80   9394.57   9394.57   9398.71   9398.71
+             9405.04   9405.06   9405.60   9405.61   9405.82   9405.83   9411.18   9411.18
+             9414.59   9414.59   9426.71   9426.74   9429.23   9429.24   9431.03   9431.05
+             9431.57   9431.58   9431.82   9431.83   9436.65   9436.65   9439.42   9439.43
+             9450.89   9450.90   9451.91   9463.60   9463.60   9467.43   9467.43   9471.58
+             9471.58   9475.84   9475.84   9484.24   9484.24   9491.65   9491.65   9494.08
+             9494.08   9494.52   9494.52   9496.28   9496.28   9497.45   9497.45   9500.48
+             9500.48   9501.28   9501.28   9503.72   9503.72   9505.42   9505.42   9505.60
+             9505.60   9505.72   9505.72   9509.40   9509.40   9510.10   9510.10   9514.55
+             9514.55   9517.28   9517.28   9527.35   9527.35   9528.58   9528.58   9537.20
+             9537.20   9538.62   9538.62   9543.94   9543.94   9544.49   9544.49   9548.97
+             9548.97   9556.33   9556.33   9557.23   9557.23   9565.62   9565.62   9574.07
+             9574.07   9578.85   9578.85   9581.63   9581.63   9582.33   9582.33   9587.92
+             9587.92   9589.62   9589.63   9593.41   9593.41   9599.21   9599.21   9599.54
+             9599.54   9609.30   9609.30   9611.27   9611.27   9613.19   9613.19   9616.60
+             9616.60   9617.90   9617.90   9619.23   9619.23   9620.49   9620.49   9626.94
+             9626.94   9628.09   9628.09   9630.27   9630.27   9631.80   9631.80   9633.88
+             9633.89   9634.58   9634.58   9637.34   9637.34   9648.74   9648.74   9651.32
+             9651.32   9655.08   9655.08   9656.97   9656.97   9657.97   9657.98   9661.47
+             9661.47   9661.47   9661.48   9666.56   9666.56   9669.96   9669.96   9671.79
+             9671.79   9682.22   9682.22   9682.72   9682.72   9690.26   9690.26   9693.16
+             9693.16   9695.22   9695.22   9695.47   9695.47   9700.53   9700.53   9706.55
+             9706.55   9709.17   9709.17   9715.76   9715.76   9726.41   9726.41   9726.88
+             9726.88   9726.99   9726.99   9728.16   9728.16   9738.04   9738.04   9738.80
+             9738.80   9739.03   9739.03   9741.15   9741.15   9742.30   9742.30   9746.13
+             9746.13   9747.61   9747.61   9747.61   9747.61   9750.49   9750.49   9751.23
+             9751.23   9755.41   9755.41   9755.96   9755.96   9761.88   9761.88   9763.29
+             9763.29   9765.65   9765.65   9766.37   9766.37   9772.50   9772.50   9775.66
+             9775.66   9776.92   9776.92   9784.26   9784.26   9790.53   9790.53   9791.87
+             9791.87   9801.74   9801.74   9802.31   9802.31   9804.25   9804.25   9807.54
+             9807.54   9821.98   9821.98   9826.06   9826.06   9829.61   9829.61   9831.25
+             9831.25   9831.26   9831.26   9832.37   9832.37   9835.63   9835.63   9837.78
+             9837.78   9838.96   9838.96   9847.12   9847.12   9847.15   9847.15   9847.33
+             9847.33   9850.31   9850.31   9856.34   9856.34   9860.94   9860.94   9861.59
+             9861.59   9863.80   9863.80   9864.60   9864.60   9871.60   9871.60   9877.01
+             9877.01   9878.82   9878.82   9882.28   9882.28   9890.25   9890.25   9890.43
+             9890.43   9899.65   9899.65   9901.64   9901.64   9905.70   9905.70   9907.27
+             9907.27   9908.62   9908.62   9910.35   9910.35   9910.78   9910.78   9911.48
+             9911.48   9911.67   9911.67   9912.13   9912.13   9920.89   9920.89   9922.79
+             9922.79   9926.67   9926.67   9937.80   9937.80   9940.03   9940.03   9941.61
+             9941.61   9946.76   9946.76   9949.82   9949.82   9951.39   9951.39   9952.02
+             9952.02   9967.21   9967.21   9968.52   9968.52   9970.10   9970.10   9977.50
+             9977.50   9985.04   9985.04   9985.79   9985.79   9986.37   9986.37   9988.21
+             9988.21   9993.39   9993.39   9998.35   9998.35   9999.85   9999.85  10000.19
+            10000.19  10004.63  10004.63  10007.74  10007.74  10009.69  10009.69  10013.11
+            10013.11  10019.89  10019.89  10020.84  10020.84  10029.12  10029.12  10030.48
+            10030.48  10036.34  10036.34  10039.84  10039.84  10039.99  10039.99  10046.04
+            10046.04  10049.49  10049.49  10050.60  10050.60  10051.08  10051.08  10052.18
+            10052.18  10053.32  10053.32  10061.44  10061.44  10062.46  10062.46  10065.90
+            10065.90  10068.10  10068.10  10070.99  10070.99  10071.99  10071.99  10074.02
+            10074.03  10077.47  10077.47  10090.74  10090.74
 
      2DNS partition function:
        ---------------------
@@ -4821,15 +4148,15 @@
          300.00 | 8.289E-01 
          400.00 | 1.706E+00 
          500.00 | 3.079E+00 
-         700.00 | 8.076E+00 
-        1000.00 | 2.361E+01 
-        1500.00 | 7.531E+01 
-        2000.00 | 1.569E+02 
-        2500.00 | 2.608E+02 
+         700.00 | 8.075E+00 
+        1000.00 | 2.359E+01 
+        1500.00 | 7.526E+01 
+        2000.00 | 1.568E+02 
+        2500.00 | 2.606E+02 
        ---------------------
 
 
-                                          | Elapsed time 1.2 days |
+                                          | Elapsed time 19.8 hours |
 
    \\\\\\\\\\\\\\\\\\\\\\\ ///////////////////////
        End of execution of Q2DTor with --tor2dns  
@@ -4840,6 +4167,7 @@
    *==============================
    | Executing Q2DTor with option: --rovibpf  [Calculating 1WHO, MSHO, and E2DT partition functions]
    *==============================
+     Data: 2019-03-25 21:39
 
      Information needed from input file:
         * torsion1         1-2-5-10
@@ -4883,19 +4211,20 @@
         - file name: IOfiles/S07.ics
                1-2            1-3            1-6            2-4            2-5  
                4-7            4-8            4-9           5-10          1-2-5  
-             2-1-6          2-4-7          2-4-9         2-5-10          3-1-6  
-             4-2-5          7-4-9          8-4-9        1-2-4-7       1-2-5-10  
-           1-4-5-2        2-3-6-1        4-2-1-6        7-8-9-4  
+             2-1-6          2-4-8          2-4-9         2-5-10          3-1-6  
+             4-2-5          7-4-8          8-4-9        1-2-4-7       1-2-5-10  
+           1-4-5-2        2-3-6-1        2-7-8-4        4-2-1-6  
 
         - file name: IOfiles/S07.evals
           zpe = 0.725 kcal/mol
 
      Analyzing minimum energy:
-        - Mininum energy in numeric PES:  -289.1840211 hartree
-        - Mininum energy in Fourier PES:  -289.1840210 hartree
+        - Mininum energy in numeric PES         :  -289.1840211 hartree
+        - Mininum energy in Fourier PES         :  -289.1840211 hartree
+        - Mininum energy among stationary points:  -289.1840210 hartree
 
      Analyzing stationary point structures
-        - Energy of PES global minimum: -289.18402 hartree
+        - Energy of PES global minimum: -289.1840210 hartree
         - Summary table (energies in kcal/mol):
             ----------------------------------------------------------------------------
               statpoint  |  type   |  Erel   |   ZPE   |  ntZPE  ||    V1    |    V2    
@@ -4936,27 +4265,30 @@
      Obtaining Delaunay tesselation using CPs
 
      Interpolating det(D) and det(S)
-        * File 'IOfiles/S07.sqrt' already exists
-          - contains information of sqrt(|D|) fitting
-          - contains information of sqrt(|S|) fitting
+        * Obtaining |D| and |S| in all PES points...
+            reference value for sqrt(|D|) is 1.87E+04 au
+            reference value for sqrt(|S|) is 1.09E+13 au
+        * Fitting sqrt(|D|) to Fourier series...
+        * Fitting sqrt(|S|) to Fourier series...
+        * Saving Fourier Series fittings to: IOfiles/S07.sqrt
         * Checking interpolation: calculated  vs interpolated values for stationary points [sqrt(|D|)], [sqrt(|S|)]
 
     ****************************************
      CALCULATION OF THE PARTITION FUNCTIONS 
     ****************************************
 
-        * T =  100.00 K done! (328.7 seconds)
-        * T =  150.00 K done! (306.1 seconds)
-        * T =  200.00 K done! (309.4 seconds)
-        * T =  250.00 K done! (306.2 seconds)
-        * T =  300.00 K done! (308.6 seconds)
-        * T =  400.00 K done! (309.7 seconds)
-        * T =  500.00 K done! (304.0 seconds)
-        * T =  700.00 K done! (304.2 seconds)
-        * T = 1000.00 K done! (306.0 seconds)
-        * T = 1500.00 K done! (306.1 seconds)
-        * T = 2000.00 K done! (313.0 seconds)
-        * T = 2500.00 K done! (311.9 seconds)
+        * T =  100.00 K done! (357.0 seconds)
+        * T =  150.00 K done! (451.6 seconds)
+        * T =  200.00 K done! (433.4 seconds)
+        * T =  250.00 K done! (348.2 seconds)
+        * T =  300.00 K done! (259.1 seconds)
+        * T =  400.00 K done! (364.4 seconds)
+        * T =  500.00 K done! (449.5 seconds)
+        * T =  700.00 K done! (437.8 seconds)
+        * T = 1000.00 K done! (344.9 seconds)
+        * T = 1500.00 K done! (223.1 seconds)
+        * T = 2000.00 K done! (295.2 seconds)
+        * T = 2500.00 K done! (425.1 seconds)
 
      Energy of the lowest zero point level of the torsional PES:
        * 1WHO =>  52.562 kcal/mol
@@ -4970,16 +4302,16 @@
                                                               
             T (K)  |  rv(1WHO)  |  rv(MSHO)  |  rv(E2DT)  | E2DT/MSHO 
           ------------------------------------------------------------
-            100.00 |  1.939E+04 |  1.939E+04 |  2.044E+04 |  1.05415  
-            150.00 |  4.556E+04 |  4.557E+04 |  4.938E+04 |  1.08351  
-            200.00 |  9.588E+04 |  9.612E+04 |  1.068E+05 |  1.11113  
-            250.00 |  1.918E+05 |  1.937E+05 |  2.205E+05 |  1.13834  
-            300.00 |  3.730E+05 |  3.822E+05 |  4.458E+05 |  1.16617  
-            400.00 |  1.345E+06 |  1.454E+06 |  1.785E+06 |  1.22763  
-            500.00 |  4.670E+06 |  5.467E+06 |  7.099E+06 |  1.29866  
-            700.00 |  5.134E+07 |  7.296E+07 |  1.058E+08 |  1.44948  
-           1000.00 |  1.460E+09 |  2.738E+09 |  4.432E+09 |  1.61850  
-           1500.00 |  1.997E+11 |  5.208E+11 |  8.866E+11 |  1.70254  
+            100.00 |  1.939E+04 |  1.939E+04 |  2.044E+04 |  1.05413  
+            150.00 |  4.556E+04 |  4.557E+04 |  4.938E+04 |  1.08348  
+            200.00 |  9.588E+04 |  9.612E+04 |  1.068E+05 |  1.11111  
+            250.00 |  1.918E+05 |  1.937E+05 |  2.205E+05 |  1.13831  
+            300.00 |  3.730E+05 |  3.822E+05 |  4.457E+05 |  1.16614  
+            400.00 |  1.345E+06 |  1.454E+06 |  1.785E+06 |  1.22760  
+            500.00 |  4.670E+06 |  5.467E+06 |  7.099E+06 |  1.29859  
+            700.00 |  5.134E+07 |  7.296E+07 |  1.057E+08 |  1.44916  
+           1000.00 |  1.460E+09 |  2.738E+09 |  4.430E+09 |  1.61770  
+           1500.00 |  1.997E+11 |  5.208E+11 |  8.860E+11 |  1.70134  
            2000.00 |  1.353E+13 |  4.342E+13 |  7.188E+13 |  1.65542  
            2500.00 |  5.278E+14 |  1.944E+15 |  3.037E+15 |  1.56180  
 
@@ -4995,8 +4327,8 @@
             400.00 |  4.248E+00 |  1.832E+00 |  7.701E+05 
             500.00 |  6.389E+00 |  3.213E+00 |  3.571E+06 
             700.00 |  1.360E+01 |  8.223E+00 |  6.392E+07 
-           1000.00 |  3.400E+01 |  2.375E+01 |  3.096E+09 
-           1500.00 |  9.606E+01 |  7.543E+01 |  6.962E+11 
+           1000.00 |  3.399E+01 |  2.375E+01 |  3.096E+09 
+           1500.00 |  9.599E+01 |  7.543E+01 |  6.962E+11 
            2000.00 |  1.890E+02 |  1.575E+02 |  5.989E+13 
            2500.00 |  3.052E+02 |  2.637E+02 |  2.624E+15 
 
@@ -5005,16 +4337,16 @@
                                                        
             T (K)  |  rv(1WHO)  |  rv(MSHO)  |  rv(E2DT)  | E2DT/MSHO 
           ------------------------------------------------------------
-            100.00 | 2.604E-111 | 2.604E-111 | 3.766E-111 |  1.44627  
-            150.00 |  1.195E-72 |  1.195E-72 |  1.599E-72 |  1.33781  
-            200.00 |  3.514E-53 |  3.523E-53 |  4.585E-53 |  1.30149  
-            250.00 |  2.158E-41 |  2.180E-41 |  2.816E-41 |  1.29184  
-            300.00 |  1.910E-33 |  1.958E-33 |  2.537E-33 |  1.29581  
-            400.00 |  2.575E-23 |  2.784E-23 |  3.699E-23 |  1.32863  
-            500.00 |  4.954E-17 |  5.799E-17 |  8.022E-17 |  1.38345  
-            700.00 |  1.996E-09 |  2.837E-09 |  4.302E-09 |  1.51646  
-           1000.00 |  4.756E-03 |  8.919E-03 |  1.490E-02 |  1.67050  
-           1500.00 |  4.387E+03 |  1.144E+04 |  1.990E+04 |  1.73882  
+            100.00 | 2.604E-111 | 2.604E-111 | 3.766E-111 |  1.44624  
+            150.00 |  1.195E-72 |  1.195E-72 |  1.599E-72 |  1.33779  
+            200.00 |  3.514E-53 |  3.523E-53 |  4.585E-53 |  1.30146  
+            250.00 |  2.158E-41 |  2.180E-41 |  2.816E-41 |  1.29182  
+            300.00 |  1.910E-33 |  1.958E-33 |  2.537E-33 |  1.29579  
+            400.00 |  2.575E-23 |  2.784E-23 |  3.699E-23 |  1.32860  
+            500.00 |  4.954E-17 |  5.799E-17 |  8.022E-17 |  1.38338  
+            700.00 |  1.996E-09 |  2.837E-09 |  4.301E-09 |  1.51614  
+           1000.00 |  4.756E-03 |  8.919E-03 |  1.489E-02 |  1.66968  
+           1500.00 |  4.387E+03 |  1.144E+04 |  1.988E+04 |  1.73759  
            2000.00 |  2.442E+07 |  7.836E+07 |  1.318E+08 |  1.68180  
            2500.00 |  1.342E+10 |  4.942E+10 |  7.817E+10 |  1.58169  
 
@@ -5024,14 +4356,14 @@
           -----------------------------------------------------------
             100.00 |  3.135E-02 |  9.839E-02 | 1.182E-110 | 0.31865 
             150.00 |  1.299E-01 |  2.235E-01 |  2.751E-72 | 0.58130 
-            200.00 |  2.954E-01 |  4.023E-01 |  6.244E-53 | 0.73428 
+            200.00 |  2.954E-01 |  4.023E-01 |  6.244E-53 | 0.73427 
             250.00 |  5.263E-01 |  6.403E-01 |  3.426E-41 | 0.82191 
-            300.00 |  8.289E-01 |  9.477E-01 |  2.900E-33 | 0.87469 
-            400.00 |  1.706E+00 |  1.832E+00 |  3.974E-23 | 0.93090 
-            500.00 |  3.079E+00 |  3.213E+00 |  8.372E-17 | 0.95818 
-            700.00 |  8.076E+00 |  8.223E+00 |  4.380E-09 | 0.98218 
-           1000.00 |  2.361E+01 |  2.375E+01 |  1.499E-02 | 0.99396 
-           1500.00 |  7.531E+01 |  7.543E+01 |  1.993E+04 | 0.99844 
+            300.00 |  8.289E-01 |  9.477E-01 |  2.900E-33 | 0.87468 
+            400.00 |  1.706E+00 |  1.832E+00 |  3.974E-23 | 0.93088 
+            500.00 |  3.079E+00 |  3.213E+00 |  8.372E-17 | 0.95813 
+            700.00 |  8.075E+00 |  8.223E+00 |  4.380E-09 | 0.98197 
+           1000.00 |  2.359E+01 |  2.375E+01 |  1.499E-02 | 0.99347 
+           1500.00 |  7.526E+01 |  7.543E+01 |  1.993E+04 | 0.99773 
            2000.00 |  1.575E+02 |  1.575E+02 |  1.318E+08 | 1.00000 
            2500.00 |  2.637E+02 |  2.637E+02 |  7.817E+10 | 1.00000 
 
@@ -5063,9 +4395,9 @@
             300.00 |  5.122E-26 |  5.249E-26 |  6.802E-26 
             400.00 |  1.418E-15 |  1.533E-15 |  2.036E-15 
             500.00 |  4.764E-09 |  5.576E-09 |  7.714E-09 
-            700.00 |  4.452E-01 |  6.326E-01 |  9.594E-01 
-           1000.00 |  2.587E+06 |  4.852E+06 |  8.105E+06 
-           1500.00 |  6.577E+12 |  1.715E+13 |  2.983E+13 
+            700.00 |  4.452E-01 |  6.326E-01 |  9.592E-01 
+           1000.00 |  2.587E+06 |  4.852E+06 |  8.101E+06 
+           1500.00 |  6.577E+12 |  1.715E+13 |  2.980E+13 
            2000.00 |  7.515E+16 |  2.411E+17 |  4.056E+17 
            2500.00 |  7.212E+19 |  2.657E+20 |  4.202E+20 
 
@@ -5075,18 +4407,18 @@
      CALCULATION OF THE THERMODYNAMIC FUNCTIONS 
     ********************************************
 
-        * T =  100.00 K done! (684.18 seconds)
-        * T =  150.00 K done! (685.82 seconds)
-        * T =  200.00 K done! (646.60 seconds)
-        * T =  250.00 K done! (368.04 seconds)
-        * T =  300.00 K done! (333.71 seconds)
-        * T =  400.00 K done! (329.78 seconds)
-        * T =  500.00 K done! (329.29 seconds)
-        * T =  700.00 K done! (328.71 seconds)
-        * T = 1000.00 K done! (326.99 seconds)
-        * T = 1500.00 K done! (328.21 seconds)
-        * T = 2000.00 K done! (204.01 seconds)
-        * T = 2500.00 K done! (204.84 seconds)
+        * T =  100.00 K done! (840.50 seconds)
+        * T =  150.00 K done! (577.99 seconds)
+        * T =  200.00 K done! (671.23 seconds)
+        * T =  250.00 K done! (354.78 seconds)
+        * T =  300.00 K done! (544.56 seconds)
+        * T =  400.00 K done! (391.37 seconds)
+        * T =  500.00 K done! (435.80 seconds)
+        * T =  700.00 K done! (450.11 seconds)
+        * T = 1000.00 K done! (407.83 seconds)
+        * T = 1500.00 K done! (424.02 seconds)
+        * T = 2000.00 K done! (255.03 seconds)
+        * T = 2500.00 K done! (294.33 seconds)
 
      Note: All thermodynamic functions are calculated using as
      zero of energy the lowest zero point level of the torsional PES
@@ -5138,18 +4470,104 @@
            200.00 |     1.777 |     2.174 |    65.857 |   -10.997 |    15.381 
            250.00 |     2.515 |     3.012 |    69.582 |   -14.384 |    18.139 
            300.00 |     3.396 |     3.992 |    73.146 |   -17.952 |    21.068 
-           400.00 |     5.599 |     6.393 |    80.009 |   -25.610 |    26.846 
-           500.00 |     8.336 |     9.329 |    86.536 |   -33.939 |    31.606 
-           700.00 |    14.918 |    16.309 |    98.214 |   -52.442 |    37.424 
-          1000.00 |    26.278 |    28.266 |   112.377 |   -84.112 |    41.807 
-          1500.00 |    47.358 |    50.339 |   130.215 |  -144.983 |    46.055 
+           400.00 |     5.598 |     6.393 |    80.009 |   -25.610 |    26.845 
+           500.00 |     8.336 |     9.329 |    86.535 |   -33.938 |    31.603 
+           700.00 |    14.917 |    16.308 |    98.213 |   -52.441 |    37.421 
+          1000.00 |    26.277 |    28.264 |   112.375 |   -84.111 |    41.807 
+          1500.00 |    47.358 |    50.338 |   130.213 |  -144.981 |    46.057 
           2000.00 |    70.120 |    74.094 |   143.866 |  -213.638 |    48.665 
           2500.00 |    93.870 |    98.838 |   154.902 |  -288.417 |    50.172 
+
+
+     Internal Energy (U^o)                               
+                                                         
+           T (K)  |    1WHO    |    MSHO    |    E2DT    
+         ------------------------------------------------
+           100.00 |      0.677 |      0.677 |      0.688 
+           150.00 |      1.148 |      1.148 |      1.171 
+           200.00 |      1.730 |      1.737 |      1.777 
+           250.00 |      2.426 |      2.453 |      2.515 
+           300.00 |      3.237 |      3.304 |      3.396 
+           400.00 |      5.202 |      5.419 |      5.598 
+           500.00 |      7.597 |      8.038 |      8.336 
+           700.00 |     13.449 |     14.420 |     14.917 
+          1000.00 |     24.133 |     25.776 |     26.277 
+          1500.00 |     45.070 |     47.371 |     47.358 
+          2000.00 |     68.241 |     70.884 |     70.120 
+          2500.00 |     92.637 |     95.481 |     93.870 
+
+     Enthalpy (H^o)                                      
+                                                         
+           T (K)  |    1WHO    |    MSHO    |    E2DT    
+         ------------------------------------------------
+           100.00 |      0.876 |      0.876 |      0.886 
+           150.00 |      1.446 |      1.446 |      1.469 
+           200.00 |      2.128 |      2.134 |      2.174 
+           250.00 |      2.923 |      2.950 |      3.012 
+           300.00 |      3.833 |      3.900 |      3.992 
+           400.00 |      5.997 |      6.214 |      6.393 
+           500.00 |      8.590 |      9.032 |      9.329 
+           700.00 |     14.840 |     15.811 |     16.308 
+          1000.00 |     26.120 |     27.764 |     28.264 
+          1500.00 |     48.051 |     50.351 |     50.338 
+          2000.00 |     72.215 |     74.858 |     74.094 
+          2500.00 |     97.605 |    100.449 |     98.838 
+
+     Entropy (S^o)                                       
+                                                         
+           T (K)  |    1WHO    |    MSHO    |    E2DT    
+         ------------------------------------------------
+           100.00 |     56.911 |     56.911 |     57.119 
+           150.00 |     61.501 |     61.506 |     61.819 
+           200.00 |     65.409 |     65.448 |     65.857 
+           250.00 |     68.950 |     69.076 |     69.582 
+           300.00 |     72.262 |     72.535 |     73.146 
+           400.00 |     78.455 |     79.152 |     80.009 
+           500.00 |     84.226 |     85.421 |     86.535 
+           700.00 |     94.681 |     96.766 |     98.213 
+          1000.00 |    108.026 |    110.918 |    112.375 
+          1500.00 |    125.727 |    129.165 |    130.213 
+          2000.00 |    139.608 |    143.246 |    143.866 
+          2500.00 |    150.931 |    154.660 |    154.902 
+
+     Gibbs Free Energy (G^o)                             
+                                                         
+           T (K)  |    1WHO    |    MSHO    |    E2DT    
+         ------------------------------------------------
+           100.00 |     -4.815 |     -4.815 |     -4.826 
+           150.00 |     -7.779 |     -7.780 |     -7.803 
+           200.00 |    -10.954 |    -10.955 |    -10.997 
+           250.00 |    -14.314 |    -14.319 |    -14.384 
+           300.00 |    -17.845 |    -17.860 |    -17.952 
+           400.00 |    -25.385 |    -25.447 |    -25.610 
+           500.00 |    -33.522 |    -33.679 |    -33.938 
+           700.00 |    -51.436 |    -51.925 |    -52.441 
+          1000.00 |    -81.905 |    -83.155 |    -84.111 
+          1500.00 |   -140.539 |   -143.397 |   -144.981 
+          2000.00 |   -207.001 |   -211.635 |   -213.638 
+          2500.00 |   -279.724 |   -286.202 |   -288.417 
+
+     Heat Capacity at constant pressure (Cp)             
+                                                         
+           T (K)  |    1WHO    |    MSHO    |    E2DT    
+         ------------------------------------------------
+           100.00 |     10.326 |     10.327 |     10.538 
+           150.00 |     12.504 |     12.546 |     12.840 
+           200.00 |     14.772 |     15.004 |     15.381 
+           250.00 |     17.051 |     17.640 |     18.139 
+           300.00 |     19.355 |     20.394 |     21.068 
+           400.00 |     23.865 |     25.789 |     26.845 
+           500.00 |     27.911 |     30.410 |     31.603 
+           700.00 |     34.218 |     36.827 |     37.421 
+          1000.00 |     40.503 |     42.342 |     41.807 
+          1500.00 |     46.558 |     47.471 |     46.057 
+          2000.00 |     49.782 |     50.291 |     48.665 
+          2500.00 |     51.614 |     51.931 |     50.172 
 
      Tables were stored at 'IOfiles/S07.tables' file
 
 
-                                          | Elapsed time 2.4 hours |
+                                          | Elapsed time 2.9 hours |
 
    \\\\\\\\\\\\\\\\\\\\\\\ ///////////////////////
        End of execution of Q2DTor with --rovibpf  
@@ -5160,11 +4578,11 @@
 
 
 
- "It took less than an hour to make the atoms,              
-  a few hundred million years to make the stars and planets,
-  but five billion years to make man!"                        
-  George Gamow
+ "There is nothing that living things do that cannot be  
+  understood from the point of view that they are made of
+  atoms acting according to the laws of physics."          
+  Richard P. Feynman
 
-  End of Q2DTor output! Current date & time: Mon Mar 19 01:51:30 2018
+  End of Q2DTor output! Current date & time: Tue Mar 26 00:36:43 2019
 
 
