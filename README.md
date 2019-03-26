@@ -231,28 +231,35 @@ for Orca. Once selected, the menu displays:
      |    Select action:
      |     (1) Create input files
      |     (2) Check results against refdata file
+     |     (3) Execute Q2DTor
      |     ..  to exit
 
 Selecting option 1, the corresponding folder (GAUSSIAN/ or ORCA/)
 containing the 20 test folders (one per system) will be created. 
                                                             
-For each system, you can find the xyz file with the         
-reference geometry and the corresponding _Q2DTor_ input file. 
+For each system, you can find the xyz file with the reference
+geometry and the corresponding _Q2DTor_ input file. 
                                                             
-After executing Q2DTor.py for a given system (or for all of    
-them), you can check your results by using the option 2     
-of the Q2DTor_tests.py script. This checking process can    
-be performed after every single step of _Q2DTor_ or after     
-executing it with all the options.                          
+After executing Q2DTor.py for a given system (or for all of
+them), you can check your results by using the option 2
+of the Q2DTorTesting.py script in the second menu.
+
+### Executing _Q2DTor__ with the script
+
+The Q2DTorTesting.py script can be used to run _Q2DTor_ (option
+3 of the second menu). However, the execution is carried out
+via the nohup command. In order to execute _Q2DTor_ sending the
+calculations to a queue or without using nohup, the user should
+execute it manually (or modify the script).
                                                             
 ### IMPORTANT NOTICE 
 
-The searching algorithm for systems  
-_S10_ and _S19_ is not able to find one transition state, and     
-Q2DTor_tests.py complains if you execute it once      
-_Q2DTor_ ends the tasks associated to the --optsp argument.   
-In these cases, the user should add the following line  
-at the end of the `SXX/IOfiles/SXX.splist` file (XX=10,19). 
+The searching algorithm for systems
+_S10_ and _S19_ is not able to find one transition state, and
+Q2DTor_tests.py complains if you execute it once
+_Q2DTor_ ends the tasks associated to the --optsp argument.
+In these cases, the user should add the following line
+at the end of the `SXX/IOfiles/SXX.splist` file (XX=10,19).
 
 For XX=10:
 
