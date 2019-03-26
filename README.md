@@ -47,6 +47,7 @@ given task (and before proceeding to the next one).
 ## Version information
 
 List of known bugs and changes/additions in version 1.1:
+
        - Important:
          - Corrected a bug in the function that reads the xyz file (problem with empty lines).
          - Corrected a bug related to the calculation of partition functions
