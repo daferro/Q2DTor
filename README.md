@@ -148,26 +148,34 @@ software for the electronic structure calculation.
 This is done in file 'mesc.txt'.
 
 For Gaussian users, this file has to contain these lines:
+
    mesc_gaussian  gauexe  "PATH_TO_GAUSSIANEXE"
    mesc_gaussian  fchk    "PATH_TO_FCHK"
+
 where PATH_TO_GAUSSIANEXE and PATH_TO_FCHK are the paths to the Gaussian and formchk 
 executables.
 Example:
+
    mesc_gaussian  gauexe  "/home/programs/G09_64D/g09/g09"
    mesc_gaussian  fchk    "/home/programs/G09_64D/g09/formchk"
+
 Notice that the path is between quotation marks(").
 
 Similarly, for Orca users, this file has to contain the line:
+
    mesc_orca      orca  "PATH_TO_ORCAEXE"
+
 where, again, the path to the Orca executable is between quotation marks. 
 Example:
+
    mesc_orca      orca  "/home/programs/orca_4_0_1_2/orca"
 
 
 ## Execution
 
 You can run Q2DTor by invoking the Python interpreter manually as follows:
-   $ python2.7 Q2DTor.py
+
+   ```python2.7 Q2DTor.py```
 
 If you prefer to avoid invoking the Python interpreter, you have to follow these
 two simple steps:
@@ -177,20 +185,29 @@ two simple steps:
       #!PATH_FOR_PYTHON python 
 
    where PATH_FOR_PYTHON indicates the location of the Python interpreter.
+
    Example:
+
      ```#!/usr/bin/env python```
+
    In this example Python is located in /usr/bin/env. 
 
 (2) Make the main program Q2DTor.py executable:
-      $ chmod u+x Q2DTor.py
+
+      ```chmod u+x Q2DTor.py```
+
     This allows you to run Q2DTor just using:
-      $ Q2DTor.py
+
+      ```Q2DTor.py```
 
 Before run Q2DTor, we recommend to read the help menu.
 It can be displayed either by typing
-   $ Q2DTor.py --help
+
+   ```Q2DTor.py --help```
+
 or 
-   $ Q2DTor.py -h
+
+   ```Q2DTor.py -h```
 
 ## Running the tests set
 
@@ -199,7 +216,7 @@ that facilitates running the tests set.
                                                             
 The script runs under Python version 2.x. It is executed by typing:
 
-  >> python Q2DTor_tests.py                                 
+  ```python Q2DTor_tests.py```
 
 This action opens the next interactive menu:                  
 
@@ -210,11 +227,12 @@ This action opens the next interactive menu:
      |                                                      
      |    your choice:                                      
      |                                                      
+
 where you should choose option 1. 
 
 At this point, the script generates two folders:                                      
-    * GAUSSIAN                                              
-    * ORCA                                                  
+- GAUSSIAN                                              
+- ORCA                                                  
 and each of them contains 20 test folders (one per system). 
                                                             
 For each system, you can find the xyz file with the         
@@ -234,8 +252,11 @@ In these cases, the user should add the following line
 at the end of the SXX/IOfiles/SXX.splist file (XX=10,19). 
 
 For XX=10:
+
    1 170.00 60.00 - NO S10_170_060
+
 For XX=19
+
    1 130.00 70.00 - NO S19_130_070
 
 Check the manual for more information about the search and
