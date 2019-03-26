@@ -58,7 +58,7 @@ List of known bugs and changes/additions in version 1.1:
   - The version of _Q2DTor_ is printed after the logo of the program.
   - The date is added at the beginning of each execution.
   - The Q2DTor.py executable and its modules are now separated.
-    Modules are stored in the modsQ2DTor/ folder.
+    Modules are stored in the `mq2dtor/` folder.
   - If tsigma1 * tsigma2 is not equal to 1, it is assumed that the system meets the
     'c'  type condition of symmetry even if that it is not specified in the input file.
   - For systems with 'b' type symmetry, odd symmetry terms of the Fourier series are
