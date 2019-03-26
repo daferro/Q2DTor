@@ -84,40 +84,41 @@ D. Ferro-Costas, M. N. D. S. Cordeiro, D. G. Truhlar, A. Fernández-Ramos, Compu
 ## Description of files
 
  Contents of the folders distributed in this version:
-  - source     : Q2DTor source files
-  - documents  : Manual of Q2DTor
-  - tests      : All the files related to the tests set
+  - **src/**       : Q2DTor source files
+  - **manual/**    : Manual of Q2DTor
+  - **tests/**     : All the files related to the tests set
 
 The Q2DTor source folder consists of:
 
-   - Q2DTor.py:
+   - **Q2DTor.py**:
      This is the main file of Q2DTor, i.e., the one to be executed
 
-   - Directory mq2dtor, which contains the following files: 
-     - mesc.txt:
-       It contains the path to the executables to the Electronic Structure Calculation software.
-       THIS IS THE ONLY FILE THAT HAS TO BE MODIFIED BY THE USER.
-     - constants.py:
+   - **mesc.txt**:
+     It contains the path to the executables to the Electronic Structure Calculation software.
+     THIS IS THE ONLY FILE THAT HAS TO BE MODIFIED BY THE USER.
+
+   - Directory **mq2dtor/**, which contains the following files: 
+     - **constants.py**:
         It contains different physical constants as well as atomic masses and covalent radii.
-     - classes.py:
+     - **classes.py**:
        It contains different Python classes that are used along the whole code. 
        For example, it contains different classes related to graph theory. 
        These allow to obtain the connectivity of a given geometry or a set of
        internal coordinates in just a few calls.
-     - gtsfile.py:
+     - **gtsfile.py**:
        It contains functions that read and write a gts file (the format used by Q2Dtor). 
        These gts files contain information about stationary points: geometry, gradient, 
        Hessian matrix, etc.
-     - helpfns.py:
+     - **helpfns.py**:
        It contains different auxiliary functions (for example for example the function
        that converts Cartesian coordinates to mass-scaled Cartesian).
-     - mesc_gaussian.py:
+     - **mesc_gaussian.py**:
        It contains the interface to the Gaussian Package.  
-     - mesc_orca.py:
+     - **mesc_orca.py**:
        It contains the interface to the Orca Package.
-     - tesselation.py:
+     - **tesselation.py**:
        It contains functions related to the tesselation of the 2D potential energy surface.
-     - quotes.py:
+     - **quotes.py**:
        It contains some quotes to print when the program ends.
 
 The tests folder contains the output files of the tests set and an script to run them. 
