@@ -5,9 +5,7 @@
 
 _Q2DTor version 1.1_
 
-Copyright (c) 2019, David Ferro Costas (david.ferro@usc.es)  
-                    and   
-                    Antonio Fernandez Ramos (qf.ramos@usc.es)  
+Copyright (c) 2019, David Ferro Costas (david.ferro@usc.es) and Antonio Fernandez Ramos (qf.ramos@usc.es)  
 
 Permission is hereby granted, free of charge, to any person obtaining a copy 
 of this software and associated documentation files (the "Software"), 
