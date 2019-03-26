@@ -144,26 +144,26 @@ This is done in file __mesc.txt__.
 
 For Gaussian users, this file has to contain these lines:
 
-   mesc_gaussian  gauexe  "PATH_TO_GAUSSIANEXE"  
-   mesc_gaussian  fchk    "PATH_TO_FCHK"  
+   ```mesc_gaussian  gauexe  "PATH_TO_GAUSSIANEXE"```  
+   ```mesc_gaussian  fchk    "PATH_TO_FCHK"```  
 
 where PATH_TO_GAUSSIANEXE and PATH_TO_FCHK are the paths to the Gaussian and formchk 
 executables.
 Example:
 
-   mesc_gaussian  gauexe  "/home/programs/G09_64D/g09/g09"  
-   mesc_gaussian  fchk    "/home/programs/G09_64D/g09/formchk"  
+   ```mesc_gaussian  gauexe  "/home/programs/G09_64D/g09/g09"```  
+   ```mesc_gaussian  fchk    "/home/programs/G09_64D/g09/formchk"```  
 
 Notice that the path is between quotation marks(").
 
 Similarly, for Orca users, this file has to contain the line:
 
-   mesc_orca      orca  "PATH_TO_ORCAEXE"  
+   ```mesc_orca      orca  "PATH_TO_ORCAEXE"```  
 
 where, again, the path to the Orca executable is between quotation marks. 
 Example:
 
-   mesc_orca      orca  "/home/programs/orca_4_0_1_2/orca"  
+   ```mesc_orca      orca  "/home/programs/orca_4_0_1_2/orca"```  
 
 
 ## Execution
@@ -177,7 +177,7 @@ two simple steps:
 
 (1) Add as first line in the Q2DTor.py the following:
 
-      #!PATH_FOR_PYTHON python 
+      ```#!PATH_FOR_PYTHON python```  
 
    where PATH_FOR_PYTHON indicates the location of the Python interpreter.
 
