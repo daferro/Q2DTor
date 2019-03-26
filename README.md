@@ -27,13 +27,13 @@ OTHER DEALINGS IN THE SOFTWARE.
 
 ## About Q2DTor
 
-Name of the Program: Q2DTor
+    Name of the Program: Q2DTor
 
-Program Version : 1.1
+    Program Version : 1.1
 
-Program Version Date: March 20, 2019
+    Program Version Date: March 20, 2019
 
-Manual Version Date: March 20, 2018 
+    Manual Version Date: March 20, 2018 
 
 Q2DTor is a program designed to calculate partition functions and thermodynamic 
 properties of molecular systems with two or more torsional modes. 
