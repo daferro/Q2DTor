@@ -223,8 +223,8 @@ This action opens the next interactive menu:
      | 
      |     your choice: 
 
-where you should choose option 1 to run the tests with Gaussian and 2
-for Orca. Once selected, the menu displays:
+where you should choose case (1) to run the tests with Gaussian and case (2)
+to run them with for Orca. Once selected, the menu displays:
 
      |    Select action:
      |     (1) Create input files
@@ -232,24 +232,23 @@ for Orca. Once selected, the menu displays:
      |     (3) Execute Q2DTor
      |     ..  to exit
 
-Selecting option 1, the corresponding folder (GAUSSIAN/ or ORCA/)
+Selecting action (1), the corresponding folder (GAUSSIAN/ or ORCA/)
 containing the 20 test folders (one per system) will be created. 
                                                             
 For each system, you can find the xyz file with the reference
 geometry and the corresponding _Q2DTor_ input file. 
                                                             
 After executing Q2DTor.py for a given system (or for all of
-them), you can check your results by using the option 2 (second menu)
-of the `Q2DTorTesting.py` script.
+them), you can check your results by using the action (2) in
+the `Q2DTorTesting.py` script.
 
 ### Executing _Q2DTor_ with the script
 
-The `Q2DTorTesting.py` script can be used to run _Q2DTor_ (second menu, option 3).
-However, the execution is carried out
-using the `nohup` command. In order to execute _Q2DTor_ sending the
-calculations to a queue or without using nohup, the user should
-execute it manually (_i.e._ without the script) or modify the script.
-                                                            
+The `Q2DTorTesting.py` script can run _Q2DTor_ by making use of the
+nohup command. In order to execute Q2DTor sending the calculations to a
+queue or without using nohup, the user should execute Q2DTor manually
+(_i.e._ without the script) or modify the `Q2DTorTesting.py` script.
+
 ### Carrying out S10 and S19 test systems
 
 The searching algorithm for systems _S10_ and _S19_ is not able to find one
