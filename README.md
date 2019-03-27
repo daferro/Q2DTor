@@ -54,6 +54,7 @@ List of known bugs and changes/additions in version 1.1:
   - Corrected a bug related to the calculation of partition functions
     in systems with the 'a' symmetry condition.
   - Corrected a bug in the calculation of S and G for MSHO.
+  - License was changed from GPL-3.0 to MIT/X11.
 - Minor:
   - The version of _Q2DTor_ is printed after the logo of the program.
   - The date is added at the beginning of each execution.
