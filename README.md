@@ -53,7 +53,7 @@ List of known bugs and changes/additions in version 1.1:
   - Corrected a bug in the function that reads the xyz file (problem with empty lines).
   - Corrected a bug related to the calculation of partition functions
     in systems with the 'a' symmetry condition.
-  - Corrected a bug in the calculation of S and G for MSHO.
+  - Corrected a bug in the calculation of _S_ and _G_ for MSHO.
   - License was changed from GPL-3.0 to MIT/X11.
 - Minor:
   - The version of _Q2DTor_ is printed after the logo of the program.
